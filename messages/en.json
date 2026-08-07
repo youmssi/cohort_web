@@ -1,0 +1,97 @@
+{
+  "Metadata": {
+    "siteName": "Digital Leadership Immersion",
+    "titleTemplate": "%s · Digital Leadership Immersion",
+    "defaultTitle": "Digital Leadership Immersion — Understand technology. Lead change.",
+    "description": "A selective 16-week immersion for founders, directors and managers who need to understand technology, evaluate AI and lead their organization's digital transformation."
+  },
+  "Nav": {
+    "program": "The program",
+    "method": "The method",
+    "curriculum": "The 16 weeks",
+    "competencies": "Capabilities",
+    "admissions": "Admissions",
+    "cohort": "Cohort 01",
+    "faq": "FAQ",
+    "diagnostic": "Diagnostic",
+    "apply": "Apply",
+    "skipToContent": "Skip to content",
+    "toggleMenu": "Toggle menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "Common": {
+    "applyCta": "Apply for Cohort 01",
+    "exploreCta": "Explore the program",
+    "diagnosticCta": "Take the diagnostic",
+    "readMore": "Read more",
+    "previous": "Previous",
+    "continue": "Continue",
+    "back": "Back",
+    "week": "Week",
+    "phase": "Phase"
+  },
+  "Footer": {
+    "tagline": "Understand technology. Challenge assumptions. Decide better. Lead change.",
+    "location": "Conakry · Guinea",
+    "rights": "All rights reserved.",
+    "sections": {
+      "program": "Program",
+      "company": "About"
+    }
+  },
+  "Diagnostic": {
+    "eyebrow": "Digital Leadership Diagnostic",
+    "title": "Where does your digital judgment stand?",
+    "intro": "36 scenario-based questions across 10 capabilities. There's no technical trivia here — we're evaluating your reasoning against real decisions.",
+    "startCta": "Start the diagnostic",
+    "duration": "About 15 minutes",
+    "progress": "Question {current} of {total}",
+    "submit": "See my profile",
+    "loadingResult": "Calculating your profile…",
+    "resultTitle": "Your Digital Leadership Profile",
+    "overall": "Overall score",
+    "strongest": "Your strongest area",
+    "priority": "Your development priority",
+    "levels": {
+      "emerging": "Emerging",
+      "foundation": "Foundation",
+      "developing": "Developing",
+      "strong": "Strong",
+      "advanced": "Advanced"
+    },
+    "applyPrompt": "If these challenges are relevant to your current responsibilities, Cohort 01 is open for applications.",
+    "applyCta": "Apply for Cohort 01",
+    "restart": "Retake the diagnostic"
+  },
+  "Apply": {
+    "eyebrow": "Cohort 01 · Application",
+    "title": "Apply for Cohort 01",
+    "intro": "This isn't an enrollment form. It's the start of a conversation. We review every application individually — only 8 to 12 seats.",
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email address",
+      "phone": "Phone (WhatsApp preferred)",
+      "role": "Current role",
+      "organization": "Organization",
+      "industry": "Industry",
+      "challenge": "What real digital challenge would you like to investigate during the program?",
+      "motivation": "Why this program, now?",
+      "commitment": "Can you commit to one live session per week and the work between sessions?"
+    },
+    "commitmentOptions": {
+      "yes": "Yes, I can commit fully",
+      "unsure": "I'm not yet certain about my availability"
+    },
+    "submit": "Send my application",
+    "submitting": "Sending…",
+    "successTitle": "Application received.",
+    "successBody": "We review every application individually and will follow up by email or WhatsApp about next steps.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "Your application couldn't be sent. Please try again or write to us directly.",
+    "validation": {
+      "required": "This field is required.",
+      "email": "Invalid email address.",
+      "tooShort": "Please expand your answer a little."
+    }
+  }
+}

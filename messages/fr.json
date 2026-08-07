@@ -1,0 +1,97 @@
+{
+  "Metadata": {
+    "siteName": "Digital Leadership Immersion",
+    "titleTemplate": "%s · Digital Leadership Immersion",
+    "defaultTitle": "Digital Leadership Immersion — Comprendre la technologie. Diriger le changement.",
+    "description": "Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui doivent comprendre la technologie, évaluer l'IA et diriger la transformation numérique de leur organisation."
+  },
+  "Nav": {
+    "program": "Le programme",
+    "method": "La méthode",
+    "curriculum": "Les 16 semaines",
+    "competencies": "Compétences",
+    "admissions": "Admissions",
+    "cohort": "Cohorte 01",
+    "faq": "FAQ",
+    "diagnostic": "Diagnostic",
+    "apply": "Postuler",
+    "skipToContent": "Aller au contenu",
+    "toggleMenu": "Ouvrir le menu",
+    "toggleTheme": "Changer de thème"
+  },
+  "Common": {
+    "applyCta": "Postuler pour la Cohorte 01",
+    "exploreCta": "Découvrir le programme",
+    "diagnosticCta": "Faire le diagnostic",
+    "readMore": "En savoir plus",
+    "previous": "Précédent",
+    "continue": "Continuer",
+    "back": "Retour",
+    "week": "Semaine",
+    "phase": "Phase"
+  },
+  "Footer": {
+    "tagline": "Comprendre la technologie. Remettre en question les évidences. Décider mieux. Diriger le changement.",
+    "location": "Conakry · Guinée",
+    "rights": "Tous droits réservés.",
+    "sections": {
+      "program": "Programme",
+      "company": "À propos"
+    }
+  },
+  "Diagnostic": {
+    "eyebrow": "Diagnostic Digital Leadership",
+    "title": "Où en est votre jugement numérique ?",
+    "intro": "36 questions de mise en situation, réparties sur 10 compétences. Il n'y a pas de piège technique : nous évaluons votre raisonnement face à des décisions réelles.",
+    "startCta": "Commencer le diagnostic",
+    "duration": "Environ 15 minutes",
+    "progress": "Question {current} sur {total}",
+    "submit": "Voir mon profil",
+    "loadingResult": "Calcul de votre profil…",
+    "resultTitle": "Votre profil Digital Leadership",
+    "overall": "Score global",
+    "strongest": "Votre point fort",
+    "priority": "Votre priorité de développement",
+    "levels": {
+      "emerging": "Émergent",
+      "foundation": "Fondation",
+      "developing": "En développement",
+      "strong": "Solide",
+      "advanced": "Avancé"
+    },
+    "applyPrompt": "Si ces enjeux correspondent à vos responsabilités actuelles, la Cohorte 01 est ouverte aux candidatures.",
+    "applyCta": "Postuler pour la Cohorte 01",
+    "restart": "Refaire le diagnostic"
+  },
+  "Apply": {
+    "eyebrow": "Cohorte 01 · Candidature",
+    "title": "Postuler pour la Cohorte 01",
+    "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement — 8 à 12 places seulement.",
+    "fields": {
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Téléphone (WhatsApp de préférence)",
+      "role": "Poste actuel",
+      "organization": "Organisation",
+      "industry": "Secteur d'activité",
+      "challenge": "Quel défi numérique réel souhaitez-vous investiguer pendant le programme ?",
+      "motivation": "Pourquoi ce programme, maintenant ?",
+      "commitment": "Pouvez-vous vous engager sur une session live par semaine et le travail entre les sessions ?"
+    },
+    "commitmentOptions": {
+      "yes": "Oui, je peux m'engager pleinement",
+      "unsure": "Je ne suis pas encore certain·e de ma disponibilité"
+    },
+    "submit": "Envoyer ma candidature",
+    "submitting": "Envoi en cours…",
+    "successTitle": "Candidature reçue.",
+    "successBody": "Nous examinons chaque candidature individuellement et revenons vers vous par e-mail ou WhatsApp pour la suite.",
+    "errorTitle": "Une erreur est survenue",
+    "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez ou écrivez-nous directement.",
+    "validation": {
+      "required": "Ce champ est requis.",
+      "email": "Adresse e-mail invalide.",
+      "tooShort": "Merci de développer un peu plus votre réponse."
+    }
+  }
+}
