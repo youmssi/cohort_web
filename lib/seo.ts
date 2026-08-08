@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server"
 
 import { routing, type Locale } from "@/i18n/routing"
 import { cohort, program, site } from "@/lib/constants"
+import { currentCohort } from "@/lib/cohorts"
 
 export function localizedPath(locale: Locale, path: string) {
   const normalized = path === "/" ? "" : path
@@ -146,6 +147,7 @@ export function organizationJsonLd(locale: Locale) {
  * price is eligible for rich results rather than being locked inside markup.
  */
 export function courseJsonLd(locale: Locale) {
+  const session = currentCohort()
   return {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -162,8 +164,8 @@ export function courseJsonLd(locale: Locale) {
     offers: {
       "@type": "Offer",
       category: "Tuition",
-      price: cohort.tuitionAmount,
-      priceCurrency: cohort.tuitionCurrency,
+      price: session.tuition,
+      priceCurrency: "GNF",
       availability: "https://schema.org/LimitedAvailability",
       url: absoluteUrl(locale, "/apply"),
     },
@@ -172,7 +174,7 @@ export function courseJsonLd(locale: Locale) {
       courseMode: "online",
       courseWorkload: `P${cohort.durationWeeks}W`,
       inLanguage: locale,
-      maximumAttendeeCapacity: cohort.maxSeats,
+      maximumAttendeeCapacity: session.seats.max,
       location: { "@type": "VirtualLocation", url: site.url },
     },
   }

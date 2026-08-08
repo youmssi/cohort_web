@@ -13,6 +13,7 @@ import { JourneyTimeline } from "@/components/marketing/journey-timeline"
 import { OutcomesSection } from "@/components/marketing/outcomes-section"
 import { PricingSection } from "@/components/marketing/pricing-section"
 import { FaqAccordion } from "@/components/marketing/faq-accordion"
+import { ChannelsSection } from "@/components/marketing/channels-section"
 import { FinalCta } from "@/components/marketing/final-cta"
 
 export async function generateMetadata({
@@ -43,7 +44,7 @@ export default async function HomePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd(locale)) }}
       />
-      <Hero />
+      <Hero locale={locale} />
       <PositioningBreak locale={locale} />
       <AudienceSection personas={getPersonas(locale)} locale={locale} />
       <MethodologyLoop />
@@ -52,6 +53,7 @@ export default async function HomePage({
       <OutcomesSection locale={locale} />
       <PricingSection locale={locale} />
       <FaqAccordion faqs={getFaqs(locale).slice(0, 5)} locale={locale} />
+      <ChannelsSection locale={locale} />
       <FinalCta locale={locale} />
     </>
   )

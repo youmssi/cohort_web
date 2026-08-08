@@ -1,16 +1,22 @@
 import { getTranslations } from "next-intl/server"
-import { Check, ChevronRight } from "lucide-react"
+import { Check } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
-import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
-import { cohort } from "@/lib/constants"
+import { CohortCta } from "@/components/marketing/cohort-cta"
+import { currentCohort, cohortName, type Cohort } from "@/lib/cohorts"
 
-export async function PricingSection({ locale }: { locale: Locale }) {
+export async function PricingSection({
+  locale,
+  cohort,
+}: {
+  locale: Locale
+  /** Defaults to the session the site is currently promoting. */
+  cohort?: Cohort
+}) {
   const t = await getTranslations({ locale, namespace: "Pricing" })
-  const tc = await getTranslations({ locale, namespace: "Common" })
+  const session = cohort ?? currentCohort()
 
   const inclusions = t.raw("inclusions") as string[]
   const money = (value: number) => new Intl.NumberFormat(locale).format(value)
@@ -21,43 +27,43 @@ export async function PricingSection({ locale }: { locale: Locale }) {
         <RevealOnScroll className="overflow-hidden rounded-2xl border bg-card">
           <div className="grid md:grid-cols-2">
             <div className="flex flex-col p-8 md:p-10">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
                   {t("eyebrow")}
                 </p>
                 <Badge variant="secondary" className="font-normal">
-                  {t("foundingLabel")}
+                  {session.founding ? t("foundingLabel") : cohortName(session)}
                 </Badge>
               </div>
 
               <p className="mt-5 font-heading text-5xl font-semibold tabular-nums">
-                {money(cohort.tuitionAmount)}
+                {money(session.tuition)}
                 <span className="ml-2 align-middle text-lg font-normal text-muted-foreground">
-                  {cohort.tuitionCurrency}
+                  GNF
                 </span>
               </p>
 
-              {/* The standard rate is shown as an anchor, not as a struck-through
-                  discount: the founding price reflects the cohort's stage. */}
-              <p className="mt-2 text-sm text-muted-foreground">
-                {t("standardNote")} : {money(cohort.standardTuition)}{" "}
-                {cohort.tuitionCurrency}
-              </p>
+              {/* The standard rate is an anchor, not a struck-through discount:
+                  the founding price reflects the cohort's stage, and the brief
+                  is explicit that fake discounting undercuts the positioning. */}
+              {session.founding && (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {t("standardNote")} : {money(session.standardTuition)} GNF
+                </p>
+              )}
 
               <div className="mt-8 border-t pt-6">
                 <p className="text-sm font-medium">{t("paymentTitle")}</p>
                 <dl className="mt-3 space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-baseline justify-between gap-4">
                     <dt>{t("paymentFull")}</dt>
-                    <dd className="tabular-nums">
-                      {money(cohort.tuitionAmount)} {cohort.tuitionCurrency}
-                    </dd>
+                    <dd className="tabular-nums">{money(session.tuition)} GNF</dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4">
                     <dt>{t("paymentSplit")}</dt>
                     <dd className="tabular-nums">
-                      {cohort.instalmentCount} &times; {money(cohort.instalmentAmount)}{" "}
-                      {cohort.tuitionCurrency}
+                      {session.instalment.count} &times;{" "}
+                      {money(session.instalment.amount)} GNF
                     </dd>
                   </div>
                 </dl>
@@ -67,15 +73,10 @@ export async function PricingSection({ locale }: { locale: Locale }) {
               </div>
 
               <div className="mt-auto pt-8">
-                <Button
-                  size="lg"
+                <CohortCta
+                  cohort={session}
+                  locale={locale}
                   className="w-full pr-1.5 sm:w-auto"
-                  render={
-                    <Link href="/apply">
-                      <span>{tc("applyCta")}</span>
-                      <ChevronRight className="opacity-50" />
-                    </Link>
-                  }
                 />
               </div>
             </div>

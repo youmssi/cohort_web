@@ -2,9 +2,9 @@ import { getTranslations } from "next-intl/server"
 import { ChevronRight } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
-import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/button-link"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 const stepKeys = ["diagnostic", "application", "conversation", "decision"] as const
 
@@ -56,16 +56,10 @@ export async function AdmissionsSteps({
 
       {showCta && (
         <RevealOnScroll delay={400} className="mt-12 flex justify-center">
-          <Button
-            size="lg"
-            className="pr-1.5"
-            render={
-              <Link href="/apply">
-                <span>{tc("applyCta")}</span>
-                <ChevronRight className="opacity-50" />
-              </Link>
-            }
-          />
+          <ButtonLink href="/apply" size="lg" className="pr-1.5">
+            <span>{tc("applyCta", { cohort: cohortName(currentCohort()) })}</span>
+            <ChevronRight className="opacity-50" />
+          </ButtonLink>
         </RevealOnScroll>
       )}
     </section>

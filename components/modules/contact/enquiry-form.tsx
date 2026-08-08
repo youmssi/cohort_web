@@ -9,7 +9,8 @@ import { Field, FieldContent, FieldError, FieldLabel } from "@/components/ui/fie
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-import { enquiryInitialState, submitEnquiry } from "./contact.service"
+import { submitEnquiry } from "./contact.service"
+import { enquiryInitialState } from "./state"
 
 export function EnquiryForm() {
   const t = useTranslations("Contact")

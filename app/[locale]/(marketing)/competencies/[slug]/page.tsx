@@ -3,14 +3,14 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { ArrowLeft } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
-import { Link } from "@/i18n/navigation"
 import { getCompetencies, getCompetency } from "@/lib/content"
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo"
 import { MdxContent } from "@/components/mdx-content"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { ButtonLink } from "@/components/button-link"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
 import { cohort } from "@/lib/constants"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 export function generateStaticParams({ params }: { params: { locale: string } }) {
   return getCompetencies(params.locale as Locale).map((item) => ({ slug: item.slug }))
@@ -88,16 +88,11 @@ export default async function CompetencyPage({
       </RevealOnScroll>
 
       <nav className="mt-16 flex items-center justify-between gap-3 border-t pt-6">
-        <Button
-          variant="ghost"
-          render={
-            <Link href="/competencies">
-              <ArrowLeft className="opacity-50" />
-              <span>{tc("allCompetencies")}</span>
-            </Link>
-          }
-        />
-        <Button render={<Link href="/apply">{tc("applyCta")}</Link>} />
+        <ButtonLink href="/competencies" variant="ghost">
+          <ArrowLeft className="opacity-50" />
+          <span>{tc("allCompetencies")}</span>
+        </ButtonLink>
+        <ButtonLink href="/apply">{tc("applyCta", { cohort: cohortName(currentCohort()) })}</ButtonLink>
       </nav>
     </article>
     </>

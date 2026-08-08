@@ -1,23 +1,24 @@
-import { useLocale, useTranslations } from "next-intl"
-import { ChevronRight } from "lucide-react"
+import { getTranslations } from "next-intl/server"
 
-import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import type { Locale } from "@/i18n/routing"
 import { BlurText } from "@/components/animations/blur-text"
 import { CountUp } from "@/components/animations/count-up"
+import { ButtonLink } from "@/components/button-link"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
-import { cohort } from "@/lib/constants"
+import { CohortBadge } from "@/components/marketing/cohort-badge"
+import { CohortCta } from "@/components/marketing/cohort-cta"
+import { currentCohort } from "@/lib/cohorts"
+import { cohort as programme } from "@/lib/constants"
 
-export function Hero() {
-  const t = useTranslations("Home")
-  const tc = useTranslations("Common")
-  const locale = useLocale()
+export async function Hero({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "Home" })
+  const tc = await getTranslations({ locale, namespace: "Common" })
+  const session = currentCohort()
 
   const stats = [
-    { value: cohort.durationWeeks, label: tc("weeksLabel") },
-    { value: cohort.competencies, label: tc("competenciesLabel") },
-    { value: cohort.maxSeats, label: tc("participantsLabel") },
+    { value: programme.durationWeeks, label: tc("weeksLabel") },
+    { value: programme.competencies, label: tc("competenciesLabel") },
+    { value: session.seats.max, label: tc("participantsLabel") },
   ]
 
   return (
@@ -35,13 +36,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-4xl px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-28">
         <RevealOnScroll>
-          <Badge variant="secondary" className="gap-1.5 rounded-full px-3 py-1 font-normal">
-            <span className="relative flex size-1.5">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground/60 motion-reduce:hidden" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
-            </span>
-            {t("eyebrow")}
-          </Badge>
+          <CohortBadge cohort={session} locale={locale} />
         </RevealOnScroll>
 
         <BlurText
@@ -62,21 +57,10 @@ export function Hero() {
           delay={380}
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Button
-            size="lg"
-            className="pr-1.5"
-            render={
-              <Link href="/apply">
-                <span>{tc("applyCta")}</span>
-                <ChevronRight className="opacity-50" />
-              </Link>
-            }
-          />
-          <Button
-            size="lg"
-            variant="outline"
-            render={<Link href="/diagnostic">{tc("diagnosticCta")}</Link>}
-          />
+          <CohortCta cohort={session} locale={locale} />
+          <ButtonLink href="/diagnostic" size="lg" variant="outline">
+            {tc("diagnosticCta")}
+          </ButtonLink>
         </RevealOnScroll>
 
         <RevealOnScroll delay={480} className="mt-16">

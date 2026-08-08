@@ -4,17 +4,17 @@ import { useActionState } from "react"
 import { useLocale, useTranslations } from "next-intl"
 import { ChevronRight } from "lucide-react"
 
-import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
 import { CountUp } from "@/components/animations/count-up"
 
-import { emailDiagnosticResult, type EmailResultState } from "./diagnostic.service"
+import { emailDiagnosticResult } from "./diagnostic.service"
+import { emailResultInitialState } from "./state"
 import { competencyLabel } from "./questions"
 import type { Answer, DiagnosticResult } from "./schema"
-
-const initialState: EmailResultState = { status: "idle" }
+import { ButtonLink } from "@/components/button-link"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 export function ResultProfile({
   result,
@@ -28,7 +28,7 @@ export function ResultProfile({
   const t = useTranslations("Diagnostic")
   const tc = useTranslations("Common")
   const locale = useLocale()
-  const [state, formAction, pending] = useActionState(emailDiagnosticResult, initialState)
+  const [state, formAction, pending] = useActionState(emailDiagnosticResult, emailResultInitialState)
 
   return (
     <div className="space-y-12">
@@ -96,18 +96,12 @@ export function ResultProfile({
       </div>
 
       <div className="space-y-5 border-t pt-8 text-center">
-        <p className="text-pretty text-sm text-muted-foreground">{t("applyPrompt")}</p>
+        <p className="text-pretty text-sm text-muted-foreground">{t("applyPrompt", { cohort: cohortName(currentCohort()) })}</p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Button
-            size="lg"
-            className="pr-1.5"
-            render={
-              <Link href="/apply">
-                <span>{tc("applyCta")}</span>
-                <ChevronRight className="opacity-50" />
-              </Link>
-            }
-          />
+          <ButtonLink href="/apply" size="lg" className="pr-1.5">
+            <span>{tc("applyCta", { cohort: cohortName(currentCohort()) })}</span>
+            <ChevronRight className="opacity-50" />
+          </ButtonLink>
           <Button type="button" variant="outline" size="lg" onClick={onRestart}>
             {t("restart")}
           </Button>

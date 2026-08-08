@@ -2,12 +2,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { CalendarClock, ChevronRight, Mail, MessageCircle } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
-import { Link } from "@/i18n/navigation"
 import { buildMetadata } from "@/lib/seo"
 import { site } from "@/lib/constants"
-import { Button } from "@/components/ui/button"
 import { EnquiryForm } from "@/components/modules/contact"
+import { ButtonLink } from "@/components/button-link"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     locale,
     path: "/contact",
     title: t("pages.contact.title"),
-    description: t("pages.contact.description"),
+    description: t("pages.contact.description", { cohort: cohortName(currentCohort()) }),
   })
 }
 
@@ -108,27 +108,15 @@ export default async function ContactPage({
           </RevealOnScroll>
 
           <RevealOnScroll delay={340} className="space-y-3 border-t pt-6">
-            <p className="text-sm text-muted-foreground">{t("applyNote")}</p>
+            <p className="text-sm text-muted-foreground">{t("applyNote", { cohort: cohortName(currentCohort()) })}</p>
             <div className="flex flex-wrap gap-2">
-              <Button
-                size="sm"
-                className="pr-1.5"
-                render={
-                  <Link href="/apply">
-                    <span>{tc("applyCta")}</span>
-                    <ChevronRight className="opacity-50" />
-                  </Link>
-                }
-              />
-              <Button
-                size="sm"
-                variant="outline"
-                render={
-                  <a href={site.bookingUrl} target="_blank" rel="noreferrer">
-                    {tc("bookCall")}
-                  </a>
-                }
-              />
+              <ButtonLink href="/apply" size="sm" className="pr-1.5">
+                <span>{tc("applyCta", { cohort: cohortName(currentCohort()) })}</span>
+                <ChevronRight className="opacity-50" />
+              </ButtonLink>
+              <ButtonLink href={site.bookingUrl} external size="sm" variant="outline">
+                {tc("bookCall")}
+              </ButtonLink>
             </div>
           </RevealOnScroll>
         </div>

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server"
 
 import { routing, type Locale } from "@/i18n/routing"
 import { cohort } from "@/lib/constants"
+import { currentCohort } from "@/lib/cohorts"
 
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
@@ -27,7 +28,7 @@ export default async function OpengraphImage({
 
   const facts = [
     `${cohort.durationWeeks} ${tc("weeksLabel")}`,
-    `${cohort.minSeats}-${cohort.maxSeats} ${tc("participantsLabel")}`,
+    `${currentCohort().seats.min}-${currentCohort().seats.max} ${tc("participantsLabel")}`,
     tc("location"),
   ].join("   ·   ")
 

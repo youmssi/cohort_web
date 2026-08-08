@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 
 import { routing } from "@/i18n/routing"
 import { getCompetencies, getWeeks } from "@/lib/content"
+import { cohorts } from "@/lib/cohorts"
 import { absoluteUrl, localizedPath } from "@/lib/seo"
 import { site } from "@/lib/constants"
 
@@ -10,7 +11,6 @@ const staticPaths: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
   { path: "/program", priority: 0.9 },
   { path: "/apply", priority: 0.9 },
-  { path: "/cohort-01", priority: 0.8 },
   { path: "/diagnostic", priority: 0.8 },
   { path: "/method", priority: 0.7 },
   { path: "/curriculum", priority: 0.7 },
@@ -40,6 +40,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified,
         changeFrequency: "weekly",
         priority,
+        alternates: alternates(path),
+      })
+    }
+
+    for (const session of cohorts) {
+      const path = `/cohorts/${session.id}`
+      entries.push({
+        url: absoluteUrl(locale, path),
+        lastModified,
+        changeFrequency: "weekly",
+        priority: 0.8,
         alternates: alternates(path),
       })
     }

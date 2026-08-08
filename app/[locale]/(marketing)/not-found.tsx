@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server"
+import { ButtonLink } from "@/components/button-link"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
-import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
 
 export default async function NotFound() {
   const t = await getTranslations("Common")
@@ -13,8 +13,10 @@ export default async function NotFound() {
         Coh0rt
       </h1>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Button render={<Link href="/">{t("exploreCta")}</Link>} />
-        <Button variant="outline" render={<Link href="/apply">{t("applyCta")}</Link>} />
+        <ButtonLink href="/">{t("exploreCta")}</ButtonLink>
+        <ButtonLink href="/apply" variant="outline">
+          {t("applyCta", { cohort: cohortName(currentCohort()) })}
+        </ButtonLink>
       </div>
     </div>
   )

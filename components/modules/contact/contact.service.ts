@@ -5,13 +5,7 @@ import { sendNotificationEmail } from "@/lib/email"
 
 import { enquirySchema, type EnquiryFieldErrors } from "./schema"
 
-export interface EnquiryState {
-  status: "idle" | "success" | "error"
-  fieldErrors?: EnquiryFieldErrors
-}
-
-const initialState: EnquiryState = { status: "idle" }
-export { initialState as enquiryInitialState }
+import type { EnquiryState } from "./state"
 
 /**
  * SERVICE. Validates with the shared Zod contract and forwards the enquiry to
