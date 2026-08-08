@@ -2,6 +2,7 @@ import { Fraunces, Geist_Mono, Inter } from "next/font/google"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
+import { Analytics } from "@vercel/analytics/next"
 
 import "../globals.css"
 import { ThemeProvider } from "@/components/shared"
@@ -63,6 +64,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale as Locale} messages={messages}>
           <ThemeProvider>{children}</ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   )
