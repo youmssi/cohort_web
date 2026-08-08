@@ -1,5 +1,6 @@
 "use server"
 
+import { toFieldErrors } from "@/components/shared/form-errors"
 import { contact } from "@/lib/constants"
 import { sendNotificationEmail } from "@/lib/email"
 
@@ -23,12 +24,10 @@ export async function submitEnquiry(
   })
 
   if (!parsed.success) {
-    const fieldErrors: EnquiryFieldErrors = {}
-    for (const issue of parsed.error.issues) {
-      const key = issue.path[0] as keyof EnquiryFieldErrors
-      if (key) fieldErrors[key] = issue.message
+    return {
+      status: "error",
+      fieldErrors: toFieldErrors<keyof EnquiryFieldErrors>(parsed.error),
     }
-    return { status: "error", fieldErrors }
   }
 
   const data = parsed.data

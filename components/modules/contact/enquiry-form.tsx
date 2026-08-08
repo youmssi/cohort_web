@@ -2,6 +2,8 @@
 
 import { useActionState } from "react"
 import { useTranslations } from "next-intl"
+
+import type { FieldErrorCode } from "@/components/shared/form-errors"
 import { CheckCircle2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -14,7 +16,11 @@ import { enquiryInitialState } from "./state"
 
 export function EnquiryForm() {
   const t = useTranslations("Contact")
+  const tv = useTranslations("Validation")
   const [state, formAction, pending] = useActionState(submitEnquiry, enquiryInitialState)
+
+  // Services return locale-independent codes; the copy lives in messages/.
+  const fieldError = (code?: FieldErrorCode) => (code ? tv(code) : undefined)
 
   if (state.status === "success") {
     return (
@@ -38,14 +44,14 @@ export function EnquiryForm() {
             <FieldLabel htmlFor="name">{t("form.name")}</FieldLabel>
             <FieldContent>
               <Input id="name" name="name" required autoComplete="name" />
-              <FieldError>{state.fieldErrors?.name}</FieldError>
+              <FieldError>{fieldError(state.fieldErrors?.name)}</FieldError>
             </FieldContent>
           </Field>
           <Field>
             <FieldLabel htmlFor="email">{t("form.email")}</FieldLabel>
             <FieldContent>
               <Input id="email" name="email" type="email" required autoComplete="email" />
-              <FieldError>{state.fieldErrors?.email}</FieldError>
+              <FieldError>{fieldError(state.fieldErrors?.email)}</FieldError>
             </FieldContent>
           </Field>
         </div>
@@ -59,7 +65,7 @@ export function EnquiryForm() {
               required
               placeholder={t("form.subjectPlaceholder")}
             />
-            <FieldError>{state.fieldErrors?.subject}</FieldError>
+            <FieldError>{fieldError(state.fieldErrors?.subject)}</FieldError>
           </FieldContent>
         </Field>
 
@@ -74,7 +80,7 @@ export function EnquiryForm() {
               className="min-h-28"
               placeholder={t("form.messagePlaceholder")}
             />
-            <FieldError>{state.fieldErrors?.message}</FieldError>
+            <FieldError>{fieldError(state.fieldErrors?.message)}</FieldError>
           </FieldContent>
         </Field>
 

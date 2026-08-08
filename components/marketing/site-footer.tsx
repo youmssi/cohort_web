@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl"
 
 import { Link } from "@/i18n/navigation"
 import { Logo } from "@/components/brand/logo"
+import { SocialLinks } from "@/components/brand/social-links"
 import { currentCohort } from "@/lib/cohorts"
 import { site } from "@/lib/constants"
 
@@ -34,6 +35,10 @@ export function SiteFooter() {
             {tFooter("tagline")}
           </p>
           <p className="text-xs text-muted-foreground">{tCommon("location")}</p>
+
+          {/* Channels live here rather than in a page section: they are utility
+              navigation, not an argument, and belong where people look for them. */}
+          <SocialLinks className="pt-1" />
         </div>
 
         <nav className="space-y-3 text-sm">

@@ -6,7 +6,7 @@
     "pages": {
       "program": {
         "title": "The programme",
-        "description": "16 weeks, 4 phases, 10 capabilities and a transformation project you defend at the end."
+        "description": "The 16 weeks phase by phase, the mastery scale you are assessed against, and what you leave with."
       },
       "method": {
         "title": "The method",
@@ -69,7 +69,8 @@
     "allCompetencies": "All capabilities",
     "location": "Conakry · Guinea",
     "contactCta": "Contact us",
-    "bookCall": "Book a call"
+    "bookCall": "Book a call",
+    "bookSlot": "Book a slot"
   },
   "Home": {
     "headline": "Understand technology. Lead the decision.",
@@ -154,7 +155,7 @@
       },
       "conversation": {
         "title": "Conversation",
-        "body": "A twenty to thirty minute exchange to assess the fit."
+        "body": "You book a twenty to thirty minute slot yourself. The Google Meet link is sent once the appointment is confirmed."
       },
       "decision": {
         "title": "Decision",
@@ -239,7 +240,14 @@
     "sections": {
       "program": "Programme",
       "company": "Admissions"
-    }
+    },
+    "social": {
+      "whatsapp": "WhatsApp",
+      "discord": "Discord",
+      "facebook": "Facebook (MRVIN100)",
+      "email": "Email us"
+    },
+    "channelsNote": "Join our channels to hear when the next coh0rts open."
   },
   "Diagnostic": {
     "eyebrow": "Digital Leadership Diagnostic",
@@ -298,7 +306,13 @@
     "submitting": "Sending",
     "successTitle": "Application received",
     "successBody": "We review every application individually and will come back to you by email or WhatsApp about next steps.",
-    "errorBody": "Your application could not be sent. Please try again in a moment."
+    "errorBody": "Your application could not be sent. Please try again in a moment.",
+    "sponsorLabel": "Is your participation funded by your organisation?",
+    "sponsorOptions": {
+      "self": "No, I am funding it myself",
+      "employer": "Yes, my organisation is funding it",
+      "unsure": "To be determined"
+    }
   },
   "Outcomes": {
     "title": "You leave with evidence of what you can do",
@@ -397,7 +411,7 @@
       },
       "conversation": {
         "title": "Conversation",
-        "body": "A twenty to thirty minute exchange to check the programme fits your situation."
+        "body": "You book a twenty to thirty minute slot to check the programme fits your situation. The Google Meet link reaches you as soon as the appointment is confirmed."
       },
       "admission": {
         "title": "Admission decision",
@@ -411,7 +425,10 @@
     "methodsTitle": "Payment methods",
     "methodsBody": "Accepted payment methods and settlement details are sent with your admission letter. No payment information is requested before admission.",
     "refundTitle": "Seats and withdrawal",
-    "refundBody": "Because the cohort is capped, a confirmed seat is removed from availability. Withdrawal terms are set out in the admission letter, before any payment."
+    "refundBody": "Because the cohort is capped, a confirmed seat is removed from availability. Withdrawal terms are set out in the admission letter, before any payment.",
+    "orderTitle": "The order matters",
+    "orderBody": "The conversation has to happen before settlement is completed. We never confirm a seat on the strength of a payment alone: the exchange exists precisely to check, on both sides, that the programme is the right one.",
+    "bookNote": "Twenty to thirty minute slots, by video call."
   },
   "Prerequisites": {
     "title": "What you need to take part",
@@ -434,8 +451,8 @@
         "body": "You arrive with a concrete challenge from your organisation. It runs through all sixteen weeks and becomes the basis of your final defence."
       },
       "language": {
-        "title": "Professional French",
-        "body": "The programme is facilitated in French. International technical vocabulary (API, cloud, SaaS) is explained as it comes up."
+        "title": "Working French",
+        "body": "The entire programme runs in French: live sessions, resources, peer review, deliverables and the final defence. International technical vocabulary (API, cloud, SaaS) is explained as it comes up. This site is also published in English, but the cohort itself is not bilingual."
       },
       "posture": {
         "title": "Openness to challenge",
@@ -443,12 +460,15 @@
       }
     }
   },
-  "Channels": {
-    "title": "Stay informed",
-    "subtitle": "Upcoming sessions, remaining seats and new material are announced on our channels first.",
-    "whatsappCommunity": "WhatsApp community",
-    "discord": "Discord server",
-    "facebook": "MRVIN100 Facebook page",
-    "pending": "Our community channels open shortly. In the meantime, write to us directly."
+  "Validation": {
+    "required": "This field is required.",
+    "email": "That email address is not valid.",
+    "tooShort": "Please expand your answer a little.",
+    "invalid": "That value is not valid."
+  },
+  "Corporate": {
+    "title": "Having a seat funded by your organisation",
+    "body": "An organisation can enrol one employee, or several. The application stays individual and the selection unchanged: it is the person who joins the cohort, not the company. Mention it in your application or write to us, and we will arrange the conversation with the people involved.",
+    "cta": "Discuss sponsorship"
   }
 }

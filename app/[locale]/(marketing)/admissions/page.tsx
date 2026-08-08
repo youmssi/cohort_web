@@ -4,6 +4,7 @@ import { Check, X } from "lucide-react"
 import type { Locale } from "@/i18n/routing"
 import { buildMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/marketing/page-header"
+import { CorporateNote } from "@/components/marketing/corporate-note"
 import { AdmissionsSteps } from "@/components/marketing/admissions-steps"
 import { PaymentWorkflow } from "@/components/marketing/payment-workflow"
 import { FinalCta } from "@/components/marketing/final-cta"
@@ -66,6 +67,7 @@ export default async function AdmissionsPage({
       </section>
 
       <PaymentWorkflow locale={locale} />
+      <CorporateNote locale={locale} />
       <FinalCta locale={locale} />
     </>
   )

@@ -1,3 +1,5 @@
+import type { FieldErrorCode } from "@/components/shared/form-errors"
+
 import { z } from "zod"
 
 /** CONTRACT. General enquiry sent from the contact page. */
@@ -10,4 +12,4 @@ export const enquirySchema = z.object({
 
 export type Enquiry = z.infer<typeof enquirySchema>
 
-export type EnquiryFieldErrors = Partial<Record<keyof Enquiry, string>>
+export type EnquiryFieldErrors = Partial<Record<keyof Enquiry, FieldErrorCode>>

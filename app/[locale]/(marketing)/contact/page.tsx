@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/seo"
 import { site } from "@/lib/constants"
 import { EnquiryForm } from "@/components/modules/contact"
 import { ButtonLink } from "@/components/shared"
+import { SocialLinks } from "@/components/brand/social-links"
 import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 import { cohortName, currentCohort } from "@/lib/cohorts"
 
@@ -29,6 +30,7 @@ export default async function ContactPage({
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: "Contact" })
   const tc = await getTranslations({ locale, namespace: "Common" })
+  const tf = await getTranslations({ locale, namespace: "Footer" })
 
   const channels = [
     {
@@ -105,6 +107,15 @@ export default async function ContactPage({
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {t("responseBody")}
             </p>
+          </RevealOnScroll>
+
+          {/* Community channels, kept apart from the one-to-one rows above:
+              following us and writing to us are different intentions. */}
+          <RevealOnScroll delay={300} className="space-y-3 border-t pt-6">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {tf("channelsNote")}
+            </p>
+            <SocialLinks />
           </RevealOnScroll>
 
           <RevealOnScroll delay={340} className="space-y-3 border-t pt-6">

@@ -1,9 +1,10 @@
 import { getTranslations } from "next-intl/server"
-import { Info } from "lucide-react"
+import { CalendarClock, ExternalLink, Info } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
 import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 import { currentCohort, type Cohort } from "@/lib/cohorts"
+import { site } from "@/lib/constants"
 
 const steps = ["apply", "conversation", "admission", "payment"] as const
 
@@ -24,6 +25,7 @@ export async function PaymentWorkflow({
 }) {
   const t = await getTranslations({ locale, namespace: "Payment" })
   const tp = await getTranslations({ locale, namespace: "Pricing" })
+  const tc = await getTranslations({ locale, namespace: "Common" })
   const session = cohort ?? currentCohort()
   const money = (value: number) => new Intl.NumberFormat(locale).format(value)
 
@@ -58,6 +60,18 @@ export async function PaymentWorkflow({
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
               {t(`steps.${step}.body`)}
             </p>
+
+            {step === "conversation" && (
+              <a
+                href={site.bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
+              >
+                {tc("bookSlot")}
+                <ExternalLink className="size-3.5 opacity-60" />
+              </a>
+            )}
           </RevealOnScroll>
         ))}
       </ol>
@@ -90,6 +104,32 @@ export async function PaymentWorkflow({
           </p>
         </RevealOnScroll>
       </div>
+
+      {/* Stated separately because the sequence is a rule, not a suggestion:
+          a seat is never confirmed on payment alone. */}
+      <RevealOnScroll
+        delay={200}
+        className="mt-4 flex flex-col gap-4 rounded-2xl border border-foreground/15 bg-muted/30 p-6 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <div className="flex gap-2.5">
+          <CalendarClock className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+          <div>
+            <p className="font-heading text-sm font-semibold">{t("orderTitle")}</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+              {t("orderBody")}
+            </p>
+          </div>
+        </div>
+        <a
+          href={site.bookingUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
+        >
+          {tc("bookSlot")}
+          <ExternalLink className="size-3.5 opacity-60" />
+        </a>
+      </RevealOnScroll>
     </section>
   )
 }

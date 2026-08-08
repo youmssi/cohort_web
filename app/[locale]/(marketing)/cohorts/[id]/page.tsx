@@ -13,10 +13,9 @@ import {
   intlLocale,
 } from "@/lib/cohorts"
 import { PageHeader } from "@/components/marketing/page-header"
+import { CorporateNote } from "@/components/marketing/corporate-note"
 import { PricingSection } from "@/components/marketing/pricing-section"
-import { PaymentWorkflow } from "@/components/marketing/payment-workflow"
 import { Prerequisites } from "@/components/marketing/prerequisites"
-import { ChannelsSection } from "@/components/marketing/channels-section"
 import { CohortBadge } from "@/components/marketing/cohort-badge"
 import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
@@ -144,9 +143,9 @@ export default async function CohortPage({
         </dl>
       </section>
 
+      <CorporateNote locale={locale} />
       <Prerequisites locale={locale} />
       <PricingSection locale={locale} cohort={session} />
-      <PaymentWorkflow locale={locale} cohort={session} />
 
       <section className="mx-auto max-w-3xl px-4 pb-4 sm:px-6">
         <RevealOnScroll className="rounded-2xl border bg-muted/30 p-6 text-center">
@@ -157,7 +156,6 @@ export default async function CohortPage({
         </RevealOnScroll>
       </section>
 
-      <ChannelsSection locale={locale} />
     </>
   )
 }
