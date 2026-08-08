@@ -64,6 +64,24 @@ export const cohorts: Cohort[] = [
     instalment: { count: 2, amount: 2_050_000 },
     founding: true,
   },
+  {
+    // Announced, not yet scheduled. Null dates render as "dates to come" rather
+    // than inventing a calendar, and the derived status stays "upcoming" until
+    // real dates land here. Tuition shows the standard rate: the founding
+    // discount belongs to 26A alone.
+    id: "26b",
+    year: 2026,
+    batch: "B",
+    applicationsOpen: null,
+    applicationsClose: null,
+    start: null,
+    end: null,
+    seats: { min: 8, max: 12 },
+    tuition: 4_500_000,
+    standardTuition: 4_500_000,
+    instalment: { count: 2, amount: 2_350_000 },
+    founding: false,
+  },
 ]
 
 /** Display name, e.g. "Coh0rt 26A". */

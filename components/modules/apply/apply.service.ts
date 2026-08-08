@@ -1,5 +1,6 @@
 "use server"
 
+import { toFieldErrors } from "@/components/shared/form-errors"
 import { contact } from "@/lib/constants"
 import { cohortName, currentCohort } from "@/lib/cohorts"
 import { sendNotificationEmail } from "@/lib/email"
@@ -27,32 +28,33 @@ export async function submitApplication(
     challenge: formData.get("challenge"),
     motivation: formData.get("motivation"),
     commitment: formData.get("commitment"),
+    sponsor: formData.get("sponsor"),
   })
 
   if (!parsed.success) {
-    const fieldErrors: ApplicationFieldErrors = {}
-    for (const issue of parsed.error.issues) {
-      const key = issue.path[0] as keyof ApplicationFieldErrors
-      if (key) fieldErrors[key] = issue.message
+    return {
+      status: "error",
+      fieldErrors: toFieldErrors<keyof ApplicationFieldErrors>(parsed.error),
     }
-    return { status: "error", fieldErrors }
   }
 
   const data = parsed.data
 
-  if (contact.applicationNotificationEmail) {
-    await sendNotificationEmail({
-      to: contact.applicationNotificationEmail,
-      subject: `${cohortName(currentCohort())} · Nouvelle candidature : ${data.fullName}`,
-      html: `
-        <p><strong>${data.fullName}</strong> · ${data.role}, ${data.organization} (${data.industry})</p>
-        <p>Email : ${data.email} · Téléphone : ${data.phone}</p>
-        <p>Engagement : ${data.commitment === "yes" ? "Confirmé" : "Incertain"}</p>
-        <p><strong>Défi :</strong> ${data.challenge}</p>
-        <p><strong>Motivation :</strong> ${data.motivation}</p>
-      `,
-    })
-  }
+  const funding = { self: "Personnel", employer: "Employeur", unsure: "À déterminer" }[
+    data.sponsor
+  ]
+
+  await sendNotificationEmail({
+    to: contact.applicationNotificationEmail,
+    subject: `${cohortName(currentCohort())} · Nouvelle candidature : ${data.fullName}`,
+    html: `
+      <p><strong>${data.fullName}</strong> · ${data.role}, ${data.organization} (${data.industry})</p>
+      <p>Email : ${data.email} · Téléphone : ${data.phone}</p>
+      <p>Engagement : ${data.commitment === "yes" ? "Confirmé" : "Incertain"} · Financement : ${funding}</p>
+      <p><strong>Défi :</strong> ${data.challenge}</p>
+      <p><strong>Motivation :</strong> ${data.motivation}</p>
+    `,
+  })
 
   return { status: "success" }
 }

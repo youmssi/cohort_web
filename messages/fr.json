@@ -6,7 +6,7 @@
     "pages": {
       "program": {
         "title": "Le programme",
-        "description": "16 semaines, 4 phases, 10 compétences et un projet de transformation défendu en fin de parcours."
+        "description": "Les 16 semaines phase par phase, l'échelle de maîtrise sur laquelle vous êtes évalué, et ce avec quoi vous repartez."
       },
       "method": {
         "title": "La méthode",
@@ -35,6 +35,10 @@
       "contact": {
         "title": "Contact",
         "description": "Une question sur {cohort}, le parrainage d'entreprise ou l'admission ? Écrivez-nous ou réservez un échange."
+      },
+      "cohorts": {
+        "title": "Les coh0rtes",
+        "description": "Chaque session, ses dates et son statut. La coh0rte fondatrice ouvre en novembre 2026 à Conakry."
       }
     }
   },
@@ -44,14 +48,14 @@
     "curriculum": "16 semaines",
     "competencies": "Compétences",
     "admissions": "Admissions",
-    "cohort": "La cohorte",
     "faq": "FAQ",
     "diagnostic": "Diagnostic",
     "apply": "Postuler",
     "toggleMenu": "Ouvrir le menu",
     "toggleTheme": "Changer de thème",
     "menuTitle": "Navigation",
-    "contact": "Contact"
+    "contact": "Contact",
+    "cohorts": "Coh0rtes"
   },
   "Common": {
     "applyCta": "Postuler pour {cohort}",
@@ -69,7 +73,8 @@
     "allCompetencies": "Toutes les compétences",
     "location": "Conakry · Guinée",
     "contactCta": "Nous écrire",
-    "bookCall": "Réserver un échange"
+    "bookCall": "Réserver un échange",
+    "bookSlot": "Réserver un créneau"
   },
   "Home": {
     "headline": "Comprendre la technologie. Diriger la décision.",
@@ -154,7 +159,7 @@
       },
       "conversation": {
         "title": "Conversation",
-        "body": "Un échange de vingt à trente minutes pour évaluer l'adéquation."
+        "body": "Vous réservez vous-même un créneau de vingt à trente minutes. Le lien Google Meet vous est envoyé une fois le rendez-vous confirmé."
       },
       "decision": {
         "title": "Décision",
@@ -202,7 +207,7 @@
       "end": "Fin de la cohorte"
     },
     "nextCohortTitle": "Prochaine session",
-    "nextCohortBody": "Les dates de la session suivante seront annoncées à la fin de la Coh0rt 26A. Rejoignez nos canaux pour être informé en premier."
+    "nextCohortBody": "Dates annoncées à la fin de la Coh0rt 26A."
   },
   "Pricing": {
     "eyebrow": "Investissement",
@@ -239,7 +244,14 @@
     "sections": {
       "program": "Programme",
       "company": "Admissions"
-    }
+    },
+    "social": {
+      "whatsapp": "WhatsApp",
+      "discord": "Discord",
+      "facebook": "Facebook (MRVIN100)",
+      "email": "Nous écrire"
+    },
+    "channelsNote": "Rejoignez nos canaux pour être informé de l'ouverture des prochaines coh0rtes."
   },
   "Diagnostic": {
     "eyebrow": "Diagnostic Digital Leadership",
@@ -298,7 +310,13 @@
     "submitting": "Envoi en cours",
     "successTitle": "Candidature reçue",
     "successBody": "Nous examinons chaque candidature individuellement et revenons vers vous par e-mail ou WhatsApp pour la suite.",
-    "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez dans un instant."
+    "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez dans un instant.",
+    "sponsorLabel": "Votre participation est-elle financée par votre organisation ?",
+    "sponsorOptions": {
+      "self": "Non, je finance ma participation",
+      "employer": "Oui, mon organisation la finance",
+      "unsure": "À déterminer"
+    }
   },
   "Outcomes": {
     "title": "Vous repartez avec la preuve de ce que vous savez faire",
@@ -397,7 +415,7 @@
       },
       "conversation": {
         "title": "Conversation",
-        "body": "Un échange de vingt à trente minutes pour vérifier que le programme correspond à votre situation."
+        "body": "Vous réservez un créneau de vingt à trente minutes pour vérifier que le programme correspond à votre situation. Le lien Google Meet vous parvient dès la confirmation du rendez-vous."
       },
       "admission": {
         "title": "Décision d'admission",
@@ -411,7 +429,10 @@
     "methodsTitle": "Modalités de règlement",
     "methodsBody": "Les moyens de paiement acceptés et les coordonnées de règlement vous sont communiqués avec votre lettre d'admission. Aucune information de paiement n'est demandée avant l'admission.",
     "refundTitle": "Places et désistement",
-    "refundBody": "La cohorte étant limitée, une place confirmée est retirée du nombre de places disponibles. Les conditions de désistement sont précisées dans la lettre d'admission avant tout règlement."
+    "refundBody": "La cohorte étant limitée, une place confirmée est retirée du nombre de places disponibles. Les conditions de désistement sont précisées dans la lettre d'admission avant tout règlement.",
+    "orderTitle": "L'ordre compte",
+    "orderBody": "La conversation doit avoir eu lieu avant que le règlement ne soit finalisé. Nous ne confirmons jamais une place sur la seule base d'un paiement : l'échange sert précisément à vérifier, des deux côtés, que le programme est le bon.",
+    "bookNote": "Créneaux de vingt à trente minutes, en visioconférence."
   },
   "Prerequisites": {
     "title": "Ce dont vous avez besoin pour suivre le programme",
@@ -434,8 +455,8 @@
         "body": "Vous arrivez avec un défi concret de votre organisation. Il devient votre fil conducteur sur les seize semaines et la base de votre soutenance."
       },
       "language": {
-        "title": "Le français professionnel",
-        "body": "Le programme est animé en français. Le vocabulaire technique international (API, cloud, SaaS) est explicité au fil des semaines."
+        "title": "La langue de travail",
+        "body": "Les sessions live sont animées en français, et le vocabulaire technique international (API, cloud, SaaS) y est explicité au fil des semaines. Vous êtes plus à l'aise en anglais ? Vous êtes le bienvenu : les ressources écrites existent dans les deux langues, et vous pouvez poser vos questions, rédiger vos livrables et présenter votre soutenance en anglais. Signalez-le lors de la conversation d'admission, nous préparons la cohorte en conséquence."
       },
       "posture": {
         "title": "L'ouverture au challenge",
@@ -443,12 +464,27 @@
       }
     }
   },
-  "Channels": {
-    "title": "Rester informé",
-    "subtitle": "Les prochaines sessions, les places restantes et les contenus sont annoncés en premier sur nos canaux.",
-    "whatsappCommunity": "Communauté WhatsApp",
-    "discord": "Serveur Discord",
-    "facebook": "Page Facebook MRVIN100",
-    "pending": "Nos canaux communautaires ouvrent prochainement. En attendant, écrivez-nous directement."
+  "Validation": {
+    "required": "Ce champ est requis.",
+    "email": "Cette adresse e-mail n'est pas valide.",
+    "tooShort": "Merci de développer un peu plus votre réponse.",
+    "invalid": "Cette valeur n'est pas valide."
+  },
+  "Corporate": {
+    "title": "Faire financer une place par votre entreprise",
+    "body": "Une organisation peut inscrire un collaborateur, ou plusieurs. La candidature reste individuelle et la sélection inchangée : c'est la personne qui rejoint la cohorte, pas l'entreprise. Précisez-le dans votre candidature ou écrivez-nous, nous organisons l'échange avec les personnes concernées.",
+    "cta": "Discuter d'un parrainage"
+  },
+  "Cohorts": {
+    "hint": "Faites défiler ou glissez pour changer de session.",
+    "seatsValue": "{min} à {max} participants",
+    "labels": {
+      "dates": "Déroulement",
+      "applications": "Candidatures",
+      "seats": "Places",
+      "tuition": "Tarif",
+      "founding": "Fondatrice",
+      "view": "Voir la session"
+    }
   }
 }

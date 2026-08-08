@@ -24,6 +24,7 @@ const keywordsByLocale: Record<Locale, string[]> = {
     "cohorte leadership numérique",
     "évaluation technologique",
     "gouvernance du risque numérique",
+    "formation entreprise Conakry",
   ],
   en: [
     "digital leadership",
@@ -33,6 +34,7 @@ const keywordsByLocale: Record<Locale, string[]> = {
     "technology evaluation",
     "digital risk governance",
     "leadership cohort Africa",
+    "corporate training Conakry",
   ],
 }
 

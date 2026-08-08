@@ -1,10 +1,11 @@
 import { getTranslations } from "next-intl/server"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, ExternalLink } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
 import { ButtonLink } from "@/components/shared"
 import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 import { cohortName, currentCohort } from "@/lib/cohorts"
+import { site } from "@/lib/constants"
 
 const stepKeys = ["diagnostic", "application", "conversation", "decision"] as const
 
@@ -50,6 +51,20 @@ export async function AdmissionsSteps({
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
               {t(`steps.${key}.body`)}
             </p>
+
+            {/* The conversation is candidate-scheduled, so the booking link
+                belongs on the step itself rather than buried in prose. */}
+            {key === "conversation" && (
+              <a
+                href={site.bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
+              >
+                {tc("bookSlot")}
+                <ExternalLink className="size-3.5 opacity-60" />
+              </a>
+            )}
           </RevealOnScroll>
         ))}
       </ol>

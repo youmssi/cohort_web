@@ -13,10 +13,9 @@ import {
   intlLocale,
 } from "@/lib/cohorts"
 import { PageHeader } from "@/components/marketing/page-header"
+import { CorporateNote } from "@/components/marketing/corporate-note"
 import { PricingSection } from "@/components/marketing/pricing-section"
-import { PaymentWorkflow } from "@/components/marketing/payment-workflow"
 import { Prerequisites } from "@/components/marketing/prerequisites"
-import { ChannelsSection } from "@/components/marketing/channels-section"
 import { CohortBadge } from "@/components/marketing/cohort-badge"
 import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
@@ -144,11 +143,12 @@ export default async function CohortPage({
         </dl>
       </section>
 
+      <CorporateNote locale={locale} />
       <Prerequisites locale={locale} />
       <PricingSection locale={locale} cohort={session} />
-      <PaymentWorkflow locale={locale} cohort={session} />
 
-      <section className="mx-auto max-w-3xl px-4 pb-4 sm:px-6">
+      {/* mt-12 keeps this clear of the pricing card above it, which ends flush. */}
+      <section className="mx-auto mt-12 max-w-3xl px-4 pb-4 sm:px-6">
         <RevealOnScroll className="rounded-2xl border bg-muted/30 p-6 text-center">
           <p className="font-heading text-base font-semibold">{t("nextCohortTitle")}</p>
           <p className="mx-auto mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">
@@ -157,7 +157,6 @@ export default async function CohortPage({
         </RevealOnScroll>
       </section>
 
-      <ChannelsSection locale={locale} />
     </>
   )
 }

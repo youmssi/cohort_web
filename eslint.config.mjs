@@ -31,10 +31,17 @@ const eslintConfig = defineConfig([
     // unmodified so it can be re-synced; it mutates the texture returned by
     // `useTrailTexture`, which is how the upstream component is written.
     // Adapted components in this folder are held to the normal rules.
-    files: ["components/animations/pixel-trail.tsx"],
+    files: [
+      "components/animations/pixel-trail.tsx",
+      "components/animations/option-wheel.tsx",
+      "components/animations/lanyard.tsx",
+    ],
     rules: {
       "react-hooks/immutability": "off",
+      "react-hooks/refs": "off",
       "@typescript-eslint/no-unused-vars": "off",
+      // The GLTF node/material maps and meshline have no published types.
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ]);

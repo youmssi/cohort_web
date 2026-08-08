@@ -8,7 +8,7 @@ export const site = {
   legalName: "Coh0rt",
   domain: "cohort.mrvin100.de",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cohort.mrvin100.de",
-  builtBy: "Propulsed by MRVIN100",
+  builtBy: "Powered by MRVIN100",
   builtByUrl: "https://mrvin100.de",
 
   /** Public contact channels, also mirrored into ContactPoint structured data. */
@@ -33,13 +33,21 @@ export const channels = {
   facebook: "",
 } as const
 
-export type ChannelKey = keyof typeof channels
+export type SocialKey = "whatsapp" | "discord" | "facebook" | "email"
 
-/** Only the channels that actually have a destination. */
-export function liveChannels() {
-  return (Object.entries(channels) as [ChannelKey, string][]).filter(
-    ([, url]) => url.length > 0
-  )
+/**
+ * What the footer links out to, in display order. WhatsApp falls back to the
+ * one-to-one number until the community group exists, so the row is never
+ * empty; entries with no destination are dropped rather than shipped dead.
+ */
+export function liveSocials() {
+  const all: { key: SocialKey; url: string }[] = [
+    { key: "whatsapp", url: channels.whatsappCommunity || site.whatsappUrl },
+    { key: "discord", url: channels.discord },
+    { key: "facebook", url: channels.facebook },
+    { key: "email", url: `mailto:${site.contactEmail}` },
+  ]
+  return all.filter((social) => social.url.length > 0)
 }
 
 export const program = {

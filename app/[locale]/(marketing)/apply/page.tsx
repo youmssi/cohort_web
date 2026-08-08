@@ -29,13 +29,15 @@ export default async function ApplyPage({
   const t = await getTranslations({ locale, namespace: "Apply" })
 
   return (
-    <div className="pb-24">
+    <div>
       <PageHeader
         eyebrow={t("eyebrow", { cohort: cohortName(currentCohort()) })}
         title={t("title", { cohort: cohortName(currentCohort()) })}
         description={t("intro")}
       />
-      <div className="mx-auto mt-14 max-w-xl px-4 sm:px-6">
+      {/* pb-24 keeps the submit button clear of the next section's top border;
+          the sections that follow bring their own vertical rhythm. */}
+      <div className="mx-auto mt-14 max-w-xl px-4 pb-24 sm:px-6">
         <ApplicationForm />
       </div>
       <Prerequisites locale={locale} />

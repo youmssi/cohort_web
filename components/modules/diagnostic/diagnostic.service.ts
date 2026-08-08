@@ -45,13 +45,11 @@ export async function emailDiagnosticResult(
     .map((s) => `<tr><td>${competencyLabel(s.competency, "fr")}</td><td>${s.score}</td></tr>`)
     .join("")
 
-  if (contact.applicationNotificationEmail) {
-    await sendNotificationEmail({
-      to: contact.applicationNotificationEmail,
-      subject: `Diagnostic Digital Leadership · ${parsed.data.email}`,
-      html: `<p>Score global : ${result.overall}/100</p><table>${rows}</table>`,
-    })
-  }
+  await sendNotificationEmail({
+    to: contact.applicationNotificationEmail,
+    subject: `Diagnostic Digital Leadership · ${parsed.data.email}`,
+    html: `<p>Score global : ${result.overall}/100</p><table>${rows}</table>`,
+  })
 
   return { status: "success" }
 }
