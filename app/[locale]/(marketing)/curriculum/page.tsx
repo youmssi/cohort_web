@@ -1,10 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import type { Locale } from "@/i18n/routing"
-import { getPhases } from "@/lib/content"
+import { getPhases, getWeeks } from "@/lib/content"
 import { buildMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/marketing/page-header"
 import { JourneyTimeline } from "@/components/marketing/journey-timeline"
+import { PortfolioList } from "@/components/marketing/portfolio-list"
 import { FinalCta } from "@/components/marketing/final-cta"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -34,6 +35,7 @@ export default async function CurriculumPage({
         description={t("pages.curriculum.description")}
       />
       <JourneyTimeline phases={getPhases(locale)} locale={locale} showHeading={false} />
+      <PortfolioList weeks={getWeeks(locale)} locale={locale} />
       <FinalCta locale={locale} />
     </>
   )

@@ -66,6 +66,14 @@ export default defineConfig({
           order: s.number(),
           question: s.string(),
           content: s.mdx(),
+          // Plain-text answer, required by FAQPage structured data which cannot
+          // consume compiled MDX.
+          plain: s.markdown({ gfm: false }).transform((html) =>
+            html
+              .replace(/<[^>]+>/g, " ")
+              .replace(/\s+/g, " ")
+              .trim()
+          ),
         })
         .transform((data) => ({
           ...data,

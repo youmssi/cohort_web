@@ -26,6 +26,17 @@ const eslintConfig = defineConfig([
       "react-hooks/refs": "off",
     },
   },
+  {
+    // Vendored verbatim from the React Bits registry (reactbits.dev). Kept
+    // unmodified so it can be re-synced; it mutates the texture returned by
+    // `useTrailTexture`, which is how the upstream component is written.
+    // Adapted components in this folder are held to the normal rules.
+    files: ["components/animations/pixel-trail.tsx"],
+    rules: {
+      "react-hooks/immutability": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

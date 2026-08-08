@@ -6,6 +6,8 @@ import { buildMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/marketing/page-header"
 import { CapabilitiesGrid } from "@/components/marketing/capabilities-grid"
 import { JourneyTimeline } from "@/components/marketing/journey-timeline"
+import { CompetencyLevels } from "@/components/marketing/competency-levels"
+import { OutcomesSection } from "@/components/marketing/outcomes-section"
 import { PricingSection } from "@/components/marketing/pricing-section"
 import { FinalCta } from "@/components/marketing/final-cta"
 
@@ -41,6 +43,8 @@ export default async function ProgramPage({
         locale={locale}
         showHeading={false}
       />
+      <CompetencyLevels locale={locale} />
+      <OutcomesSection locale={locale} />
       <PricingSection locale={locale} />
       <FinalCta locale={locale} />
     </>

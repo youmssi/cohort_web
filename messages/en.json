@@ -4,13 +4,38 @@
     "defaultTitle": "Coh0rt · Understand technology, lead the decision",
     "description": "A selective 16-week immersion for founders, directors and managers who have to evaluate AI, challenge a vendor and lead digital transformation inside their organisation.",
     "pages": {
-      "program": { "title": "The programme", "description": "16 weeks, 4 phases, 10 capabilities and a transformation project you defend at the end." },
-      "method": { "title": "The method", "description": "Challenge, investigate, peers, apply, defend. The learning loop that structures every week." },
-      "curriculum": { "title": "The 16 weeks", "description": "Understand, Explore, Transform, Lead. Every week starts from a real problem and ends with a deliverable." },
-      "competencies": { "title": "The capabilities", "description": "Ten digital leadership capabilities. Not a catalogue of tools, a system of judgment." },
-      "admissions": { "title": "Admissions", "description": "Admission is selective. We care about the quality of the cohort, not the number of participants." },
-      "cohort": { "title": "Cohort 01", "description": "The first cohort stays deliberately small to protect the quality of peer learning." },
-      "faq": { "title": "Frequently asked questions", "description": "Duration, commitment, tuition, admission and certification." }
+      "program": {
+        "title": "The programme",
+        "description": "16 weeks, 4 phases, 10 capabilities and a transformation project you defend at the end."
+      },
+      "method": {
+        "title": "The method",
+        "description": "Challenge, investigate, peers, apply, defend. The learning loop that structures every week."
+      },
+      "curriculum": {
+        "title": "The 16 weeks",
+        "description": "Understand, Explore, Transform, Lead. Every week starts from a real problem and ends with a deliverable."
+      },
+      "competencies": {
+        "title": "The capabilities",
+        "description": "Ten digital leadership capabilities. Not a catalogue of tools, a system of judgment."
+      },
+      "admissions": {
+        "title": "Admissions",
+        "description": "Admission is selective. We care about the quality of the cohort, not the number of participants."
+      },
+      "cohort": {
+        "title": "Cohort 01",
+        "description": "The first cohort stays deliberately small to protect the quality of peer learning."
+      },
+      "faq": {
+        "title": "Frequently asked questions",
+        "description": "Duration, commitment, tuition, admission and certification."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "A question about Cohort 01, corporate sponsorship or admission? Write to us or book a short call."
+      }
     }
   },
   "Nav": {
@@ -25,7 +50,8 @@
     "apply": "Apply",
     "toggleMenu": "Open menu",
     "toggleTheme": "Toggle theme",
-    "menuTitle": "Navigation"
+    "menuTitle": "Navigation",
+    "contact": "Contact"
   },
   "Common": {
     "applyCta": "Apply for Cohort 01",
@@ -41,7 +67,9 @@
     "sessionsLabel": "live sessions per week",
     "selectiveAdmission": "Selective admission",
     "allCompetencies": "All capabilities",
-    "location": "Conakry · Guinea"
+    "location": "Conakry · Guinea",
+    "contactCta": "Contact us",
+    "bookCall": "Book a call"
   },
   "Home": {
     "eyebrow": "Cohort 01 · Applications open",
@@ -65,29 +93,74 @@
   },
   "Method": {
     "steps": {
-      "challenge": { "title": "Challenge", "body": "You start from a real business problem, not from theory." },
-      "investigate": { "title": "Investigate", "body": "You research, experiment and build a first answer." },
-      "peer": { "title": "Peers", "body": "Your peers challenge your reasoning, never your person." },
-      "apply": { "title": "Apply", "body": "You turn your analysis into a concrete recommendation." },
-      "defend": { "title": "Defend", "body": "You explain, justify and defend your decision." }
+      "challenge": {
+        "title": "Challenge",
+        "body": "You start from a real business problem, not from theory."
+      },
+      "investigate": {
+        "title": "Investigate",
+        "body": "You research, experiment and build a first answer."
+      },
+      "peer": {
+        "title": "Peers",
+        "body": "Your peers challenge your reasoning, never your person."
+      },
+      "apply": {
+        "title": "Apply",
+        "body": "You turn your analysis into a concrete recommendation."
+      },
+      "defend": {
+        "title": "Defend",
+        "body": "You explain, justify and defend your decision."
+      }
     },
     "charterTitle": "The cohort charter",
     "charterSubtitle": "What every participant accepts on joining the group.",
     "charter": {
-      "curiosity": { "title": "Curiosity", "body": "Ask a question before assuming an answer." },
-      "humility": { "title": "Humility", "body": "Accept being wrong and revise your position." },
-      "respect": { "title": "Respect", "body": "Challenge ideas, never people." },
-      "contribution": { "title": "Contribution", "body": "Give as much as you take from the group." },
-      "confidentiality": { "title": "Confidentiality", "body": "Protect the professional information of your peers." },
-      "accountability": { "title": "Accountability", "body": "Do what you committed to doing." }
+      "curiosity": {
+        "title": "Curiosity",
+        "body": "Ask a question before assuming an answer."
+      },
+      "humility": {
+        "title": "Humility",
+        "body": "Accept being wrong and revise your position."
+      },
+      "respect": {
+        "title": "Respect",
+        "body": "Challenge ideas, never people."
+      },
+      "contribution": {
+        "title": "Contribution",
+        "body": "Give as much as you take from the group."
+      },
+      "confidentiality": {
+        "title": "Confidentiality",
+        "body": "Protect the professional information of your peers."
+      },
+      "accountability": {
+        "title": "Accountability",
+        "body": "Do what you committed to doing."
+      }
     }
   },
   "Admissions": {
     "steps": {
-      "diagnostic": { "title": "Diagnostic", "body": "You locate your digital judgment in fifteen minutes." },
-      "application": { "title": "Application", "body": "You tell us about your context and your real challenge." },
-      "conversation": { "title": "Conversation", "body": "A twenty to thirty minute exchange to assess the fit." },
-      "decision": { "title": "Decision", "body": "You get a clear answer, admitted or not for this cohort." }
+      "diagnostic": {
+        "title": "Diagnostic",
+        "body": "You locate your digital judgment in fifteen minutes."
+      },
+      "application": {
+        "title": "Application",
+        "body": "You tell us about your context and your real challenge."
+      },
+      "conversation": {
+        "title": "Conversation",
+        "body": "A twenty to thirty minute exchange to assess the fit."
+      },
+      "decision": {
+        "title": "Decision",
+        "body": "You get a clear answer, admitted or not for this cohort."
+      }
     },
     "title": "Not everyone needs this programme",
     "subtitle": "We care more about the quality of the cohort than about the number of participants.",
@@ -136,7 +209,13 @@
       "Final project and defence",
       "Capability profile",
       "Alumni community"
-    ]
+    ],
+    "standardNote": "Rate for later cohorts",
+    "foundingLabel": "Founding cohort",
+    "paymentTitle": "Payment options",
+    "paymentFull": "In full",
+    "paymentSplit": "Two instalments",
+    "paymentAfter": "Payment is only requested once your application has been accepted."
   },
   "Curriculum": {
     "objective": "Objective",
@@ -149,7 +228,10 @@
   "Footer": {
     "tagline": "Understand technology. Question the obvious. Decide better. Lead change.",
     "rights": "All rights reserved.",
-    "sections": { "program": "Programme", "company": "Admissions" }
+    "sections": {
+      "program": "Programme",
+      "company": "Admissions"
+    }
   },
   "Diagnostic": {
     "eyebrow": "Digital Leadership Diagnostic",
@@ -180,7 +262,11 @@
     "eyebrow": "Cohort 01 · Application",
     "title": "Apply for Cohort 01",
     "intro": "This is not an enrolment form. It is the start of a conversation. We review every application individually, for 8 to 12 seats only.",
-    "sections": { "identity": "Your profile", "context": "Your context", "commitment": "Your commitment" },
+    "sections": {
+      "identity": "Your profile",
+      "context": "Your context",
+      "commitment": "Your commitment"
+    },
     "fields": {
       "fullName": "Full name",
       "email": "Email address",
@@ -205,5 +291,82 @@
     "successTitle": "Application received",
     "successBody": "We review every application individually and will come back to you by email or WhatsApp about next steps.",
     "errorBody": "Your application could not be sent. Please try again in a moment."
+  },
+  "Outcomes": {
+    "title": "You leave with evidence of what you can do",
+    "subtitle": "Not a certificate of attendance. A body of work you can put in front of your board.",
+    "items": {
+      "blueprint": {
+        "title": "Digital Transformation Blueprint",
+        "body": "A strategic document built on your real problem: context, evidence, options, risks, roadmap."
+      },
+      "profile": {
+        "title": "Capability profile",
+        "body": "Your demonstrated strengths and development areas across the ten capabilities."
+      },
+      "portfolio": {
+        "title": "Portfolio",
+        "body": "Every deliverable you produced across the sixteen weeks."
+      },
+      "certificate": {
+        "title": "Certification",
+        "body": "Issued once the required capabilities are validated, never automatically."
+      },
+      "alumni": {
+        "title": "Alumni network",
+        "body": "The link with your cohort and the ones that follow does not stop at week 16."
+      }
+    }
+  },
+  "Levels": {
+    "title": "Certification is earned",
+    "subtitle": "Every capability is assessed across four levels. Neither attendance nor payment is enough.",
+    "items": {
+      "exposure": {
+        "title": "Exposure",
+        "body": "I have encountered the concept."
+      },
+      "understanding": {
+        "title": "Understanding",
+        "body": "I can explain it."
+      },
+      "application": {
+        "title": "Application",
+        "body": "I can use it in a real context."
+      },
+      "leadership": {
+        "title": "Leadership",
+        "body": "I can evaluate, decide and guide others."
+      }
+    }
+  },
+  "Portfolio": {
+    "title": "Sixteen weeks, sixteen deliverables",
+    "subtitle": "Every week ends with a concrete document, not a quiz."
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Let us talk about your situation",
+    "intro": "A question about the programme, corporate sponsorship or your eligibility? A twenty minute call is usually the shortest path.",
+    "channels": {
+      "email": "Email",
+      "phone": "Phone and WhatsApp",
+      "booking": "Book a call",
+      "bookingValue": "20 minutes, video"
+    },
+    "responseTitle": "What happens next",
+    "responseBody": "We reply within two working days. If your message is about an application, we point you straight to the right step rather than asking you to fill in a second form.",
+    "applyNote": "Ready to join Cohort 01? Go straight to the application form.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "subject": "Subject",
+      "subjectPlaceholder": "Corporate sponsorship, eligibility, dates",
+      "message": "Your message",
+      "messagePlaceholder": "Describe your context in a few lines.",
+      "submit": "Send message",
+      "submitting": "Sending",
+      "successTitle": "Message received"
+    }
   }
 }

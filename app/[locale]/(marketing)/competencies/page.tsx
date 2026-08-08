@@ -5,6 +5,7 @@ import { getCompetencies } from "@/lib/content"
 import { buildMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/marketing/page-header"
 import { CapabilitiesGrid } from "@/components/marketing/capabilities-grid"
+import { CompetencyLevels } from "@/components/marketing/competency-levels"
 import { FinalCta } from "@/components/marketing/final-cta"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -38,6 +39,7 @@ export default async function CompetenciesPage({
         locale={locale}
         showHeading={false}
       />
+      <CompetencyLevels locale={locale} />
       <FinalCta locale={locale} />
     </>
   )

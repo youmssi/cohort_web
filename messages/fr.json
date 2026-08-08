@@ -4,13 +4,38 @@
     "defaultTitle": "Coh0rt · Comprendre la technologie, diriger la décision",
     "description": "Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui doivent évaluer l'IA, challenger un fournisseur et diriger la transformation numérique de leur organisation.",
     "pages": {
-      "program": { "title": "Le programme", "description": "16 semaines, 4 phases, 10 compétences et un projet de transformation défendu en fin de parcours." },
-      "method": { "title": "La méthode", "description": "Défi, investigation, pairs, application, défense. La boucle d'apprentissage qui structure chaque semaine." },
-      "curriculum": { "title": "Les 16 semaines", "description": "Comprendre, Explorer, Transformer, Diriger. Chaque semaine part d'un problème réel et se termine par un livrable." },
-      "competencies": { "title": "Les compétences", "description": "Dix compétences de leadership numérique. Pas un catalogue d'outils, un système de jugement." },
-      "admissions": { "title": "Admissions", "description": "L'admission est sélective. Nous nous soucions de la qualité de la cohorte, pas du nombre de participants." },
-      "cohort": { "title": "Cohorte 01", "description": "La première cohorte reste volontairement restreinte pour préserver la qualité de l'apprentissage entre pairs." },
-      "faq": { "title": "Questions fréquentes", "description": "Durée, engagement, tarif, admission et certification." }
+      "program": {
+        "title": "Le programme",
+        "description": "16 semaines, 4 phases, 10 compétences et un projet de transformation défendu en fin de parcours."
+      },
+      "method": {
+        "title": "La méthode",
+        "description": "Défi, investigation, pairs, application, défense. La boucle d'apprentissage qui structure chaque semaine."
+      },
+      "curriculum": {
+        "title": "Les 16 semaines",
+        "description": "Comprendre, Explorer, Transformer, Diriger. Chaque semaine part d'un problème réel et se termine par un livrable."
+      },
+      "competencies": {
+        "title": "Les compétences",
+        "description": "Dix compétences de leadership numérique. Pas un catalogue d'outils, un système de jugement."
+      },
+      "admissions": {
+        "title": "Admissions",
+        "description": "L'admission est sélective. Nous nous soucions de la qualité de la cohorte, pas du nombre de participants."
+      },
+      "cohort": {
+        "title": "Cohorte 01",
+        "description": "La première cohorte reste volontairement restreinte pour préserver la qualité de l'apprentissage entre pairs."
+      },
+      "faq": {
+        "title": "Questions fréquentes",
+        "description": "Durée, engagement, tarif, admission et certification."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Une question sur la Cohorte 01, le parrainage d'entreprise ou l'admission ? Écrivez-nous ou réservez un échange."
+      }
     }
   },
   "Nav": {
@@ -25,7 +50,8 @@
     "apply": "Postuler",
     "toggleMenu": "Ouvrir le menu",
     "toggleTheme": "Changer de thème",
-    "menuTitle": "Navigation"
+    "menuTitle": "Navigation",
+    "contact": "Contact"
   },
   "Common": {
     "applyCta": "Postuler pour la Cohorte 01",
@@ -41,7 +67,9 @@
     "sessionsLabel": "sessions live par semaine",
     "selectiveAdmission": "Admission sélective",
     "allCompetencies": "Toutes les compétences",
-    "location": "Conakry · Guinée"
+    "location": "Conakry · Guinée",
+    "contactCta": "Nous écrire",
+    "bookCall": "Réserver un échange"
   },
   "Home": {
     "eyebrow": "Cohorte 01 · Candidatures ouvertes",
@@ -65,29 +93,74 @@
   },
   "Method": {
     "steps": {
-      "challenge": { "title": "Défi", "body": "Vous partez d'un problème d'entreprise réel, pas d'une théorie." },
-      "investigate": { "title": "Investiguer", "body": "Vous recherchez, expérimentez et construisez une première réponse." },
-      "peer": { "title": "Pairs", "body": "Vos pairs challengent votre raisonnement, pas votre personne." },
-      "apply": { "title": "Appliquer", "body": "Vous transformez votre analyse en recommandation concrète." },
-      "defend": { "title": "Défendre", "body": "Vous expliquez, justifiez et défendez votre décision." }
+      "challenge": {
+        "title": "Défi",
+        "body": "Vous partez d'un problème d'entreprise réel, pas d'une théorie."
+      },
+      "investigate": {
+        "title": "Investiguer",
+        "body": "Vous recherchez, expérimentez et construisez une première réponse."
+      },
+      "peer": {
+        "title": "Pairs",
+        "body": "Vos pairs challengent votre raisonnement, pas votre personne."
+      },
+      "apply": {
+        "title": "Appliquer",
+        "body": "Vous transformez votre analyse en recommandation concrète."
+      },
+      "defend": {
+        "title": "Défendre",
+        "body": "Vous expliquez, justifiez et défendez votre décision."
+      }
     },
     "charterTitle": "La charte de cohorte",
     "charterSubtitle": "Ce que chaque participant accepte en rejoignant le groupe.",
     "charter": {
-      "curiosity": { "title": "Curiosité", "body": "Poser une question avant de supposer une réponse." },
-      "humility": { "title": "Humilité", "body": "Accepter d'avoir tort et de réviser sa position." },
-      "respect": { "title": "Respect", "body": "Challenger les idées, jamais les personnes." },
-      "contribution": { "title": "Contribution", "body": "Donner autant que l'on reçoit du groupe." },
-      "confidentiality": { "title": "Confidentialité", "body": "Protéger les informations professionnelles des pairs." },
-      "accountability": { "title": "Redevabilité", "body": "Faire ce que l'on s'est engagé à faire." }
+      "curiosity": {
+        "title": "Curiosité",
+        "body": "Poser une question avant de supposer une réponse."
+      },
+      "humility": {
+        "title": "Humilité",
+        "body": "Accepter d'avoir tort et de réviser sa position."
+      },
+      "respect": {
+        "title": "Respect",
+        "body": "Challenger les idées, jamais les personnes."
+      },
+      "contribution": {
+        "title": "Contribution",
+        "body": "Donner autant que l'on reçoit du groupe."
+      },
+      "confidentiality": {
+        "title": "Confidentialité",
+        "body": "Protéger les informations professionnelles des pairs."
+      },
+      "accountability": {
+        "title": "Redevabilité",
+        "body": "Faire ce que l'on s'est engagé à faire."
+      }
     }
   },
   "Admissions": {
     "steps": {
-      "diagnostic": { "title": "Diagnostic", "body": "Vous situez votre jugement numérique en quinze minutes." },
-      "application": { "title": "Candidature", "body": "Vous nous parlez de votre contexte et de votre défi réel." },
-      "conversation": { "title": "Conversation", "body": "Un échange de vingt à trente minutes pour évaluer l'adéquation." },
-      "decision": { "title": "Décision", "body": "Vous recevez une réponse claire, admis ou non pour cette cohorte." }
+      "diagnostic": {
+        "title": "Diagnostic",
+        "body": "Vous situez votre jugement numérique en quinze minutes."
+      },
+      "application": {
+        "title": "Candidature",
+        "body": "Vous nous parlez de votre contexte et de votre défi réel."
+      },
+      "conversation": {
+        "title": "Conversation",
+        "body": "Un échange de vingt à trente minutes pour évaluer l'adéquation."
+      },
+      "decision": {
+        "title": "Décision",
+        "body": "Vous recevez une réponse claire, admis ou non pour cette cohorte."
+      }
     },
     "title": "Tout le monde n'a pas besoin de ce programme",
     "subtitle": "Nous nous soucions davantage de la qualité de la cohorte que du nombre de participants.",
@@ -136,7 +209,13 @@
       "Projet final et soutenance",
       "Profil de compétences",
       "Communauté des anciens"
-    ]
+    ],
+    "standardNote": "Tarif des cohortes suivantes",
+    "foundingLabel": "Cohorte fondatrice",
+    "paymentTitle": "Modalités de paiement",
+    "paymentFull": "En une fois",
+    "paymentSplit": "En deux versements",
+    "paymentAfter": "Le paiement n'est demandé qu'après acceptation de votre candidature."
   },
   "Curriculum": {
     "objective": "Objectif",
@@ -149,7 +228,10 @@
   "Footer": {
     "tagline": "Comprendre la technologie. Remettre en question les évidences. Décider mieux. Diriger le changement.",
     "rights": "Tous droits réservés.",
-    "sections": { "program": "Programme", "company": "Admissions" }
+    "sections": {
+      "program": "Programme",
+      "company": "Admissions"
+    }
   },
   "Diagnostic": {
     "eyebrow": "Diagnostic Digital Leadership",
@@ -180,7 +262,11 @@
     "eyebrow": "Cohorte 01 · Candidature",
     "title": "Postuler pour la Cohorte 01",
     "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement, pour 8 à 12 places seulement.",
-    "sections": { "identity": "Votre profil", "context": "Votre contexte", "commitment": "Votre engagement" },
+    "sections": {
+      "identity": "Votre profil",
+      "context": "Votre contexte",
+      "commitment": "Votre engagement"
+    },
     "fields": {
       "fullName": "Nom complet",
       "email": "Adresse e-mail",
@@ -205,5 +291,82 @@
     "successTitle": "Candidature reçue",
     "successBody": "Nous examinons chaque candidature individuellement et revenons vers vous par e-mail ou WhatsApp pour la suite.",
     "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez dans un instant."
+  },
+  "Outcomes": {
+    "title": "Vous repartez avec la preuve de ce que vous savez faire",
+    "subtitle": "Pas un certificat de présence. Un corpus de travail que vous pouvez présenter à votre direction.",
+    "items": {
+      "blueprint": {
+        "title": "Digital Transformation Blueprint",
+        "body": "Un document stratégique construit sur votre problème réel : contexte, preuves, options, risques, feuille de route."
+      },
+      "profile": {
+        "title": "Profil de compétences",
+        "body": "Vos forces démontrées et vos axes de développement sur les dix compétences."
+      },
+      "portfolio": {
+        "title": "Portfolio",
+        "body": "L'ensemble des livrables produits pendant les seize semaines."
+      },
+      "certificate": {
+        "title": "Certification",
+        "body": "Délivrée après validation des compétences requises, jamais automatiquement."
+      },
+      "alumni": {
+        "title": "Réseau des anciens",
+        "body": "Le lien avec votre cohorte et les promotions suivantes ne s'arrête pas en semaine 16."
+      }
+    }
+  },
+  "Levels": {
+    "title": "La certification se mérite",
+    "subtitle": "Chaque compétence est évaluée sur quatre niveaux. Ni la présence ni le paiement ne suffisent.",
+    "items": {
+      "exposure": {
+        "title": "Exposition",
+        "body": "J'ai rencontré le concept."
+      },
+      "understanding": {
+        "title": "Compréhension",
+        "body": "Je peux l'expliquer."
+      },
+      "application": {
+        "title": "Application",
+        "body": "Je peux l'utiliser dans un contexte réel."
+      },
+      "leadership": {
+        "title": "Leadership",
+        "body": "Je peux évaluer, décider et guider les autres."
+      }
+    }
+  },
+  "Portfolio": {
+    "title": "Seize semaines, seize livrables",
+    "subtitle": "Chaque semaine se termine par un document concret, pas par un quiz."
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Parlons de votre situation",
+    "intro": "Une question sur le programme, le parrainage d'entreprise ou votre éligibilité ? Le plus simple est souvent un échange de vingt minutes.",
+    "channels": {
+      "email": "E-mail",
+      "phone": "Téléphone et WhatsApp",
+      "booking": "Réserver un échange",
+      "bookingValue": "20 minutes, en visio"
+    },
+    "responseTitle": "Ce qui se passe ensuite",
+    "responseBody": "Nous répondons sous 48 heures ouvrées. Si votre demande concerne une candidature, nous vous orientons directement vers l'étape adaptée plutôt que de vous faire remplir un second formulaire.",
+    "applyNote": "Vous souhaitez rejoindre la Cohorte 01 ? Passez directement par le formulaire de candidature.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "subject": "Objet",
+      "subjectPlaceholder": "Parrainage d'entreprise, éligibilité, calendrier",
+      "message": "Votre message",
+      "messagePlaceholder": "Décrivez votre contexte en quelques lignes.",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours",
+      "successTitle": "Message reçu"
+    }
   }
 }

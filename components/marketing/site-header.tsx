@@ -21,6 +21,7 @@ const navItems = [
   { href: "/curriculum", key: "curriculum" },
   { href: "/competencies", key: "competencies" },
   { href: "/admissions", key: "admissions" },
+  { href: "/contact", key: "contact" },
 ] as const
 
 export function SiteHeader() {

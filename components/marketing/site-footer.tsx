@@ -16,6 +16,7 @@ const admissionLinks = [
   { href: "/cohort-01", key: "cohort" },
   { href: "/diagnostic", key: "diagnostic" },
   { href: "/faq", key: "faq" },
+  { href: "/contact", key: "contact" },
 ] as const
 
 export function SiteFooter() {

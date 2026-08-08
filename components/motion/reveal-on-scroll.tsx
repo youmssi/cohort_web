@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type ElementType } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -23,9 +23,8 @@ export function RevealOnScroll({
   delay?: number
   as?: Tag
 }) {
-  const ref = useRef<HTMLElement | null>(null)
+  const ref = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
-  const Component = as as ElementType
 
   useEffect(() => {
     const node = ref.current
@@ -45,9 +44,14 @@ export function RevealOnScroll({
     return () => observer.disconnect()
   }, [])
 
+  // Cast once here rather than threading a generic through every call site:
+  // the union of intrinsic element props is not worth the inference cost for a
+  // purely presentational wrapper.
+  const Component = as as "div"
+
   return (
     <Component
-      ref={ref}
+      ref={ref as React.Ref<HTMLDivElement>}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
         "transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none",

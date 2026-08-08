@@ -56,7 +56,9 @@ export default async function LocaleLayout({
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd(locale as Locale)),
+          }}
         />
         <NextIntlClientProvider locale={locale as Locale} messages={messages}>
           <ThemeProvider>{children}</ThemeProvider>

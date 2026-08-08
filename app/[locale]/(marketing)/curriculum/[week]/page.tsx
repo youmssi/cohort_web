@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import type { Locale } from "@/i18n/routing"
 import { Link } from "@/i18n/navigation"
 import { getWeek, getWeeks } from "@/lib/content"
-import { buildMetadata } from "@/lib/seo"
+import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo"
 import { MdxContent } from "@/components/mdx-content"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -46,12 +46,23 @@ export default async function WeekPage({
 
   const t = await getTranslations({ locale, namespace: "Curriculum" })
   const tc = await getTranslations({ locale, namespace: "Common" })
+  const tMeta = await getTranslations({ locale, namespace: "Metadata" })
 
   const all = getWeeks(locale)
   const prev = all.find((w) => w.week === item.week - 1)
   const next = all.find((w) => w.week === item.week + 1)
 
+  const crumbs = breadcrumbJsonLd(locale, [
+    { name: tMeta("pages.curriculum.title"), path: "/curriculum" },
+    { name: item.title, path: `/curriculum/${item.week}` },
+  ])
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
     <article className="mx-auto max-w-2xl px-4 py-20 sm:px-6">
       <RevealOnScroll className="flex flex-wrap items-center gap-2">
         <Badge variant="secondary" className="font-normal">
@@ -126,5 +137,6 @@ export default async function WeekPage({
         )}
       </nav>
     </article>
+    </>
   )
 }
