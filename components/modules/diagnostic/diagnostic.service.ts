@@ -8,10 +8,7 @@ import { sendNotificationEmail } from "@/lib/email"
 import { competencyLabel } from "./questions"
 import { scoreDiagnostic } from "./scoring"
 
-export interface EmailResultState {
-  status: "idle" | "success" | "error"
-  message?: string
-}
+import type { EmailResultState } from "./state"
 
 const payloadSchema = z.object({
   email: z.email(),

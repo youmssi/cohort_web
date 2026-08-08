@@ -25,7 +25,7 @@
         "description": "Admission is selective. We care about the quality of the cohort, not the number of participants."
       },
       "cohort": {
-        "title": "Cohort 01",
+        "title": "{cohort}",
         "description": "The first cohort stays deliberately small to protect the quality of peer learning."
       },
       "faq": {
@@ -34,7 +34,7 @@
       },
       "contact": {
         "title": "Contact",
-        "description": "A question about Cohort 01, corporate sponsorship or admission? Write to us or book a short call."
+        "description": "A question about {cohort}, corporate sponsorship or admission? Write to us or book a short call."
       }
     }
   },
@@ -44,7 +44,7 @@
     "curriculum": "16 weeks",
     "competencies": "Capabilities",
     "admissions": "Admissions",
-    "cohort": "Cohort 01",
+    "cohort": "The cohort",
     "faq": "FAQ",
     "diagnostic": "Diagnostic",
     "apply": "Apply",
@@ -54,7 +54,7 @@
     "contact": "Contact"
   },
   "Common": {
-    "applyCta": "Apply for Cohort 01",
+    "applyCta": "Apply for {cohort}",
     "exploreCta": "Explore the programme",
     "diagnosticCta": "Take the diagnostic",
     "previous": "Previous",
@@ -72,7 +72,6 @@
     "bookCall": "Book a call"
   },
   "Home": {
-    "eyebrow": "Cohort 01 · Applications open",
     "headline": "Understand technology. Lead the decision.",
     "subhead": "A selective 16-week immersion for founders, directors and managers who have to evaluate AI, challenge a vendor and drive a digital transformation, without becoming engineers.",
     "positioningTitle": "You do not need to become an engineer.",
@@ -194,7 +193,16 @@
       "format": "Online, live",
       "admission": "By application",
       "participantsMax": "12 maximum"
-    }
+    },
+    "keyDatesTitle": "Key dates",
+    "keyDates": {
+      "applicationsOpen": "Applications open",
+      "applicationsClose": "Applications close",
+      "start": "Cohort starts",
+      "end": "Cohort ends"
+    },
+    "nextCohortTitle": "Next session",
+    "nextCohortBody": "Dates for the following session are announced as Coh0rt 26A finishes. Join our channels to hear first."
   },
   "Pricing": {
     "eyebrow": "Investment",
@@ -251,7 +259,7 @@
       "strong": "Strong",
       "advanced": "Advanced"
     },
-    "applyPrompt": "If these questions match your current responsibilities, Cohort 01 is open for applications.",
+    "applyPrompt": "If these questions match your current responsibilities, {cohort} is open for applications.",
     "restart": "Retake the diagnostic",
     "emailPlaceholder": "you@organisation.com",
     "emailCta": "Send it to me",
@@ -259,8 +267,8 @@
     "emailError": "The message could not be sent. Check your address and try again."
   },
   "Apply": {
-    "eyebrow": "Cohort 01 · Application",
-    "title": "Apply for Cohort 01",
+    "eyebrow": "{cohort} · Application",
+    "title": "Apply for {cohort}",
     "intro": "This is not an enrolment form. It is the start of a conversation. We review every application individually, for 8 to 12 seats only.",
     "sections": {
       "identity": "Your profile",
@@ -356,7 +364,7 @@
     },
     "responseTitle": "What happens next",
     "responseBody": "We reply within two working days. If your message is about an application, we point you straight to the right step rather than asking you to fill in a second form.",
-    "applyNote": "Ready to join Cohort 01? Go straight to the application form.",
+    "applyNote": "Ready to join {cohort}? Go straight to the application form.",
     "form": {
       "name": "Full name",
       "email": "Email address",
@@ -368,5 +376,79 @@
       "submitting": "Sending",
       "successTitle": "Message received"
     }
+  },
+  "CohortStatus": {
+    "upcoming": "Opening soon",
+    "open": "Applications open",
+    "closed": "Applications closed",
+    "running": "In progress",
+    "completed": "Completed",
+    "notifyCta": "Get notified about the next session",
+    "seatsLabel": "seats",
+    "datesPending": "Dates confirmed on admission"
+  },
+  "Payment": {
+    "title": "How payment works",
+    "subtitle": "Applying costs nothing. Payment only comes up once you have been admitted.",
+    "steps": {
+      "apply": {
+        "title": "Application",
+        "body": "Free and non-binding. You describe your context and the challenge you want to work on."
+      },
+      "conversation": {
+        "title": "Conversation",
+        "body": "A twenty to thirty minute exchange to check the programme fits your situation."
+      },
+      "admission": {
+        "title": "Admission decision",
+        "body": "You get a clear answer. If it is positive, your admission letter states the amount, the schedule and how to settle it."
+      },
+      "payment": {
+        "title": "Settlement",
+        "body": "In full or in two instalments. Your seat is confirmed once the first payment arrives."
+      }
+    },
+    "methodsTitle": "Payment methods",
+    "methodsBody": "Accepted payment methods and settlement details are sent with your admission letter. No payment information is requested before admission.",
+    "refundTitle": "Seats and withdrawal",
+    "refundBody": "Because the cohort is capped, a confirmed seat is removed from availability. Withdrawal terms are set out in the admission letter, before any payment."
+  },
+  "Prerequisites": {
+    "title": "What you need to take part",
+    "subtitle": "Nothing exotic. But these are not optional: the method depends on you actually participating.",
+    "items": {
+      "device": {
+        "title": "A computer",
+        "body": "Live sessions, deliverables and peer review all happen on a computer. A phone is not enough to produce the deliverables."
+      },
+      "connection": {
+        "title": "A stable connection",
+        "body": "Enough for one weekly video call with camera on. Written resources stay available offline."
+      },
+      "time": {
+        "title": "3 to 5 hours a week",
+        "body": "Live session included. Project weeks ask for 5 to 7. This is the most common reason people drop out, so assess it honestly."
+      },
+      "problem": {
+        "title": "A real problem",
+        "body": "You arrive with a concrete challenge from your organisation. It runs through all sixteen weeks and becomes the basis of your final defence."
+      },
+      "language": {
+        "title": "Professional French",
+        "body": "The programme is facilitated in French. International technical vocabulary (API, cloud, SaaS) is explained as it comes up."
+      },
+      "posture": {
+        "title": "Openness to challenge",
+        "body": "Your reasoning will be contested by your peers and by the facilitator. That is the core of the method, not an accident."
+      }
+    }
+  },
+  "Channels": {
+    "title": "Stay informed",
+    "subtitle": "Upcoming sessions, remaining seats and new material are announced on our channels first.",
+    "whatsappCommunity": "WhatsApp community",
+    "discord": "Discord server",
+    "facebook": "MRVIN100 Facebook page",
+    "pending": "Our community channels open shortly. In the meantime, write to us directly."
   }
 }

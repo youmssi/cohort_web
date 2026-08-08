@@ -4,7 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 
 import "../globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/shared"
 import { routing, type Locale } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 import { organizationJsonLd } from "@/lib/seo"

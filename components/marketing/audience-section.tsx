@@ -2,9 +2,9 @@ import { getTranslations } from "next-intl/server"
 
 import type { Persona } from "@/.velite"
 import type { Locale } from "@/i18n/routing"
-import { MdxContent } from "@/components/mdx-content"
+import { MdxContent } from "@/components/shared"
 import { SpotlightCard } from "@/components/animations/spotlight-card"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 export async function AudienceSection({
   personas,

@@ -2,15 +2,15 @@ import { getTranslations } from "next-intl/server"
 import { ChevronRight } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
-import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { ButtonLink } from "@/components/shared"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 import { PixelTrailLayer } from "@/components/marketing/pixel-trail-layer"
-import { cohort } from "@/lib/constants"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 export async function FinalCta({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home" })
   const tc = await getTranslations({ locale, namespace: "Common" })
+  const session = currentCohort()
 
   return (
     <section className="relative isolate overflow-hidden px-4 py-28 text-center sm:px-6">
@@ -30,26 +30,18 @@ export async function FinalCta({ locale }: { locale: Locale }) {
         {t("finalSubtitle")}
       </RevealOnScroll>
 
-      <RevealOnScroll delay={280} className="mt-10 flex flex-wrap justify-center gap-3">
-        <Button
-          size="lg"
-          className="pr-1.5"
-          render={
-            <Link href="/apply">
-              <span>{tc("applyCta")}</span>
-              <ChevronRight className="opacity-50" />
-            </Link>
-          }
-        />
-        <Button
-          size="lg"
-          variant="outline"
-          render={<Link href="/diagnostic">{tc("diagnosticCta")}</Link>}
-        />
+        <RevealOnScroll delay={280} className="mt-10 flex flex-wrap justify-center gap-3">
+          <ButtonLink href="/apply" size="lg" className="pr-1.5">
+          <span>{tc("applyCta", { cohort: cohortName(session) })}</span>
+          <ChevronRight className="opacity-50" />
+        </ButtonLink>
+        <ButtonLink href="/diagnostic" size="lg" variant="outline">
+          {tc("diagnosticCta")}
+        </ButtonLink>
       </RevealOnScroll>
 
         <RevealOnScroll delay={360} className="mt-6 text-xs text-muted-foreground">
-          {cohort.minSeats}&ndash;{cohort.maxSeats} {tc("participantsLabel")} ·{" "}
+          {session.seats.min}&ndash;{session.seats.max} {tc("participantsLabel")} ·{" "}
           {tc("selectiveAdmission")}
         </RevealOnScroll>
       </div>

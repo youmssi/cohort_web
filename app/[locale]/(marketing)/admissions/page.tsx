@@ -5,8 +5,9 @@ import type { Locale } from "@/i18n/routing"
 import { buildMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/marketing/page-header"
 import { AdmissionsSteps } from "@/components/marketing/admissions-steps"
+import { PaymentWorkflow } from "@/components/marketing/payment-workflow"
 import { FinalCta } from "@/components/marketing/final-cta"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
@@ -64,6 +65,7 @@ export default async function AdmissionsPage({
         </div>
       </section>
 
+      <PaymentWorkflow locale={locale} />
       <FinalCta locale={locale} />
     </>
   )

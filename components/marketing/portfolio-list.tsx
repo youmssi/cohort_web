@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server"
 import type { Week } from "@/.velite"
 import type { Locale } from "@/i18n/routing"
 import { Link } from "@/i18n/navigation"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 /**
  * The sixteen deliverables, derived from each week's frontmatter rather than

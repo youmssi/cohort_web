@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl"
 import { MenuIcon } from "lucide-react"
 
 import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   Sheet,
@@ -11,9 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { ButtonLink } from "@/components/shared"
 import { Logo } from "@/components/brand/logo"
-import { LocaleSwitch } from "@/components/locale-switch"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { currentCohort } from "@/lib/cohorts"
+import { LocaleSwitch } from "@/components/shared"
+import { ThemeToggle } from "@/components/shared"
 
 const navItems = [
   { href: "/program", key: "program" },
@@ -22,6 +24,12 @@ const navItems = [
   { href: "/competencies", key: "competencies" },
   { href: "/admissions", key: "admissions" },
   { href: "/contact", key: "contact" },
+] as const
+
+const mobileItems = [
+  ...navItems,
+  { href: `/cohorts/${currentCohort().id}`, key: "cohort" },
+  { href: "/faq", key: "faq" },
 ] as const
 
 export function SiteHeader() {
@@ -50,50 +58,50 @@ export function SiteHeader() {
           <LocaleSwitch />
           <ThemeToggle />
           <Separator orientation="vertical" className="mx-1 h-5" />
-          <Button
-            size="sm"
-            variant="ghost"
-            render={<Link href="/diagnostic">{t("diagnostic")}</Link>}
-          />
-          <Button size="sm" render={<Link href="/apply">{t("apply")}</Link>} />
+          <ButtonLink href="/diagnostic" size="sm" variant="ghost">
+            {t("diagnostic")}
+          </ButtonLink>
+          <ButtonLink href="/apply" size="sm">
+            {t("apply")}
+          </ButtonLink>
         </div>
 
         <div className="ml-auto flex items-center gap-1 lg:hidden">
           <ThemeToggle />
           <Sheet>
+            {/* Rendered as the trigger's own button carrying the Button styles
+                rather than nesting our <Button>: both components set
+                `data-slot`, and the two orderings disagree between server and
+                client, which surfaces as a hydration mismatch. */}
             <SheetTrigger
-              render={
-                <Button variant="ghost" size="icon" aria-label={t("toggleMenu")}>
-                  <MenuIcon className="size-5" />
-                </Button>
-              }
-            />
+              className={buttonVariants({ variant: "ghost", size: "icon" })}
+              aria-label={t("toggleMenu")}
+            >
+              <MenuIcon className="size-5" />
+            </SheetTrigger>
             <SheetContent side="right" className="w-72">
               <SheetHeader>
                 <SheetTitle className="text-start">{t("menuTitle")}</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-0.5 px-4">
-                {[...navItems, { href: "/cohort-01", key: "cohort" } as const, { href: "/faq", key: "faq" } as const].map(
-                  (item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="rounded-md px-3 py-2.5 text-sm transition-colors hover:bg-muted"
-                    >
-                      {t(item.key)}
-                    </Link>
-                  )
-                )}
+                {mobileItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="rounded-md px-3 py-2.5 text-sm transition-colors hover:bg-muted"
+                  >
+                    {t(item.key)}
+                  </Link>
+                ))}
               </nav>
               <div className="mt-2 flex items-center justify-between px-4">
                 <LocaleSwitch />
               </div>
               <div className="mt-4 grid gap-2 px-4">
-                <Button
-                  variant="outline"
-                  render={<Link href="/diagnostic">{t("diagnostic")}</Link>}
-                />
-                <Button render={<Link href="/apply">{t("apply")}</Link>} />
+                <ButtonLink href="/diagnostic" variant="outline">
+                  {t("diagnostic")}
+                </ButtonLink>
+                <ButtonLink href="/apply">{t("apply")}</ButtonLink>
               </div>
             </SheetContent>
           </Sheet>

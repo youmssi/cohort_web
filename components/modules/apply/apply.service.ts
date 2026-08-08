@@ -1,17 +1,12 @@
 "use server"
 
-import { contact, cohort } from "@/lib/constants"
+import { contact } from "@/lib/constants"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 import { sendNotificationEmail } from "@/lib/email"
 
 import { applicationSchema, type ApplicationFieldErrors } from "./schema"
 
-export interface ApplyState {
-  status: "idle" | "success" | "error"
-  fieldErrors?: ApplicationFieldErrors
-}
-
-const initialState: ApplyState = { status: "idle" }
-export { initialState as applyInitialState }
+import type { ApplyState } from "./state"
 
 /**
  * SERVICE. The only layer that touches the email provider for this module.
@@ -48,7 +43,7 @@ export async function submitApplication(
   if (contact.applicationNotificationEmail) {
     await sendNotificationEmail({
       to: contact.applicationNotificationEmail,
-      subject: `${cohort.code} · Nouvelle candidature : ${data.fullName}`,
+      subject: `${cohortName(currentCohort())} · Nouvelle candidature : ${data.fullName}`,
       html: `
         <p><strong>${data.fullName}</strong> · ${data.role}, ${data.organization} (${data.industry})</p>
         <p>Email : ${data.email} · Téléphone : ${data.phone}</p>

@@ -1,5 +1,5 @@
 import { BlurText } from "@/components/animations/blur-text"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 /** Shared page opener so every inner page has the same vertical rhythm. */
 export function PageHeader({
