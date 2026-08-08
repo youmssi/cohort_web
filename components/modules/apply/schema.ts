@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-/** CONTRACT — Cohort 01 application. */
+/** CONTRACT. Cohort 01 application. */
 export const applicationSchema = z.object({
   fullName: z.string().min(2),
   email: z.email(),

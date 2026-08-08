@@ -1,5 +1,7 @@
-import type { Week } from "@/.velite"
+import { getTranslations } from "next-intl/server"
 
+import type { Week } from "@/.velite"
+import type { Locale } from "@/i18n/routing"
 import { Link } from "@/i18n/navigation"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
 
@@ -9,28 +11,63 @@ interface Phase {
   weeks: Week[]
 }
 
-export function JourneyTimeline({ phases }: { phases: Phase[] }) {
-  return (
-    <section id="journey" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-      <RevealOnScroll as="h2" className="text-balance text-center font-heading text-3xl font-semibold sm:text-4xl">
-        Quatre phases. Seize semaines. Un défi de transformation.
-      </RevealOnScroll>
+export async function JourneyTimeline({
+  phases,
+  locale,
+  showHeading = true,
+}: {
+  phases: Phase[]
+  locale: Locale
+  showHeading?: boolean
+}) {
+  const t = await getTranslations({ locale, namespace: "Home" })
+  const tc = await getTranslations({ locale, namespace: "Common" })
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+  return (
+    <section id="journey" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+      {showHeading && (
+        <div className="mx-auto max-w-2xl text-center">
+          <RevealOnScroll
+            as="h2"
+            className="text-balance font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
+          >
+            {t("journeyTitle")}
+          </RevealOnScroll>
+          <RevealOnScroll delay={120} className="mt-4 text-pretty text-muted-foreground">
+            {t("journeySubtitle")}
+          </RevealOnScroll>
+        </div>
+      )}
+
+      <div className="mt-14 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {phases.map((phase, index) => (
-          <RevealOnScroll key={phase.phase} delay={index * 100} className="rounded-2xl border p-6">
-            <p className="font-mono text-xs text-muted-foreground">
-              Phase {phase.phase.toString().padStart(2, "0")}
-            </p>
-            <p className="mt-1 font-heading text-xl font-semibold">{phase.title}</p>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+          <RevealOnScroll
+            key={phase.phase}
+            delay={index * 90}
+            className="flex flex-col rounded-2xl border bg-card p-6"
+          >
+            <div className="flex items-baseline gap-2">
+              <span className="font-mono text-[0.625rem] text-muted-foreground">
+                {tc("phase")} {String(phase.phase).padStart(2, "0")}
+              </span>
+              <span
+                aria-hidden
+                className="h-px flex-1 bg-linear-to-r from-border to-transparent"
+              />
+            </div>
+            <p className="mt-2 font-heading text-xl font-semibold">{phase.title}</p>
+
+            <ul className="mt-5 space-y-2.5 text-sm">
               {phase.weeks.map((week) => (
-                <li key={week.week}>
+                <li key={week.week} className="flex gap-2.5">
+                  <span className="mt-px w-6 shrink-0 font-mono text-[0.625rem] text-muted-foreground tabular-nums">
+                    {String(week.week).padStart(2, "0")}
+                  </span>
                   <Link
                     href={`/curriculum/${week.week}`}
-                    className="transition-colors hover:text-foreground hover:underline"
+                    className="text-muted-foreground transition-colors hover:text-foreground hover:underline"
                   >
-                    S{week.week.toString().padStart(2, "0")} · {week.title}
+                    {week.title}
                   </Link>
                 </li>
               ))}

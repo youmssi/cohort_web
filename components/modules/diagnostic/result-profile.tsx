@@ -1,15 +1,17 @@
 "use client"
 
 import { useActionState } from "react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import { ChevronRight } from "lucide-react"
 
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
+import { CountUp } from "@/components/animations/count-up"
 
 import { emailDiagnosticResult, type EmailResultState } from "./diagnostic.service"
-import { competencyLabels } from "./questions"
+import { competencyLabel } from "./questions"
 import type { Answer, DiagnosticResult } from "./schema"
 
 const initialState: EmailResultState = { status: "idle" }
@@ -24,24 +26,28 @@ export function ResultProfile({
   onRestart: () => void
 }) {
   const t = useTranslations("Diagnostic")
+  const tc = useTranslations("Common")
+  const locale = useLocale()
   const [state, formAction, pending] = useActionState(emailDiagnosticResult, initialState)
 
   return (
-    <div className="mx-auto w-full max-w-xl space-y-10">
-      <div>
-        <p className="text-xs font-medium text-muted-foreground">{t("resultTitle")}</p>
-        <p className="mt-2 font-heading text-4xl font-semibold tabular-nums">
-          {result.overall}
-          <span className="text-lg text-muted-foreground"> / 100</span>
+    <div className="space-y-12">
+      <div className="rounded-2xl border bg-card p-8 text-center">
+        <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+          {t("overall")}
+        </p>
+        <p className="mt-3 font-heading text-6xl font-semibold tabular-nums">
+          <CountUp to={result.overall} locale={locale} />
+          <span className="text-2xl text-muted-foreground"> / 100</span>
         </p>
       </div>
 
-      <ul className="space-y-4">
+      <ul className="space-y-5">
         {result.scores.map((score) => (
           <li key={score.competency}>
-            <div className="mb-1.5 flex items-baseline justify-between text-sm">
-              <span>{competencyLabels[score.competency]}</span>
-              <span className="tabular-nums text-muted-foreground">
+            <div className="mb-2 flex items-baseline justify-between gap-4 text-sm">
+              <span className="font-medium">{competencyLabel(score.competency, locale)}</span>
+              <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
                 {score.score} · {t(`levels.${score.level}`)}
               </span>
             </div>
@@ -50,44 +56,63 @@ export function ResultProfile({
         ))}
       </ul>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border p-4">
+      <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2">
+        <div className="bg-background p-5">
           <p className="text-xs text-muted-foreground">{t("strongest")}</p>
-          <p className="mt-1 font-medium">{competencyLabels[result.strongest.competency]}</p>
+          <p className="mt-1 font-heading font-medium">
+            {competencyLabel(result.strongest.competency, locale)}
+          </p>
         </div>
-        <div className="rounded-xl border p-4">
+        <div className="bg-background p-5">
           <p className="text-xs text-muted-foreground">{t("priority")}</p>
-          <p className="mt-1 font-medium">{competencyLabels[result.priority.competency]}</p>
+          <p className="mt-1 font-heading font-medium">
+            {competencyLabel(result.priority.competency, locale)}
+          </p>
         </div>
       </div>
 
-      <p className="text-pretty text-sm text-muted-foreground">{t("applyPrompt")}</p>
-
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <Button size="lg" render={<Link href="/apply">{t("applyCta")}</Link>} />
-        <Button type="button" variant="outline" size="lg" onClick={onRestart}>
-          {t("restart")}
-        </Button>
+      <div className="rounded-2xl border bg-muted/30 p-6">
+        {state.status === "success" ? (
+          <p className="text-sm text-muted-foreground">{t("emailSent")}</p>
+        ) : (
+          <form action={formAction} className="flex flex-col gap-2 sm:flex-row">
+            <input type="hidden" name="answers" value={JSON.stringify(answers)} />
+            <Input
+              type="email"
+              name="email"
+              required
+              placeholder={t("emailPlaceholder")}
+              aria-label={t("emailPlaceholder")}
+              className="flex-1"
+            />
+            <Button type="submit" variant="secondary" disabled={pending}>
+              {t("emailCta")}
+            </Button>
+          </form>
+        )}
+        {state.status === "error" && (
+          <p className="mt-3 text-sm text-destructive">{t("emailError")}</p>
+        )}
       </div>
 
-      {state.status !== "success" && (
-        <form action={formAction} className="flex gap-2 border-t pt-6">
-          <input type="hidden" name="answers" value={JSON.stringify(answers)} />
-          <Input
-            type="email"
-            name="email"
-            required
-            placeholder="vous@organisation.com"
-            className="max-w-xs"
+      <div className="space-y-5 border-t pt-8 text-center">
+        <p className="text-pretty text-sm text-muted-foreground">{t("applyPrompt")}</p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button
+            size="lg"
+            className="pr-1.5"
+            render={
+              <Link href="/apply">
+                <span>{tc("applyCta")}</span>
+                <ChevronRight className="opacity-50" />
+              </Link>
+            }
           />
-          <Button type="submit" variant="secondary" disabled={pending}>
-            {pending ? "…" : "Recevoir par e-mail"}
+          <Button type="button" variant="outline" size="lg" onClick={onRestart}>
+            {t("restart")}
           </Button>
-        </form>
-      )}
-      {state.status === "success" && (
-        <p className="border-t pt-6 text-sm text-muted-foreground">Envoyé.</p>
-      )}
+        </div>
+      </div>
     </div>
   )
 }

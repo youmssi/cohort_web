@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
-import { setRequestLocale } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
+import { ArrowLeft } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
 import { Link } from "@/i18n/navigation"
@@ -7,7 +8,9 @@ import { getCompetencies, getCompetency } from "@/lib/content"
 import { buildMetadata } from "@/lib/seo"
 import { MdxContent } from "@/components/mdx-content"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { cohort } from "@/lib/constants"
 
 export function generateStaticParams({ params }: { params: { locale: string } }) {
   return getCompetencies(params.locale as Locale).map((item) => ({ slug: item.slug }))
@@ -21,6 +24,7 @@ export async function generateMetadata({
   const { locale, slug } = await params
   const item = getCompetency(locale, slug)
   if (!item) return {}
+
   return buildMetadata({
     locale,
     path: `/competencies/${slug}`,
@@ -40,26 +44,50 @@ export default async function CompetencyPage({
   const item = getCompetency(locale, slug)
   if (!item) notFound()
 
+  const tc = await getTranslations({ locale, namespace: "Common" })
+
   return (
     <article className="mx-auto max-w-2xl px-4 py-20 sm:px-6">
-      <RevealOnScroll as="p" className="font-mono text-xs text-muted-foreground">
-        {item.code} · Compétence {item.order.toString().padStart(2, "0")} / 10
-      </RevealOnScroll>
-      <RevealOnScroll delay={80} as="h1" className="mt-2 text-balance font-heading text-3xl font-semibold sm:text-4xl">
-        {item.title}
-      </RevealOnScroll>
-      <RevealOnScroll delay={160} className="mt-4 text-pretty text-lg italic text-muted-foreground">
-        « {item.question} »
+      <RevealOnScroll className="flex flex-wrap items-center gap-2">
+        <Badge variant="outline" className="font-mono font-normal">
+          {item.code}
+        </Badge>
+        <span className="text-xs text-muted-foreground tabular-nums">
+          {String(item.order).padStart(2, "0")} / {cohort.competencies}
+        </span>
       </RevealOnScroll>
 
-      <RevealOnScroll delay={240}>
+      <RevealOnScroll
+        delay={90}
+        as="h1"
+        className="mt-5 text-balance font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
+      >
+        {item.title}
+      </RevealOnScroll>
+
+      <RevealOnScroll
+        delay={170}
+        className="mt-4 border-l-2 pl-5 text-pretty text-lg leading-relaxed text-muted-foreground italic"
+      >
+        {item.question}
+      </RevealOnScroll>
+
+      <RevealOnScroll delay={250}>
         <MdxContent code={item.content} className="mt-10" />
       </RevealOnScroll>
 
-      <div className="mt-14 flex items-center justify-between border-t pt-6 text-sm">
-        <Button variant="ghost" render={<Link href="/competencies">← Toutes les compétences</Link>} />
-        <Button render={<Link href="/apply">Postuler pour la Cohorte 01</Link>} />
-      </div>
+      <nav className="mt-16 flex items-center justify-between gap-3 border-t pt-6">
+        <Button
+          variant="ghost"
+          render={
+            <Link href="/competencies">
+              <ArrowLeft className="opacity-50" />
+              <span>{tc("allCompetencies")}</span>
+            </Link>
+          }
+        />
+        <Button render={<Link href="/apply">{tc("applyCta")}</Link>} />
+      </nav>
     </article>
   )
 }

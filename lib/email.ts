@@ -1,7 +1,7 @@
 import { Resend } from "resend"
 
 /**
- * Resend client wrapper — the only file allowed to touch the email provider directly.
+ * Resend client wrapper. The only file allowed to touch the email provider directly.
  * Only imported from *.service.ts files (SERVICE layer), never from components.
  */
 let client: Resend | null = null
@@ -22,7 +22,7 @@ export async function sendNotificationEmail(options: {
   const resend = getClient()
 
   if (!resend) {
-    // No API key configured (e.g. local dev) — log instead of failing the request.
+    // No API key configured (e.g. local dev), log instead of failing the request.
     console.warn("[email] RESEND_API_KEY missing, skipping send:", options.subject)
     return { skipped: true as const }
   }

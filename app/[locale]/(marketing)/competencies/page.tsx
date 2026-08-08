@@ -1,18 +1,20 @@
-import { setRequestLocale } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import type { Locale } from "@/i18n/routing"
 import { getCompetencies } from "@/lib/content"
 import { buildMetadata } from "@/lib/seo"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { PageHeader } from "@/components/marketing/page-header"
 import { CapabilitiesGrid } from "@/components/marketing/capabilities-grid"
+import { FinalCta } from "@/components/marketing/final-cta"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "Metadata" })
   return buildMetadata({
     locale,
     path: "/competencies",
-    title: "Les compétences",
-    description: "Dix compétences de leadership numérique — pas un catalogue d'outils, un système de jugement.",
+    title: t("pages.competencies.title"),
+    description: t("pages.competencies.description"),
   })
 }
 
@@ -23,19 +25,20 @@ export default async function CompetenciesPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
+  const t = await getTranslations({ locale, namespace: "Metadata" })
 
   return (
     <>
-      <section className="mx-auto max-w-3xl px-4 pt-20 pb-4 text-center sm:px-6">
-        <RevealOnScroll as="h1" className="text-balance font-heading text-4xl font-semibold sm:text-5xl">
-          Ce que vous développez
-        </RevealOnScroll>
-        <RevealOnScroll delay={150} className="mt-5 text-pretty text-lg text-muted-foreground">
-          Dix compétences, chacune évaluée selon cinq niveaux — de la prise de conscience à la
-          capacité de décider et de diriger.
-        </RevealOnScroll>
-      </section>
-      <CapabilitiesGrid competencies={getCompetencies(locale)} />
+      <PageHeader
+        title={t("pages.competencies.title")}
+        description={t("pages.competencies.description")}
+      />
+      <CapabilitiesGrid
+        competencies={getCompetencies(locale)}
+        locale={locale}
+        showHeading={false}
+      />
+      <FinalCta locale={locale} />
     </>
   )
 }

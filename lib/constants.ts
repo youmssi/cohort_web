@@ -1,12 +1,19 @@
 /**
- * Single source of truth for program facts referenced across pages, metadata and emails.
- * Never hardcode these values elsewhere — import from here.
+ * Single source of truth for brand and program facts referenced across pages,
+ * metadata and emails. Never hardcode these values elsewhere, import from here.
  */
 export const site = {
+  name: "Coh0rt",
+  legalName: "Coh0rt",
+  domain: "cohort.mrvin100.de",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cohort.mrvin100.de",
+  builtBy: "Propulsed by MRVIN100",
+  builtByUrl: "https://mrvin100.de",
+} as const
+
+export const program = {
+  /** Public-facing name of the flagship experience. */
   name: "Digital Leadership Immersion",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  locationFr: "Conakry, Guinée",
-  locationEn: "Conakry, Guinea",
 } as const
 
 export const cohort = {
@@ -14,7 +21,9 @@ export const cohort = {
   minSeats: 8,
   maxSeats: 12,
   durationWeeks: 16,
-  liveSessionsPerWeek: "1–2",
+  phases: 4,
+  competencies: 10,
+  liveSessionsPerWeek: "1 à 2",
   tuitionAmount: 3_900_000,
   tuitionCurrency: "GNF",
 } as const

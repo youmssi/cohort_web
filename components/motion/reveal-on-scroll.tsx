@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 type Tag = "div" | "p" | "li" | "span" | "h1" | "h2" | "h3"
 
 /**
- * Restrained fade/translate reveal on viewport entry — adapted from reactbits.dev's
+ * Restrained fade/translate reveal on viewport entry, adapted from reactbits.dev's
  * scroll-reveal concept but rewritten with no external animation dependency and no
  * flashy defaults, matching the "quiet intelligence" visual direction: a single
  * subtle motion, once, never looping or drawing attention to itself.

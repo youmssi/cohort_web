@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/routing"
 
 /**
  * Typed accessors over the Velite-compiled content collections (see velite.config.ts).
- * English translations are authored progressively — until a document exists in `en`,
+ * English translations are authored progressively. Until a document exists in `en`,
  * callers fall back to the French version rather than rendering an empty section.
  */
 function byLocale<T extends { locale: string }>(items: readonly T[], locale: Locale) {

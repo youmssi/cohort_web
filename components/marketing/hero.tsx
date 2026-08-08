@@ -1,53 +1,98 @@
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import { ChevronRight } from "lucide-react"
 
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
-import { TextReveal } from "@/components/motion/text-reveal"
+import { Badge } from "@/components/ui/badge"
+import { BlurText } from "@/components/animations/blur-text"
+import { CountUp } from "@/components/animations/count-up"
 import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
 import { cohort } from "@/lib/constants"
 
 export function Hero() {
-  const t = useTranslations("Common")
+  const t = useTranslations("Home")
+  const tc = useTranslations("Common")
+  const locale = useLocale()
+
+  const stats = [
+    { value: cohort.durationWeeks, label: tc("weeksLabel") },
+    { value: cohort.competencies, label: tc("competenciesLabel") },
+    { value: cohort.maxSeats, label: tc("participantsLabel") },
+  ]
 
   return (
-    <section className="mx-auto max-w-4xl px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-28">
-      <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
-        Digital Leadership Immersion · {cohort.code}
-      </p>
-
-      <TextReveal
-        as="h1"
-        text="Comprendre la technologie. Diriger la décision."
-        className="mt-6 block text-balance font-heading text-4xl leading-[1.1] font-semibold sm:text-6xl"
+    <section className="relative overflow-hidden">
+      {/* Editorial grid wash. Pure CSS, no image payload, hidden from a11y tree. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, color-mix(in oklch, var(--foreground) 6%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 6%, transparent) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
       />
 
-      <RevealOnScroll delay={200}>
-        <p className="mx-auto mt-6 max-w-xl text-pretty text-lg text-muted-foreground">
-          Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui
-          doivent évaluer l&apos;IA, challenger un fournisseur et diriger la transformation
-          numérique de leur organisation — sans devenir techniciens.
-        </p>
-      </RevealOnScroll>
+      <div className="relative mx-auto max-w-4xl px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-28">
+        <RevealOnScroll>
+          <Badge variant="secondary" className="gap-1.5 rounded-full px-3 py-1 font-normal">
+            <span className="relative flex size-1.5">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground/60 motion-reduce:hidden" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
+            </span>
+            {t("eyebrow")}
+          </Badge>
+        </RevealOnScroll>
 
-      <RevealOnScroll delay={350} className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-        <Button size="lg" render={<Link href="/apply">{t("applyCta")}</Link>} />
-        <Button size="lg" variant="outline" render={<Link href="/program">{t("exploreCta")}</Link>} />
-      </RevealOnScroll>
+        <BlurText
+          as="h1"
+          text={t("headline")}
+          animateBy="words"
+          delay={70}
+          className="mt-6 justify-center text-balance font-heading text-4xl leading-[1.05] font-semibold tracking-tight sm:text-6xl"
+        />
 
-      <RevealOnScroll
-        delay={450}
-        className="mx-auto mt-14 flex max-w-xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-muted-foreground"
-      >
-        <span>{cohort.durationWeeks} semaines</span>
-        <span aria-hidden>·</span>
-        <span>
-          {cohort.minSeats}–{cohort.maxSeats} participants
-        </span>
-        <span aria-hidden>·</span>
-        <span>{cohort.liveSessionsPerWeek} sessions live / semaine</span>
-        <span aria-hidden>·</span>
-        <span>Conakry · Guinée</span>
-      </RevealOnScroll>
+        <RevealOnScroll delay={250}>
+          <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
+            {t("subhead")}
+          </p>
+        </RevealOnScroll>
+
+        <RevealOnScroll
+          delay={380}
+          className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        >
+          <Button
+            size="lg"
+            className="pr-1.5"
+            render={
+              <Link href="/apply">
+                <span>{tc("applyCta")}</span>
+                <ChevronRight className="opacity-50" />
+              </Link>
+            }
+          />
+          <Button
+            size="lg"
+            variant="outline"
+            render={<Link href="/diagnostic">{tc("diagnosticCta")}</Link>}
+          />
+        </RevealOnScroll>
+
+        <RevealOnScroll delay={480} className="mt-16">
+          <dl className="mx-auto grid max-w-lg grid-cols-3 gap-px overflow-hidden rounded-2xl border bg-border">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-background px-4 py-5">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="font-heading text-3xl font-semibold tabular-nums">
+                  <CountUp to={stat.value} locale={locale} />
+                </dd>
+                <p className="mt-1 text-xs text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
+          </dl>
+        </RevealOnScroll>
+      </div>
     </section>
   )
 }

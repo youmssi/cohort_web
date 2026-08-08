@@ -1,53 +1,163 @@
 {
   "Metadata": {
-    "siteName": "Digital Leadership Immersion",
-    "titleTemplate": "%s · Digital Leadership Immersion",
-    "defaultTitle": "Digital Leadership Immersion — Comprendre la technologie. Diriger le changement.",
-    "description": "Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui doivent comprendre la technologie, évaluer l'IA et diriger la transformation numérique de leur organisation."
+    "siteName": "Coh0rt",
+    "defaultTitle": "Coh0rt · Comprendre la technologie, diriger la décision",
+    "description": "Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui doivent évaluer l'IA, challenger un fournisseur et diriger la transformation numérique de leur organisation.",
+    "pages": {
+      "program": { "title": "Le programme", "description": "16 semaines, 4 phases, 10 compétences et un projet de transformation défendu en fin de parcours." },
+      "method": { "title": "La méthode", "description": "Défi, investigation, pairs, application, défense. La boucle d'apprentissage qui structure chaque semaine." },
+      "curriculum": { "title": "Les 16 semaines", "description": "Comprendre, Explorer, Transformer, Diriger. Chaque semaine part d'un problème réel et se termine par un livrable." },
+      "competencies": { "title": "Les compétences", "description": "Dix compétences de leadership numérique. Pas un catalogue d'outils, un système de jugement." },
+      "admissions": { "title": "Admissions", "description": "L'admission est sélective. Nous nous soucions de la qualité de la cohorte, pas du nombre de participants." },
+      "cohort": { "title": "Cohorte 01", "description": "La première cohorte reste volontairement restreinte pour préserver la qualité de l'apprentissage entre pairs." },
+      "faq": { "title": "Questions fréquentes", "description": "Durée, engagement, tarif, admission et certification." }
+    }
   },
   "Nav": {
-    "program": "Le programme",
-    "method": "La méthode",
-    "curriculum": "Les 16 semaines",
+    "program": "Programme",
+    "method": "Méthode",
+    "curriculum": "16 semaines",
     "competencies": "Compétences",
     "admissions": "Admissions",
     "cohort": "Cohorte 01",
     "faq": "FAQ",
     "diagnostic": "Diagnostic",
     "apply": "Postuler",
-    "skipToContent": "Aller au contenu",
     "toggleMenu": "Ouvrir le menu",
-    "toggleTheme": "Changer de thème"
+    "toggleTheme": "Changer de thème",
+    "menuTitle": "Navigation"
   },
   "Common": {
     "applyCta": "Postuler pour la Cohorte 01",
     "exploreCta": "Découvrir le programme",
     "diagnosticCta": "Faire le diagnostic",
-    "readMore": "En savoir plus",
     "previous": "Précédent",
     "continue": "Continuer",
-    "back": "Retour",
     "week": "Semaine",
-    "phase": "Phase"
+    "phase": "Phase",
+    "weeksLabel": "semaines",
+    "participantsLabel": "participants",
+    "competenciesLabel": "compétences",
+    "sessionsLabel": "sessions live par semaine",
+    "selectiveAdmission": "Admission sélective",
+    "allCompetencies": "Toutes les compétences",
+    "location": "Conakry · Guinée"
+  },
+  "Home": {
+    "eyebrow": "Cohorte 01 · Candidatures ouvertes",
+    "headline": "Comprendre la technologie. Diriger la décision.",
+    "subhead": "Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui doivent évaluer l'IA, challenger un fournisseur et conduire une transformation numérique, sans devenir techniciens.",
+    "positioningTitle": "Vous n'avez pas besoin de devenir technicien.",
+    "positioningBody": "Vous avez besoin de comprendre suffisamment la technologie pour poser la bonne question, évaluer une option, reconnaître un risque et défendre une décision.",
+    "positioningClosing": "La littératie numérique devient une littératie de leadership.",
+    "audienceTitle": "Conçu pour des personnes qui portent une responsabilité",
+    "audienceSubtitle": "Trois profils, un même besoin : décider juste quand la technologie entre dans l'équation.",
+    "capabilitiesTitle": "Les dix capacités que vous développez",
+    "capabilitiesSubtitle": "Pas un catalogue d'outils. Un système de jugement qui survit aux effets de mode.",
+    "methodTitle": "On conteste les idées, jamais les personnes",
+    "methodSubtitle": "Le facilitateur ne donne pas la réponse. Il vous aide à apprendre comment la trouver, l'évaluer et la défendre.",
+    "journeyTitle": "Quatre phases, seize semaines, un défi de transformation",
+    "journeySubtitle": "Chaque semaine part d'un problème réel et se termine par un livrable que vous pouvez rapporter à votre organisation.",
+    "admissionsTitle": "L'admission commence par une conversation",
+    "admissionsSubtitle": "Nous ne cherchons pas à remplir des places. Nous cherchons des personnes prêtes à apprendre, contribuer et se laisser challenger.",
+    "finalTitle": "Le monde n'a pas besoin de plus de dirigeants qui connaissent le vocabulaire de la technologie.",
+    "finalSubtitle": "Il a besoin de dirigeants qui savent quoi en faire."
+  },
+  "Method": {
+    "steps": {
+      "challenge": { "title": "Défi", "body": "Vous partez d'un problème d'entreprise réel, pas d'une théorie." },
+      "investigate": { "title": "Investiguer", "body": "Vous recherchez, expérimentez et construisez une première réponse." },
+      "peer": { "title": "Pairs", "body": "Vos pairs challengent votre raisonnement, pas votre personne." },
+      "apply": { "title": "Appliquer", "body": "Vous transformez votre analyse en recommandation concrète." },
+      "defend": { "title": "Défendre", "body": "Vous expliquez, justifiez et défendez votre décision." }
+    },
+    "charterTitle": "La charte de cohorte",
+    "charterSubtitle": "Ce que chaque participant accepte en rejoignant le groupe.",
+    "charter": {
+      "curiosity": { "title": "Curiosité", "body": "Poser une question avant de supposer une réponse." },
+      "humility": { "title": "Humilité", "body": "Accepter d'avoir tort et de réviser sa position." },
+      "respect": { "title": "Respect", "body": "Challenger les idées, jamais les personnes." },
+      "contribution": { "title": "Contribution", "body": "Donner autant que l'on reçoit du groupe." },
+      "confidentiality": { "title": "Confidentialité", "body": "Protéger les informations professionnelles des pairs." },
+      "accountability": { "title": "Redevabilité", "body": "Faire ce que l'on s'est engagé à faire." }
+    }
+  },
+  "Admissions": {
+    "steps": {
+      "diagnostic": { "title": "Diagnostic", "body": "Vous situez votre jugement numérique en quinze minutes." },
+      "application": { "title": "Candidature", "body": "Vous nous parlez de votre contexte et de votre défi réel." },
+      "conversation": { "title": "Conversation", "body": "Un échange de vingt à trente minutes pour évaluer l'adéquation." },
+      "decision": { "title": "Décision", "body": "Vous recevez une réponse claire, admis ou non pour cette cohorte." }
+    },
+    "title": "Tout le monde n'a pas besoin de ce programme",
+    "subtitle": "Nous nous soucions davantage de la qualité de la cohorte que du nombre de participants.",
+    "fitTitle": "Ce programme est pour vous si",
+    "fit": [
+      "Vous avez une responsabilité réelle et un problème concret à investiguer.",
+      "Vous êtes curieux face à ce que vous ne comprenez pas encore.",
+      "Vous acceptez d'être challengé et de challenger vos pairs avec respect.",
+      "Vous pouvez vous engager sur les 16 semaines."
+    ],
+    "notFitTitle": "Ce n'est probablement pas pour vous si",
+    "notFit": [
+      "Vous cherchez une bibliothèque de vidéos à consommer passivement.",
+      "Vous voulez uniquement un certificat.",
+      "Vous cherchez une formation en programmation.",
+      "Vous ne pouvez pas participer aux sessions live."
+    ]
+  },
+  "Cohort": {
+    "eyebrow": "Cohorte fondatrice",
+    "subtitle": "La première cohorte reste volontairement restreinte. C'est une décision pédagogique, pas une rareté artificielle.",
+    "facts": {
+      "duration": "Durée",
+      "participants": "Participants",
+      "format": "Format",
+      "sessions": "Sessions",
+      "location": "Lieu",
+      "admission": "Admission"
+    },
+    "factValues": {
+      "format": "En ligne, en direct",
+      "admission": "Sur candidature",
+      "participantsMax": "12 maximum"
+    }
+  },
+  "Pricing": {
+    "eyebrow": "Investissement",
+    "note": "Cohorte fondatrice · paiement dû après admission",
+    "includes": "Ce que couvre votre inscription",
+    "inclusions": [
+      "Diagnostic d'admission",
+      "16 semaines de programme",
+      "1 à 2 sessions live par semaine",
+      "Cohorte de pairs et relecture croisée",
+      "Retours du facilitateur",
+      "Projet final et soutenance",
+      "Profil de compétences",
+      "Communauté des anciens"
+    ]
+  },
+  "Curriculum": {
+    "objective": "Objectif",
+    "challenge": "Défi",
+    "deliverable": "Livrable",
+    "nextWeek": "Semaine suivante",
+    "prevWeek": "Semaine précédente",
+    "backToCurriculum": "Retour aux 16 semaines"
   },
   "Footer": {
     "tagline": "Comprendre la technologie. Remettre en question les évidences. Décider mieux. Diriger le changement.",
-    "location": "Conakry · Guinée",
     "rights": "Tous droits réservés.",
-    "sections": {
-      "program": "Programme",
-      "company": "À propos"
-    }
+    "sections": { "program": "Programme", "company": "Admissions" }
   },
   "Diagnostic": {
     "eyebrow": "Diagnostic Digital Leadership",
     "title": "Où en est votre jugement numérique ?",
-    "intro": "36 questions de mise en situation, réparties sur 10 compétences. Il n'y a pas de piège technique : nous évaluons votre raisonnement face à des décisions réelles.",
-    "startCta": "Commencer le diagnostic",
+    "intro": "Trente-trois mises en situation réparties sur dix compétences. Il n'y a pas de piège technique : nous évaluons votre raisonnement face à des décisions réelles.",
     "duration": "Environ 15 minutes",
     "progress": "Question {current} sur {total}",
     "submit": "Voir mon profil",
-    "loadingResult": "Calcul de votre profil…",
     "resultTitle": "Votre profil Digital Leadership",
     "overall": "Score global",
     "strongest": "Votre point fort",
@@ -60,13 +170,17 @@
       "advanced": "Avancé"
     },
     "applyPrompt": "Si ces enjeux correspondent à vos responsabilités actuelles, la Cohorte 01 est ouverte aux candidatures.",
-    "applyCta": "Postuler pour la Cohorte 01",
-    "restart": "Refaire le diagnostic"
+    "restart": "Refaire le diagnostic",
+    "emailPlaceholder": "vous@organisation.com",
+    "emailCta": "Recevoir par e-mail",
+    "emailSent": "Envoyé. Vous recevrez votre profil détaillé par e-mail.",
+    "emailError": "L'envoi a échoué. Vérifiez votre adresse et réessayez."
   },
   "Apply": {
     "eyebrow": "Cohorte 01 · Candidature",
     "title": "Postuler pour la Cohorte 01",
-    "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement — 8 à 12 places seulement.",
+    "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement, pour 8 à 12 places seulement.",
+    "sections": { "identity": "Votre profil", "context": "Votre contexte", "commitment": "Votre engagement" },
     "fields": {
       "fullName": "Nom complet",
       "email": "Adresse e-mail",
@@ -78,20 +192,18 @@
       "motivation": "Pourquoi ce programme, maintenant ?",
       "commitment": "Pouvez-vous vous engager sur une session live par semaine et le travail entre les sessions ?"
     },
+    "hints": {
+      "challenge": "Un problème concret de votre organisation, pas un sujet théorique.",
+      "motivation": "Ce qui a changé récemment dans vos responsabilités."
+    },
     "commitmentOptions": {
       "yes": "Oui, je peux m'engager pleinement",
-      "unsure": "Je ne suis pas encore certain·e de ma disponibilité"
+      "unsure": "Je ne suis pas encore certain de ma disponibilité"
     },
     "submit": "Envoyer ma candidature",
-    "submitting": "Envoi en cours…",
-    "successTitle": "Candidature reçue.",
+    "submitting": "Envoi en cours",
+    "successTitle": "Candidature reçue",
     "successBody": "Nous examinons chaque candidature individuellement et revenons vers vous par e-mail ou WhatsApp pour la suite.",
-    "errorTitle": "Une erreur est survenue",
-    "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez ou écrivez-nous directement.",
-    "validation": {
-      "required": "Ce champ est requis.",
-      "email": "Adresse e-mail invalide.",
-      "tooShort": "Merci de développer un peu plus votre réponse."
-    }
+    "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez dans un instant."
   }
 }

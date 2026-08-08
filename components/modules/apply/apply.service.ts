@@ -14,7 +14,7 @@ const initialState: ApplyState = { status: "idle" }
 export { initialState as applyInitialState }
 
 /**
- * SERVICE — the only layer that touches the email provider for this module.
+ * SERVICE. The only layer that touches the email provider for this module.
  * Validates with the same Zod contract shared with the client, so there's no
  * duplicated validation logic between UI and server.
  */
@@ -48,9 +48,9 @@ export async function submitApplication(
   if (contact.applicationNotificationEmail) {
     await sendNotificationEmail({
       to: contact.applicationNotificationEmail,
-      subject: `${cohort.code} — Nouvelle candidature : ${data.fullName}`,
+      subject: `${cohort.code} · Nouvelle candidature : ${data.fullName}`,
       html: `
-        <p><strong>${data.fullName}</strong> — ${data.role}, ${data.organization} (${data.industry})</p>
+        <p><strong>${data.fullName}</strong> · ${data.role}, ${data.organization} (${data.industry})</p>
         <p>Email : ${data.email} · Téléphone : ${data.phone}</p>
         <p>Engagement : ${data.commitment === "yes" ? "Confirmé" : "Incertain"}</p>
         <p><strong>Défi :</strong> ${data.challenge}</p>

@@ -1,36 +1,69 @@
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+"use client"
 
-const steps = [
-  { title: "Défi", body: "Vous partez d'un problème d'entreprise réel — pas d'une théorie." },
-  { title: "Investiguer", body: "Vous recherchez, expérimentez et construisez une première réponse." },
-  { title: "Pairs", body: "Vos pairs challengent votre raisonnement — pas votre personne." },
-  { title: "Appliquer", body: "Vous transformez votre analyse en recommandation concrète." },
-  { title: "Défendre", body: "Vous expliquez, justifiez et défendez votre décision." },
-] as const
+import dynamic from "next/dynamic"
+import { useTranslations } from "next-intl"
+
+import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { Skeleton } from "@/components/ui/skeleton"
+import type { FlowStep } from "./method-flow-canvas"
+
+/**
+ * React Flow ships a non-trivial runtime, and this diagram is decorative rather
+ * than load bearing. It is loaded on the client only, behind a skeleton, so it
+ * never blocks the first paint. The static list below stays in the markup for
+ * crawlers, assistive technology and anyone on reduced motion.
+ */
+const MethodFlowCanvas = dynamic(() => import("./method-flow-canvas"), {
+  ssr: false,
+  loading: () => <Skeleton className="h-[380px] w-full rounded-2xl" />,
+})
+
+const stepKeys = ["challenge", "investigate", "peer", "apply", "defend"] as const
 
 export function MethodologyLoop() {
+  const t = useTranslations("Method")
+  const tHome = useTranslations("Home")
+
+  const steps: FlowStep[] = stepKeys.map((key) => ({
+    id: key,
+    title: t(`steps.${key}.title`),
+    body: t(`steps.${key}.body`),
+  }))
+
   return (
     <section id="method" className="border-y bg-muted/30">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <RevealOnScroll as="h2" className="text-balance text-center font-heading text-3xl font-semibold sm:text-4xl">
-          On ne conteste pas les idées, jamais les personnes.
+      <div className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
+        <RevealOnScroll
+          as="h2"
+          className="mx-auto max-w-2xl text-balance text-center font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
+        >
+          {tHome("methodTitle")}
         </RevealOnScroll>
-        <RevealOnScroll delay={100} className="mx-auto mt-3 max-w-xl text-center text-muted-foreground">
-          Le facilitateur ne vous donne pas la réponse. Il vous aide à apprendre comment la
-          trouver, l&apos;évaluer et la défendre.
+        <RevealOnScroll
+          delay={120}
+          className="mx-auto mt-4 max-w-xl text-pretty text-center text-muted-foreground"
+        >
+          {tHome("methodSubtitle")}
         </RevealOnScroll>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-5">
+        <RevealOnScroll delay={220} className="mt-12 overflow-hidden rounded-2xl border bg-card">
+          <MethodFlowCanvas steps={steps} />
+        </RevealOnScroll>
+
+        {/* Text equivalent of the diagram. Always rendered for a11y and crawlers. */}
+        <ol className="mt-10 grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {steps.map((step, index) => (
-            <RevealOnScroll key={step.title} delay={index * 80} className="text-center">
-              <p className="mx-auto flex size-9 items-center justify-center rounded-full border font-mono text-xs">
-                {(index + 1).toString().padStart(2, "0")}
+            <RevealOnScroll key={step.id} as="li" delay={index * 70}>
+              <p className="font-mono text-[0.625rem] text-muted-foreground">
+                {String(index + 1).padStart(2, "0")}
               </p>
-              <p className="mt-3 font-heading text-sm font-semibold">{step.title}</p>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{step.body}</p>
+              <p className="mt-1 font-heading text-sm font-semibold">{step.title}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                {step.body}
+              </p>
             </RevealOnScroll>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

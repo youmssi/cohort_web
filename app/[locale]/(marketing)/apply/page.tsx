@@ -1,13 +1,19 @@
-import { setRequestLocale, getTranslations } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import type { Locale } from "@/i18n/routing"
 import { buildMetadata } from "@/lib/seo"
+import { PageHeader } from "@/components/marketing/page-header"
 import { ApplicationForm } from "@/components/modules/apply"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "Apply" })
-  return buildMetadata({ locale, path: "/apply", title: t("title"), description: t("intro") })
+  return buildMetadata({
+    locale,
+    path: "/apply",
+    title: t("title"),
+    description: t("intro"),
+  })
 }
 
 export default async function ApplyPage({
@@ -20,18 +26,9 @@ export default async function ApplyPage({
   const t = await getTranslations({ locale, namespace: "Apply" })
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6">
-      <p className="text-center text-xs font-medium tracking-wide text-muted-foreground uppercase">
-        {t("eyebrow")}
-      </p>
-      <h1 className="mt-3 text-balance text-center font-heading text-3xl font-semibold sm:text-4xl">
-        {t("title")}
-      </h1>
-      <p className="mx-auto mt-4 max-w-lg text-pretty text-center text-muted-foreground">
-        {t("intro")}
-      </p>
-
-      <div className="mt-14">
+    <div className="pb-24">
+      <PageHeader eyebrow={t("eyebrow")} title={t("title")} description={t("intro")} />
+      <div className="mx-auto mt-14 max-w-xl px-4 sm:px-6">
         <ApplicationForm />
       </div>
     </div>

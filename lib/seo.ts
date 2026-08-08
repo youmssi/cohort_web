@@ -10,7 +10,7 @@ function localizedPath(locale: Locale, path: string) {
 }
 
 /**
- * Shared `generateMetadata` builder — every marketing page calls this so title
+ * Shared `generateMetadata` builder. Every marketing page calls this so title
  * templating, canonical URLs and hreflang alternates stay consistent.
  */
 export async function buildMetadata({
@@ -29,6 +29,7 @@ export async function buildMetadata({
   const resolvedDescription = description ?? t("description")
 
   return {
+    metadataBase: new URL(site.url),
     title: resolvedTitle,
     description: resolvedDescription,
     alternates: {

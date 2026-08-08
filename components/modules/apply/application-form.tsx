@@ -2,6 +2,7 @@
 
 import { useActionState } from "react"
 import { useTranslations } from "next-intl"
+import { CheckCircle2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -9,7 +10,6 @@ import {
   FieldContent,
   FieldDescription,
   FieldError,
-  FieldGroup,
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
@@ -19,22 +19,36 @@ import { Textarea } from "@/components/ui/textarea"
 
 import { applyInitialState, submitApplication } from "./apply.service"
 
+function Section({ title, children }: React.PropsWithChildren<{ title: string }>) {
+  return (
+    <fieldset className="rounded-2xl border bg-card p-6">
+      <legend className="px-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        {title}
+      </legend>
+      <div className="mt-2 space-y-5">{children}</div>
+    </fieldset>
+  )
+}
+
 export function ApplicationForm() {
   const t = useTranslations("Apply")
   const [state, formAction, pending] = useActionState(submitApplication, applyInitialState)
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border p-8 text-center">
-        <p className="font-heading text-2xl font-semibold">{t("successTitle")}</p>
-        <p className="mt-2 text-pretty text-muted-foreground">{t("successBody")}</p>
+      <div className="rounded-2xl border bg-card p-10 text-center">
+        <CheckCircle2 className="mx-auto size-8 text-foreground" />
+        <p className="mt-4 font-heading text-2xl font-semibold">{t("successTitle")}</p>
+        <p className="mx-auto mt-3 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
+          {t("successBody")}
+        </p>
       </div>
     )
   }
 
   return (
-    <form action={formAction} className="space-y-8">
-      <FieldGroup>
+    <form action={formAction} className="space-y-4">
+      <Section title={t("sections.identity")}>
         <Field>
           <FieldLabel htmlFor="fullName">{t("fields.fullName")}</FieldLabel>
           <FieldContent>
@@ -43,7 +57,7 @@ export function ApplicationForm() {
           </FieldContent>
         </Field>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           <Field>
             <FieldLabel htmlFor="email">{t("fields.email")}</FieldLabel>
             <FieldContent>
@@ -59,19 +73,21 @@ export function ApplicationForm() {
             </FieldContent>
           </Field>
         </div>
+      </Section>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+      <Section title={t("sections.context")}>
+        <div className="grid gap-5 sm:grid-cols-3">
           <Field>
             <FieldLabel htmlFor="role">{t("fields.role")}</FieldLabel>
             <FieldContent>
-              <Input id="role" name="role" required />
+              <Input id="role" name="role" required autoComplete="organization-title" />
               <FieldError>{state.fieldErrors?.role}</FieldError>
             </FieldContent>
           </Field>
           <Field>
             <FieldLabel htmlFor="organization">{t("fields.organization")}</FieldLabel>
             <FieldContent>
-              <Input id="organization" name="organization" required />
+              <Input id="organization" name="organization" required autoComplete="organization" />
               <FieldError>{state.fieldErrors?.organization}</FieldError>
             </FieldContent>
           </Field>
@@ -88,6 +104,7 @@ export function ApplicationForm() {
           <FieldLabel htmlFor="challenge">{t("fields.challenge")}</FieldLabel>
           <FieldContent>
             <Textarea id="challenge" name="challenge" required rows={4} />
+            <FieldDescription>{t("hints.challenge")}</FieldDescription>
             <FieldError>{state.fieldErrors?.challenge}</FieldError>
           </FieldContent>
         </Field>
@@ -96,37 +113,36 @@ export function ApplicationForm() {
           <FieldLabel htmlFor="motivation">{t("fields.motivation")}</FieldLabel>
           <FieldContent>
             <Textarea id="motivation" name="motivation" required rows={4} />
+            <FieldDescription>{t("hints.motivation")}</FieldDescription>
             <FieldError>{state.fieldErrors?.motivation}</FieldError>
           </FieldContent>
         </Field>
+      </Section>
 
+      <Section title={t("sections.commitment")}>
         <Field>
           <FieldLabel>{t("fields.commitment")}</FieldLabel>
           <FieldContent>
-            <RadioGroup name="commitment" defaultValue="yes" className="gap-2">
-              <div className="flex items-center gap-2">
-                <RadioGroupItem value="yes" id="commitment-yes" />
-                <Label htmlFor="commitment-yes" className="font-normal">
-                  {t("commitmentOptions.yes")}
-                </Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <RadioGroupItem value="unsure" id="commitment-unsure" />
-                <Label htmlFor="commitment-unsure" className="font-normal">
-                  {t("commitmentOptions.unsure")}
-                </Label>
-              </div>
+            <RadioGroup name="commitment" defaultValue="yes" className="gap-3">
+              {(["yes", "unsure"] as const).map((value) => (
+                <div key={value} className="flex items-center gap-2.5">
+                  <RadioGroupItem value={value} id={`commitment-${value}`} />
+                  <Label htmlFor={`commitment-${value}`} className="font-normal">
+                    {t(`commitmentOptions.${value}`)}
+                  </Label>
+                </div>
+              ))}
             </RadioGroup>
             <FieldError>{state.fieldErrors?.commitment}</FieldError>
           </FieldContent>
         </Field>
-      </FieldGroup>
+      </Section>
 
       {state.status === "error" && !state.fieldErrors && (
-        <FieldDescription className="text-destructive">{t("errorBody")}</FieldDescription>
+        <p className="text-sm text-destructive">{t("errorBody")}</p>
       )}
 
-      <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
+      <Button type="submit" size="lg" disabled={pending} className="w-full">
         {pending ? t("submitting") : t("submit")}
       </Button>
     </form>

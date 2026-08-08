@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl"
 
 import { Link } from "@/i18n/navigation"
+import { Logo } from "@/components/brand/logo"
+import { site } from "@/lib/constants"
 
 const programLinks = [
   { href: "/program", key: "program" },
@@ -9,57 +11,74 @@ const programLinks = [
   { href: "/competencies", key: "competencies" },
 ] as const
 
-const companyLinks = [
+const admissionLinks = [
   { href: "/admissions", key: "admissions" },
   { href: "/cohort-01", key: "cohort" },
+  { href: "/diagnostic", key: "diagnostic" },
   { href: "/faq", key: "faq" },
-  { href: "/apply", key: "apply" },
 ] as const
 
 export function SiteFooter() {
   const tNav = useTranslations("Nav")
   const tFooter = useTranslations("Footer")
+  const tCommon = useTranslations("Common")
 
   return (
-    <footer className="border-t">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr]">
-        <div className="space-y-3">
-          <p className="font-heading text-sm font-semibold">Digital Leadership Immersion</p>
-          <p className="max-w-sm text-pretty text-sm text-muted-foreground">
+    <footer className="border-t border-border/70">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1.6fr_1fr_1fr]">
+        <div className="space-y-4">
+          <Logo />
+          <p className="max-w-xs text-pretty text-sm leading-relaxed text-muted-foreground">
             {tFooter("tagline")}
           </p>
-          <p className="text-xs text-muted-foreground">{tFooter("location")}</p>
+          <p className="text-xs text-muted-foreground">{tCommon("location")}</p>
         </div>
 
-        <div className="space-y-2 text-sm">
+        <nav className="space-y-3 text-sm">
           <p className="font-medium">{tFooter("sections.program")}</p>
-          {programLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {tNav(item.key)}
-            </Link>
-          ))}
-        </div>
+          <div className="flex flex-col gap-2">
+            {programLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {tNav(item.key)}
+              </Link>
+            ))}
+          </div>
+        </nav>
 
-        <div className="space-y-2 text-sm">
+        <nav className="space-y-3 text-sm">
           <p className="font-medium">{tFooter("sections.company")}</p>
-          {companyLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {tNav(item.key)}
-            </Link>
-          ))}
-        </div>
+          <div className="flex flex-col gap-2">
+            {admissionLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {tNav(item.key)}
+              </Link>
+            ))}
+          </div>
+        </nav>
       </div>
 
-      <div className="border-t px-4 py-6 text-center text-xs text-muted-foreground sm:px-6">
-        © {new Date().getFullYear()} Digital Leadership Immersion — {tFooter("rights")}
+      <div className="border-t border-border/70">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:px-6">
+          <p>
+            © {new Date().getFullYear()} {site.name}. {tFooter("rights")}
+          </p>
+          <a
+            href={site.builtByUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-foreground"
+          >
+            {site.builtBy}
+          </a>
+        </div>
       </div>
     </footer>
   )
