@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Logo } from "@/components/brand/logo"
 import { SocialLinks } from "@/components/brand/social-links"
-import { currentCohort } from "@/lib/cohorts"
 import { site } from "@/lib/constants"
 
 const programLinks = [
@@ -15,7 +14,7 @@ const programLinks = [
 
 const admissionLinks = [
   { href: "/admissions", key: "admissions" },
-  { href: `/cohorts/${currentCohort().id}`, key: "cohort" },
+  { href: "/cohorts", key: "cohorts" },
   { href: "/diagnostic", key: "diagnostic" },
   { href: "/faq", key: "faq" },
   { href: "/contact", key: "contact" },

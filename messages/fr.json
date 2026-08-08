@@ -35,6 +35,10 @@
       "contact": {
         "title": "Contact",
         "description": "Une question sur {cohort}, le parrainage d'entreprise ou l'admission ? Écrivez-nous ou réservez un échange."
+      },
+      "cohorts": {
+        "title": "Les coh0rtes",
+        "description": "Chaque session, ses dates et son statut. La coh0rte fondatrice ouvre en novembre 2026 à Conakry."
       }
     }
   },
@@ -44,14 +48,14 @@
     "curriculum": "16 semaines",
     "competencies": "Compétences",
     "admissions": "Admissions",
-    "cohort": "La cohorte",
     "faq": "FAQ",
     "diagnostic": "Diagnostic",
     "apply": "Postuler",
     "toggleMenu": "Ouvrir le menu",
     "toggleTheme": "Changer de thème",
     "menuTitle": "Navigation",
-    "contact": "Contact"
+    "contact": "Contact",
+    "cohorts": "Coh0rtes"
   },
   "Common": {
     "applyCta": "Postuler pour {cohort}",
@@ -203,7 +207,7 @@
       "end": "Fin de la cohorte"
     },
     "nextCohortTitle": "Prochaine session",
-    "nextCohortBody": "Les dates de la session suivante seront annoncées à la fin de la Coh0rt 26A. Rejoignez nos canaux pour être informé en premier."
+    "nextCohortBody": "Dates annoncées à la fin de la Coh0rt 26A."
   },
   "Pricing": {
     "eyebrow": "Investissement",
@@ -470,5 +474,17 @@
     "title": "Faire financer une place par votre entreprise",
     "body": "Une organisation peut inscrire un collaborateur, ou plusieurs. La candidature reste individuelle et la sélection inchangée : c'est la personne qui rejoint la cohorte, pas l'entreprise. Précisez-le dans votre candidature ou écrivez-nous, nous organisons l'échange avec les personnes concernées.",
     "cta": "Discuter d'un parrainage"
+  },
+  "Cohorts": {
+    "hint": "Faites défiler ou glissez pour changer de session.",
+    "seatsValue": "{min} à {max} participants",
+    "labels": {
+      "dates": "Déroulement",
+      "applications": "Candidatures",
+      "seats": "Places",
+      "tuition": "Tarif",
+      "founding": "Fondatrice",
+      "view": "Voir la session"
+    }
   }
 }

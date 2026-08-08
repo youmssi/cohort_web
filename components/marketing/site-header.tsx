@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/sheet"
 import { ButtonLink } from "@/components/shared"
 import { Logo } from "@/components/brand/logo"
-import { currentCohort } from "@/lib/cohorts"
 import { LocaleSwitch } from "@/components/shared"
 import { ThemeToggle } from "@/components/shared"
 
@@ -28,7 +27,7 @@ const navItems = [
 
 const mobileItems = [
   ...navItems,
-  { href: `/cohorts/${currentCohort().id}`, key: "cohort" },
+  { href: "/cohorts", key: "cohorts" },
   { href: "/faq", key: "faq" },
 ] as const
 

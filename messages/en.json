@@ -35,6 +35,10 @@
       "contact": {
         "title": "Contact",
         "description": "A question about {cohort}, corporate sponsorship or admission? Write to us or book a short call."
+      },
+      "cohorts": {
+        "title": "The coh0rts",
+        "description": "Every session, its dates and its status. The founding coh0rt opens in November 2026 in Conakry."
       }
     }
   },
@@ -44,14 +48,14 @@
     "curriculum": "16 weeks",
     "competencies": "Capabilities",
     "admissions": "Admissions",
-    "cohort": "The cohort",
     "faq": "FAQ",
     "diagnostic": "Diagnostic",
     "apply": "Apply",
     "toggleMenu": "Open menu",
     "toggleTheme": "Toggle theme",
     "menuTitle": "Navigation",
-    "contact": "Contact"
+    "contact": "Contact",
+    "cohorts": "Coh0rts"
   },
   "Common": {
     "applyCta": "Apply for {cohort}",
@@ -203,7 +207,7 @@
       "end": "Cohort ends"
     },
     "nextCohortTitle": "Next session",
-    "nextCohortBody": "Dates for the following session are announced as Coh0rt 26A finishes. Join our channels to hear first."
+    "nextCohortBody": "Dates announced as Coh0rt 26A finishes."
   },
   "Pricing": {
     "eyebrow": "Investment",
@@ -470,5 +474,17 @@
     "title": "Having a seat funded by your organisation",
     "body": "An organisation can enrol one employee, or several. The application stays individual and the selection unchanged: it is the person who joins the cohort, not the company. Mention it in your application or write to us, and we will arrange the conversation with the people involved.",
     "cta": "Discuss sponsorship"
+  },
+  "Cohorts": {
+    "hint": "Scroll or drag to change session.",
+    "seatsValue": "{min} to {max} participants",
+    "labels": {
+      "dates": "Runs",
+      "applications": "Applications",
+      "seats": "Seats",
+      "tuition": "Tuition",
+      "founding": "Founding",
+      "view": "View session"
+    }
   }
 }

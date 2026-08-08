@@ -147,7 +147,8 @@ export default async function CohortPage({
       <Prerequisites locale={locale} />
       <PricingSection locale={locale} cohort={session} />
 
-      <section className="mx-auto max-w-3xl px-4 pb-4 sm:px-6">
+      {/* mt-12 keeps this clear of the pricing card above it, which ends flush. */}
+      <section className="mx-auto mt-12 max-w-3xl px-4 pb-4 sm:px-6">
         <RevealOnScroll className="rounded-2xl border bg-muted/30 p-6 text-center">
           <p className="font-heading text-base font-semibold">{t("nextCohortTitle")}</p>
           <p className="mx-auto mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">
