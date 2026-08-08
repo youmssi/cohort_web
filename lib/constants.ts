@@ -21,32 +21,41 @@ export const site = {
   bookingUrl: "https://cal.com/mrvin100/discovery",
 } as const
 
+/**
+ * Community and social channels.
+ *
+ * Empty string means "not published yet": every consumer skips the entry
+ * rather than rendering a dead link. Fill these in as the channels go live.
+ */
+export const channels = {
+  whatsappCommunity: "",
+  discord: "",
+  facebook: "",
+} as const
+
+export type ChannelKey = keyof typeof channels
+
+/** Only the channels that actually have a destination. */
+export function liveChannels() {
+  return (Object.entries(channels) as [ChannelKey, string][]).filter(
+    ([, url]) => url.length > 0
+  )
+}
+
 export const program = {
   /** Public-facing name of the flagship experience. */
   name: "Digital Leadership Immersion",
 } as const
 
 export const cohort = {
-  code: "Cohorte 01",
-  minSeats: 8,
-  maxSeats: 12,
+  /**
+   * Programme shape, identical across every session. Per-session facts (name,
+   * status, dates, seats, tuition) live in `lib/cohorts.ts`.
+   */
   durationWeeks: 16,
   phases: 4,
   competencies: 10,
   liveSessionsPerWeek: "1 à 2",
-
-  /**
-   * Founding cohort tuition, per the commercial model in the strategy brief.
-   * `standardTuition` is what later cohorts are expected to pay, shown as an
-   * anchor so the founding rate reads as a stage of the programme rather than a
-   * discount.
-   */
-  tuitionAmount: 3_900_000,
-  standardTuition: 4_500_000,
-  tuitionCurrency: "GNF",
-  /** Split payment: two instalments, slightly higher in total. */
-  instalmentAmount: 2_050_000,
-  instalmentCount: 2,
 } as const
 
 export const contact = {

@@ -8,8 +8,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { MdxContent } from "@/components/mdx-content"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { MdxContent } from "@/components/shared"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 export async function FaqAccordion({
   faqs,

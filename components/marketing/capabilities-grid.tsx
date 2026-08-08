@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 import type { Competency } from "@/.velite"
 import type { Locale } from "@/i18n/routing"
 import { Link } from "@/i18n/navigation"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 export async function CapabilitiesGrid({
   competencies,

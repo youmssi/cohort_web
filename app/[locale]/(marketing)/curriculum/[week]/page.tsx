@@ -3,13 +3,13 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
-import { Link } from "@/i18n/navigation"
 import { getWeek, getWeeks } from "@/lib/content"
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo"
-import { MdxContent } from "@/components/mdx-content"
-import { Button } from "@/components/ui/button"
+import { MdxContent } from "@/components/shared"
 import { Badge } from "@/components/ui/badge"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { ButtonLink } from "@/components/shared"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 export function generateStaticParams({ params }: { params: { locale: string } }) {
   return getWeeks(params.locale as Locale).map((week) => ({ week: String(week.week) }))
@@ -102,38 +102,27 @@ export default async function WeekPage({
 
       <nav className="mt-16 flex items-center justify-between gap-3 border-t pt-6">
         {prev ? (
-          <Button
-            variant="ghost"
-            render={
-              <Link href={`/curriculum/${prev.week}`}>
-                <ArrowLeft className="opacity-50" />
-                <span>
-                  {tc("week")} {prev.week}
-                </span>
-              </Link>
-            }
-          />
+          <ButtonLink href={`/curriculum/${prev.week}`} variant="ghost">
+            <ArrowLeft className="opacity-50" />
+            <span>
+              {tc("week")} {prev.week}
+            </span>
+          </ButtonLink>
         ) : (
-          <Button
-            variant="ghost"
-            render={<Link href="/curriculum">{t("backToCurriculum")}</Link>}
-          />
+          <ButtonLink href="/curriculum" variant="ghost">
+            {t("backToCurriculum")}
+          </ButtonLink>
         )}
 
         {next ? (
-          <Button
-            variant="ghost"
-            render={
-              <Link href={`/curriculum/${next.week}`}>
-                <span>
-                  {tc("week")} {next.week}
-                </span>
-                <ArrowRight className="opacity-50" />
-              </Link>
-            }
-          />
+          <ButtonLink href={`/curriculum/${next.week}`} variant="ghost">
+            <span>
+              {tc("week")} {next.week}
+            </span>
+            <ArrowRight className="opacity-50" />
+          </ButtonLink>
         ) : (
-          <Button render={<Link href="/apply">{tc("applyCta")}</Link>} />
+          <ButtonLink href="/apply">{tc("applyCta", { cohort: cohortName(currentCohort()) })}</ButtonLink>
         )}
       </nav>
     </article>

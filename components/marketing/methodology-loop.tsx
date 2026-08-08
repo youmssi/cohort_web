@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic"
 import { useTranslations } from "next-intl"
 
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { FlowStep } from "./method-flow-canvas"
 

@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server"
 
 import type { Locale } from "@/i18n/routing"
 import { BlurText } from "@/components/animations/blur-text"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 export async function PositioningBreak({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home" })

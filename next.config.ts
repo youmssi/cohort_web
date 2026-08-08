@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
   // instead: every marketing page is still fully static at build time via
   // generateStaticParams, just without the stricter dynamicIO enforcement.
   typedRoutes: true,
+  /** The cohort page moved from a hardcoded slug to the registry-driven route. */
+  async redirects() {
+    return [
+      { source: "/cohort-01", destination: "/cohorts/26a", permanent: true },
+      { source: "/:locale/cohort-01", destination: "/:locale/cohorts/26a", permanent: true },
+    ]
+  },
   images: {
     formats: ["image/avif", "image/webp"],
   },

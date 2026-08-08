@@ -25,7 +25,7 @@
         "description": "L'admission est sélective. Nous nous soucions de la qualité de la cohorte, pas du nombre de participants."
       },
       "cohort": {
-        "title": "Cohorte 01",
+        "title": "{cohort}",
         "description": "La première cohorte reste volontairement restreinte pour préserver la qualité de l'apprentissage entre pairs."
       },
       "faq": {
@@ -34,7 +34,7 @@
       },
       "contact": {
         "title": "Contact",
-        "description": "Une question sur la Cohorte 01, le parrainage d'entreprise ou l'admission ? Écrivez-nous ou réservez un échange."
+        "description": "Une question sur {cohort}, le parrainage d'entreprise ou l'admission ? Écrivez-nous ou réservez un échange."
       }
     }
   },
@@ -44,7 +44,7 @@
     "curriculum": "16 semaines",
     "competencies": "Compétences",
     "admissions": "Admissions",
-    "cohort": "Cohorte 01",
+    "cohort": "La cohorte",
     "faq": "FAQ",
     "diagnostic": "Diagnostic",
     "apply": "Postuler",
@@ -54,7 +54,7 @@
     "contact": "Contact"
   },
   "Common": {
-    "applyCta": "Postuler pour la Cohorte 01",
+    "applyCta": "Postuler pour {cohort}",
     "exploreCta": "Découvrir le programme",
     "diagnosticCta": "Faire le diagnostic",
     "previous": "Précédent",
@@ -72,7 +72,6 @@
     "bookCall": "Réserver un échange"
   },
   "Home": {
-    "eyebrow": "Cohorte 01 · Candidatures ouvertes",
     "headline": "Comprendre la technologie. Diriger la décision.",
     "subhead": "Une immersion sélective de 16 semaines pour dirigeants, directeurs et managers qui doivent évaluer l'IA, challenger un fournisseur et conduire une transformation numérique, sans devenir techniciens.",
     "positioningTitle": "Vous n'avez pas besoin de devenir technicien.",
@@ -194,7 +193,16 @@
       "format": "En ligne, en direct",
       "admission": "Sur candidature",
       "participantsMax": "12 maximum"
-    }
+    },
+    "keyDatesTitle": "Calendrier",
+    "keyDates": {
+      "applicationsOpen": "Ouverture des candidatures",
+      "applicationsClose": "Clôture des candidatures",
+      "start": "Début de la cohorte",
+      "end": "Fin de la cohorte"
+    },
+    "nextCohortTitle": "Prochaine session",
+    "nextCohortBody": "Les dates de la session suivante seront annoncées à la fin de la Coh0rt 26A. Rejoignez nos canaux pour être informé en premier."
   },
   "Pricing": {
     "eyebrow": "Investissement",
@@ -251,7 +259,7 @@
       "strong": "Solide",
       "advanced": "Avancé"
     },
-    "applyPrompt": "Si ces enjeux correspondent à vos responsabilités actuelles, la Cohorte 01 est ouverte aux candidatures.",
+    "applyPrompt": "Si ces enjeux correspondent à vos responsabilités actuelles, {cohort} est ouverte aux candidatures.",
     "restart": "Refaire le diagnostic",
     "emailPlaceholder": "vous@organisation.com",
     "emailCta": "Recevoir par e-mail",
@@ -259,8 +267,8 @@
     "emailError": "L'envoi a échoué. Vérifiez votre adresse et réessayez."
   },
   "Apply": {
-    "eyebrow": "Cohorte 01 · Candidature",
-    "title": "Postuler pour la Cohorte 01",
+    "eyebrow": "{cohort} · Candidature",
+    "title": "Postuler pour {cohort}",
     "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement, pour 8 à 12 places seulement.",
     "sections": {
       "identity": "Votre profil",
@@ -356,7 +364,7 @@
     },
     "responseTitle": "Ce qui se passe ensuite",
     "responseBody": "Nous répondons sous 48 heures ouvrées. Si votre demande concerne une candidature, nous vous orientons directement vers l'étape adaptée plutôt que de vous faire remplir un second formulaire.",
-    "applyNote": "Vous souhaitez rejoindre la Cohorte 01 ? Passez directement par le formulaire de candidature.",
+    "applyNote": "Vous souhaitez rejoindre {cohort} ? Passez directement par le formulaire de candidature.",
     "form": {
       "name": "Nom complet",
       "email": "Adresse e-mail",
@@ -368,5 +376,79 @@
       "submitting": "Envoi en cours",
       "successTitle": "Message reçu"
     }
+  },
+  "CohortStatus": {
+    "upcoming": "Bientôt ouvert",
+    "open": "Candidatures ouvertes",
+    "closed": "Candidatures closes",
+    "running": "Session en cours",
+    "completed": "Session terminée",
+    "notifyCta": "Être prévenu de la prochaine session",
+    "seatsLabel": "places",
+    "datesPending": "Dates communiquées à l'admission"
+  },
+  "Payment": {
+    "title": "Comment se déroule le paiement",
+    "subtitle": "Vous ne payez rien pour candidater. Le paiement n'intervient qu'après une décision d'admission favorable.",
+    "steps": {
+      "apply": {
+        "title": "Candidature",
+        "body": "Gratuite et sans engagement. Vous décrivez votre contexte et le défi que vous souhaitez traiter."
+      },
+      "conversation": {
+        "title": "Conversation",
+        "body": "Un échange de vingt à trente minutes pour vérifier que le programme correspond à votre situation."
+      },
+      "admission": {
+        "title": "Décision d'admission",
+        "body": "Vous recevez une réponse claire. Si elle est favorable, votre lettre d'admission précise le montant, l'échéancier et les modalités de règlement."
+      },
+      "payment": {
+        "title": "Règlement",
+        "body": "En une fois ou en deux versements. Votre place est confirmée à réception du premier règlement."
+      }
+    },
+    "methodsTitle": "Modalités de règlement",
+    "methodsBody": "Les moyens de paiement acceptés et les coordonnées de règlement vous sont communiqués avec votre lettre d'admission. Aucune information de paiement n'est demandée avant l'admission.",
+    "refundTitle": "Places et désistement",
+    "refundBody": "La cohorte étant limitée, une place confirmée est retirée du nombre de places disponibles. Les conditions de désistement sont précisées dans la lettre d'admission avant tout règlement."
+  },
+  "Prerequisites": {
+    "title": "Ce dont vous avez besoin pour suivre le programme",
+    "subtitle": "Rien d'exotique. Mais ces conditions ne sont pas optionnelles : la méthode repose sur votre participation effective.",
+    "items": {
+      "device": {
+        "title": "Un ordinateur",
+        "body": "Les sessions live, les livrables et la relecture entre pairs se font sur ordinateur. Un téléphone ne suffit pas pour produire les livrables."
+      },
+      "connection": {
+        "title": "Une connexion stable",
+        "body": "Suffisante pour une visioconférence hebdomadaire avec caméra. Les ressources écrites restent consultables hors ligne."
+      },
+      "time": {
+        "title": "3 à 5 heures par semaine",
+        "body": "Session live incluse. Certaines semaines de projet demandent 5 à 7 heures. C'est le facteur d'abandon le plus fréquent : évaluez-le honnêtement."
+      },
+      "problem": {
+        "title": "Un problème réel",
+        "body": "Vous arrivez avec un défi concret de votre organisation. Il devient votre fil conducteur sur les seize semaines et la base de votre soutenance."
+      },
+      "language": {
+        "title": "Le français professionnel",
+        "body": "Le programme est animé en français. Le vocabulaire technique international (API, cloud, SaaS) est explicité au fil des semaines."
+      },
+      "posture": {
+        "title": "L'ouverture au challenge",
+        "body": "Vos raisonnements seront contestés par vos pairs et par le facilitateur. C'est le cœur de la méthode, pas un accident."
+      }
+    }
+  },
+  "Channels": {
+    "title": "Rester informé",
+    "subtitle": "Les prochaines sessions, les places restantes et les contenus sont annoncés en premier sur nos canaux.",
+    "whatsappCommunity": "Communauté WhatsApp",
+    "discord": "Serveur Discord",
+    "facebook": "Page Facebook MRVIN100",
+    "pending": "Nos canaux communautaires ouvrent prochainement. En attendant, écrivez-nous directement."
   }
 }

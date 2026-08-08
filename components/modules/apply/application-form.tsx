@@ -17,7 +17,8 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 
-import { applyInitialState, submitApplication } from "./apply.service"
+import { submitApplication } from "./apply.service"
+import { applyInitialState } from "./state"
 
 function Section({ title, children }: React.PropsWithChildren<{ title: string }>) {
   return (

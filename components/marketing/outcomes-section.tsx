@@ -3,7 +3,7 @@ import { FileText, GraduationCap, Layers, Radar, Users } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
 import { SpotlightCard } from "@/components/animations/spotlight-card"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 const items = [
   { key: "blueprint", Icon: FileText, wide: true },

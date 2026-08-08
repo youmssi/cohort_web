@@ -47,7 +47,9 @@ function ThemeHotkey() {
         return
       }
 
-      if (event.key.toLowerCase() !== "d") {
+      // `key` is absent on some synthetic and IME-composed keydown events, so
+      // reading it unguarded throws before the hotkey check can run.
+      if (typeof event.key !== "string" || event.key.toLowerCase() !== "d") {
         return
       }
 

@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server"
 
 import type { Locale } from "@/i18n/routing"
-import { RevealOnScroll } from "@/components/motion/reveal-on-scroll"
+import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
 
 const levels = ["exposure", "understanding", "application", "leadership"] as const
 
