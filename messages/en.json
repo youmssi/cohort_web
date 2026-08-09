@@ -71,7 +71,7 @@
     "sessionsLabel": "live sessions per week",
     "selectiveAdmission": "Selective admission",
     "allCompetencies": "All capabilities",
-    "location": "Conakry · Guinea",
+    "location": "Berlin · Yaoundé · Conakry · online",
     "contactCta": "Contact us",
     "bookCall": "Book a call",
     "bookSlot": "Book a slot"
@@ -248,8 +248,9 @@
     "social": {
       "whatsapp": "WhatsApp",
       "discord": "Discord",
-      "facebook": "Facebook (MRVIN100)",
-      "email": "Email us"
+      "facebook": "Facebook",
+      "email": "Email us",
+      "linkedin": "LinkedIn"
     },
     "channelsNote": "Join our channels to hear when the next coh0rts open."
   },
@@ -473,7 +474,13 @@
   "Corporate": {
     "title": "Having a seat funded by your organisation",
     "body": "An organisation can enrol one employee, or several. The application stays individual and the selection unchanged: it is the person who joins the cohort, not the company. Mention it in your application or write to us, and we will arrange the conversation with the people involved.",
-    "cta": "Discuss sponsorship"
+    "cta": "Discuss sponsorship",
+    "tiers": {
+      "seats": "{count, plural, one {# seat} other {# seats}}",
+      "more": "{seats} seats and above",
+      "custom": "On request"
+    },
+    "pricingNote": "Rates per organisation, for colleagues from the same company joining the same session. An individual seat stays at 3,900,000 GNF for the founding coh0rt. These are commercial hypotheses, confirmed during the conversation."
   },
   "Cohorts": {
     "hint": "Scroll or drag to change session.",

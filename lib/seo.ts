@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
 import { routing, type Locale } from "@/i18n/routing"
-import { cohort, program, site } from "@/lib/constants"
+import { cohort, liveSocials, program, site } from "@/lib/constants"
 import { currentCohort } from "@/lib/cohorts"
 
 export function localizedPath(locale: Locale, path: string) {
@@ -133,14 +133,24 @@ export function organizationJsonLd(locale: Locale) {
       addressLocality: "Conakry",
       addressCountry: "GN",
     },
-    areaServed: { "@type": "Country", name: "Guinea" },
+    // Conakry is the cohort's market and stays the postal address. The
+    // programme is run from Berlin and Yaounde and delivered online, so the
+    // served area is wider than the address suggests.
+    areaServed: [
+      { "@type": "Country", name: "Guinea" },
+      { "@type": "Country", name: "Cameroon" },
+      { "@type": "Country", name: "Germany" },
+    ],
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: locale === "fr" ? "Admissions" : "Admissions",
+      contactType: "Admissions",
       email: site.contactEmail,
       telephone: site.phoneE164,
       availableLanguage: ["fr", "en"],
     },
+    sameAs: liveSocials()
+      .filter((social) => social.key !== "email" && social.key !== "whatsapp")
+      .map((social) => social.url),
   }
 }
 

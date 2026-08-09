@@ -71,7 +71,7 @@
     "sessionsLabel": "sessions live par semaine",
     "selectiveAdmission": "Admission sélective",
     "allCompetencies": "Toutes les compétences",
-    "location": "Conakry · Guinée",
+    "location": "Berlin · Yaoundé · Conakry · en ligne",
     "contactCta": "Nous écrire",
     "bookCall": "Réserver un échange",
     "bookSlot": "Réserver un créneau"
@@ -248,8 +248,9 @@
     "social": {
       "whatsapp": "WhatsApp",
       "discord": "Discord",
-      "facebook": "Facebook (MRVIN100)",
-      "email": "Nous écrire"
+      "facebook": "Facebook",
+      "email": "Nous écrire",
+      "linkedin": "LinkedIn"
     },
     "channelsNote": "Rejoignez nos canaux pour être informé de l'ouverture des prochaines coh0rtes."
   },
@@ -473,7 +474,13 @@
   "Corporate": {
     "title": "Faire financer une place par votre entreprise",
     "body": "Une organisation peut inscrire un collaborateur, ou plusieurs. La candidature reste individuelle et la sélection inchangée : c'est la personne qui rejoint la cohorte, pas l'entreprise. Précisez-le dans votre candidature ou écrivez-nous, nous organisons l'échange avec les personnes concernées.",
-    "cta": "Discuter d'un parrainage"
+    "cta": "Discuter d'un parrainage",
+    "tiers": {
+      "seats": "{count, plural, one {# place} other {# places}}",
+      "more": "{seats} places et plus",
+      "custom": "Sur devis"
+    },
+    "pricingNote": "Tarifs par organisation, pour des collaborateurs d'une même entreprise inscrits sur la même session. Une place individuelle reste à 3 900 000 GNF pour la coh0rte fondatrice. Ces montants sont des hypothèses commerciales, confirmées lors de l'échange."
   },
   "Cohorts": {
     "hint": "Faites défiler ou glissez pour changer de session.",

@@ -29,11 +29,12 @@ export const site = {
  */
 export const channels = {
   whatsappCommunity: "",
-  discord: "",
-  facebook: "",
+  discord: "https://discord.gg/JeJV9M6n",
+  linkedin: "https://linkedin.com/in/mrvin100",
+  facebook: "https://facebook.com/mrvin100.de",
 } as const
 
-export type SocialKey = "whatsapp" | "discord" | "facebook" | "email"
+export type SocialKey = "whatsapp" | "discord" | "linkedin" | "facebook" | "email"
 
 /**
  * What the footer links out to, in display order. WhatsApp falls back to the
@@ -44,6 +45,7 @@ export function liveSocials() {
   const all: { key: SocialKey; url: string }[] = [
     { key: "whatsapp", url: channels.whatsappCommunity || site.whatsappUrl },
     { key: "discord", url: channels.discord },
+    { key: "linkedin", url: channels.linkedin },
     { key: "facebook", url: channels.facebook },
     { key: "email", url: `mailto:${site.contactEmail}` },
   ]
@@ -65,6 +67,22 @@ export const cohort = {
   competencies: 10,
   liveSessionsPerWeek: "1 à 2",
 } as const
+
+/**
+ * Employer-funded seats, in whole GNF.
+ *
+ * These are the figures from the commercial model: one seat at the standard
+ * individual rate, then a discount for a group from the same organisation,
+ * because a group is cheaper to admit and worth more to run. Anything above
+ * five people is quoted, not listed. Treat these as hypotheses to test rather
+ * than proven market prices.
+ */
+export const corporateTiers = [
+  { seats: 1, price: 4_500_000 },
+  { seats: 3, price: 12_000_000 },
+  { seats: 5, price: 18_000_000 },
+  { seats: 10, price: null },
+] as const
 
 export const contact = {
   applicationNotificationEmail:
