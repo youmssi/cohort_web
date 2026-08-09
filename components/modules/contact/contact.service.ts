@@ -35,6 +35,7 @@ export async function submitEnquiry(
   await sendNotificationEmail({
     to: contact.applicationNotificationEmail,
     subject: `Coh0rt · ${data.subject}`,
+    replyTo: data.email,
     html: `
       <p><strong>${data.name}</strong> · ${data.email}</p>
       <p>${data.message.replace(/\n/g, "<br />")}</p>
