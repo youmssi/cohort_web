@@ -11,6 +11,8 @@ import { Field, FieldContent, FieldError, FieldLabel } from "@/components/ui/fie
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
+import { site } from "@/lib/constants"
+
 import { submitEnquiry } from "./contact.service"
 import { enquiryInitialState } from "./state"
 
@@ -85,7 +87,9 @@ export function EnquiryForm() {
         </Field>
 
         {state.status === "error" && !state.fieldErrors && (
-          <p className="text-sm text-destructive">{t("responseBody")}</p>
+          <p className="text-sm text-destructive">
+            {t("errorBody", { phone: site.phoneDisplay })}
+          </p>
         )}
 
         <Button type="submit" size="lg" disabled={pending} className="w-full">

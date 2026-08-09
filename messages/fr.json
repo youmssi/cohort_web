@@ -277,7 +277,10 @@
     "emailPlaceholder": "vous@organisation.com",
     "emailCta": "Recevoir par e-mail",
     "emailSent": "Envoyé. Vous recevrez votre profil détaillé par e-mail.",
-    "emailError": "L'envoi a échoué. Vérifiez votre adresse et réessayez."
+    "emailError": "L'envoi a échoué. Vérifiez votre adresse et réessayez.",
+    "email": {
+      "note": "Ce diagnostic mesure votre raisonnement face à des décisions réelles, pas vos connaissances techniques. Un score faible sur une compétence n'est pas un verdict : c'est l'endroit où le travail commence."
+    }
   },
   "Apply": {
     "eyebrow": "{cohort} · Candidature",
@@ -311,7 +314,7 @@
     "submitting": "Envoi en cours",
     "successTitle": "Candidature reçue",
     "successBody": "Nous examinons chaque candidature individuellement et revenons vers vous par e-mail ou WhatsApp pour la suite.",
-    "errorBody": "Votre candidature n'a pas pu être envoyée. Réessayez dans un instant.",
+    "errorBody": "Votre candidature n'a pas pu être envoyée et n'a pas été enregistrée. Réessayez dans un instant. Si le problème persiste, écrivez-nous sur WhatsApp au {phone} : nous reprendrons votre candidature à la main.",
     "sponsorLabel": "Votre participation est-elle financée par votre organisation ?",
     "sponsorOptions": {
       "self": "Non, je finance ma participation",
@@ -383,6 +386,7 @@
     },
     "responseTitle": "Ce qui se passe ensuite",
     "responseBody": "Nous répondons sous 48 heures ouvrées. Si votre demande concerne une candidature, nous vous orientons directement vers l'étape adaptée plutôt que de vous faire remplir un second formulaire.",
+    "errorBody": "Votre message n'a pas pu être envoyé. Réessayez dans un instant, ou écrivez-nous directement sur WhatsApp au {phone}.",
     "applyNote": "Vous souhaitez rejoindre {cohort} ? Passez directement par le formulaire de candidature.",
     "form": {
       "name": "Nom complet",
