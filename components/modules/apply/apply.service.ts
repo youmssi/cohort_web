@@ -3,7 +3,7 @@
 import { toFieldErrors } from "@/components/shared/form-errors"
 import { contact } from "@/lib/constants"
 import { cohortName, currentCohort } from "@/lib/cohorts"
-import { sendNotificationEmail } from "@/lib/email"
+import { escapeHtml, sendNotificationEmail } from "@/lib/email"
 
 import { applicationSchema, type ApplicationFieldErrors } from "./schema"
 
@@ -39,23 +39,30 @@ export async function submitApplication(
   }
 
   const data = parsed.data
+  const e = escapeHtml
 
   const funding = { self: "Personnel", employer: "Employeur", unsure: "À déterminer" }[
     data.sponsor
   ]
 
-  await sendNotificationEmail({
+  const delivery = await sendNotificationEmail({
     to: contact.applicationNotificationEmail,
     subject: `${cohortName(currentCohort())} · Nouvelle candidature : ${data.fullName}`,
     replyTo: data.email,
     html: `
-      <p><strong>${data.fullName}</strong> · ${data.role}, ${data.organization} (${data.industry})</p>
-      <p>Email : ${data.email} · Téléphone : ${data.phone}</p>
+      <p><strong>${e(data.fullName)}</strong> · ${e(data.role)}, ${e(data.organization)} (${e(data.industry)})</p>
+      <p>Email : ${e(data.email)} · Téléphone : ${e(data.phone)}</p>
       <p>Engagement : ${data.commitment === "yes" ? "Confirmé" : "Incertain"} · Financement : ${funding}</p>
-      <p><strong>Défi :</strong> ${data.challenge}</p>
-      <p><strong>Motivation :</strong> ${data.motivation}</p>
+      <p><strong>Défi :</strong> ${e(data.challenge)}</p>
+      <p><strong>Motivation :</strong> ${e(data.motivation)}</p>
     `,
   })
+
+  // This notification is the only place the application is stored. Reporting
+  // success on a failed send would drop it silently, and the candidate would
+  // spend weeks waiting on an answer that can never come, so the failure is
+  // surfaced and the form offers a human channel instead.
+  if (!delivery.ok) return { status: "error" }
 
   return { status: "success" }
 }

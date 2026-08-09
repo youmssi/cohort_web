@@ -19,6 +19,8 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 
+import { site } from "@/lib/constants"
+
 import { submitApplication } from "./apply.service"
 import { applyInitialState } from "./state"
 
@@ -163,7 +165,9 @@ export function ApplicationForm() {
       </Section>
 
       {state.status === "error" && !state.fieldErrors && (
-        <p className="text-sm text-destructive">{t("errorBody")}</p>
+        <p className="text-sm text-destructive">
+          {t("errorBody", { phone: site.phoneDisplay })}
+        </p>
       )}
 
       <Button type="submit" size="lg" disabled={pending} className="w-full">

@@ -77,6 +77,7 @@ export function ResultProfile({
         ) : (
           <form action={formAction} className="flex flex-col gap-2 sm:flex-row">
             <input type="hidden" name="answers" value={JSON.stringify(answers)} />
+            <input type="hidden" name="locale" value={locale} />
             <Input
               type="email"
               name="email"

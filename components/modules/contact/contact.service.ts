@@ -2,7 +2,7 @@
 
 import { toFieldErrors } from "@/components/shared/form-errors"
 import { contact } from "@/lib/constants"
-import { sendNotificationEmail } from "@/lib/email"
+import { escapeHtml, sendNotificationEmail } from "@/lib/email"
 
 import { enquirySchema, type EnquiryFieldErrors } from "./schema"
 
@@ -32,15 +32,19 @@ export async function submitEnquiry(
 
   const data = parsed.data
 
-  await sendNotificationEmail({
+  const delivery = await sendNotificationEmail({
     to: contact.applicationNotificationEmail,
     subject: `Coh0rt · ${data.subject}`,
     replyTo: data.email,
     html: `
-      <p><strong>${data.name}</strong> · ${data.email}</p>
-      <p>${data.message.replace(/\n/g, "<br />")}</p>
+      <p><strong>${escapeHtml(data.name)}</strong> · ${escapeHtml(data.email)}</p>
+      <p>${escapeHtml(data.message).replace(/\n/g, "<br />")}</p>
     `,
   })
+
+  // Same rule as the application: the enquiry exists nowhere but this email, so
+  // a failed send has to reach the sender rather than look like a reply on its way.
+  if (!delivery.ok) return { status: "error" }
 
   return { status: "success" }
 }

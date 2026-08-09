@@ -277,7 +277,10 @@
     "emailPlaceholder": "you@organisation.com",
     "emailCta": "Send it to me",
     "emailSent": "Sent. Your detailed profile is on its way by email.",
-    "emailError": "The message could not be sent. Check your address and try again."
+    "emailError": "The message could not be sent. Check your address and try again.",
+    "email": {
+      "note": "This diagnostic measures how you reason about real decisions, not what you know technically. A low score on a capability is not a verdict: it is where the work starts."
+    }
   },
   "Apply": {
     "eyebrow": "{cohort} · Application",
@@ -311,7 +314,7 @@
     "submitting": "Sending",
     "successTitle": "Application received",
     "successBody": "We review every application individually and will come back to you by email or WhatsApp about next steps.",
-    "errorBody": "Your application could not be sent. Please try again in a moment.",
+    "errorBody": "Your application could not be sent and has not been saved. Try again in a moment. If it keeps failing, message us on WhatsApp at {phone} and we will take your application by hand.",
     "sponsorLabel": "Is your participation funded by your organisation?",
     "sponsorOptions": {
       "self": "No, I am funding it myself",
@@ -383,6 +386,7 @@
     },
     "responseTitle": "What happens next",
     "responseBody": "We reply within two working days. If your message is about an application, we point you straight to the right step rather than asking you to fill in a second form.",
+    "errorBody": "Your message could not be sent. Try again in a moment, or reach us directly on WhatsApp at {phone}.",
     "applyNote": "Ready to join {cohort}? Go straight to the application form.",
     "form": {
       "name": "Full name",
