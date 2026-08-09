@@ -59,7 +59,11 @@ export const cohorts: Cohort[] = [
     year: 2026,
     batch: "A",
     applicationsOpen: "2026-08-15",
-    applicationsClose: "2026-11-07",
+    // Closes on a Friday, not the Saturday it used to. A Friday close gives a
+    // cleaner "closes this week" arc and avoids a weekend with nobody to answer
+    // a last-minute question. The cohort still starts on Saturday 14 November,
+    // which is deliberate for working executives.
+    applicationsClose: "2026-11-06",
     start: "2026-11-14",
     // 16 teaching weeks from 14 Nov 2026 lands on 6 Mar 2027.
     end: "2027-03-06",
@@ -112,12 +116,22 @@ export function cohortStatus(cohort: Cohort, now: Date = new Date()): CohortStat
   if (cohort.statusOverride) return cohort.statusOverride
 
   const at = (iso: string | null) => (iso ? new Date(iso).getTime() : null)
+  /**
+   * The last moment of a published day. Date-only ISO strings parse to midnight,
+   * so comparing against the raw value would close applications at 00:00 on the
+   * very day the site advertises as the deadline. The close date is inclusive:
+   * candidates have all of 6 November, not none of it.
+   */
+  const endOfDay = (iso: string | null) => {
+    const start = at(iso)
+    return start === null ? null : start + 24 * 60 * 60 * 1000 - 1
+  }
   const today = now.getTime()
 
   const opens = at(cohort.applicationsOpen)
-  const closes = at(cohort.applicationsClose)
+  const closes = endOfDay(cohort.applicationsClose)
   const starts = at(cohort.start)
-  const ends = at(cohort.end)
+  const ends = endOfDay(cohort.end)
 
   if (ends && today > ends) return "completed"
   if (starts && today >= starts) return "running"
@@ -169,7 +183,7 @@ export function cohortDates(cohort: Cohort, locale: string) {
   return cohort.end ? `${start} – ${longDate(cohort.end, locale)}` : start
 }
 
-/** "15 août 2026 – 7 novembre 2026", or null while unscheduled. */
+/** "15 août 2026 – 6 novembre 2026", or null while unscheduled. */
 export function applicationWindow(cohort: Cohort, locale: string) {
   if (!cohort.applicationsOpen) return null
   const open = longDate(cohort.applicationsOpen, locale)
