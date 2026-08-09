@@ -43,7 +43,12 @@ export interface Cohort {
   tuition: number
   /** Rate later cohorts are expected to pay, shown as an anchor. */
   standardTuition: number
-  instalment: { count: number; amount: number }
+  /**
+   * Payment plans, shown in the order listed. The commercial model is explicit
+   * that no plan may reduce the total, so each entry's `count * amount` must be
+   * at least the tuition.
+   */
+  instalments: { count: number; amount: number }[]
   /** Marks the inaugural session, which gets the founding-cohort framing. */
   founding: boolean
 }
@@ -58,10 +63,14 @@ export const cohorts: Cohort[] = [
     start: "2026-11-14",
     // 16 teaching weeks from 14 Nov 2026 lands on 6 Mar 2027.
     end: "2027-03-06",
-    seats: { min: 8, max: 12 },
-    tuition: 3_900_000,
-    standardTuition: 4_500_000,
-    instalment: { count: 2, amount: 2_050_000 },
+    // "8-10 participants", "10 seats maximum" for the founding cohort.
+    seats: { min: 8, max: 10 },
+    tuition: 12_000_000,
+    standardTuition: 15_000_000,
+    instalments: [
+      { count: 2, amount: 6_000_000 },
+      { count: 4, amount: 3_000_000 },
+    ],
     founding: true,
   },
   {
@@ -76,10 +85,12 @@ export const cohorts: Cohort[] = [
     applicationsClose: null,
     start: null,
     end: null,
-    seats: { min: 8, max: 12 },
-    tuition: 4_500_000,
-    standardTuition: 4_500_000,
-    instalment: { count: 2, amount: 2_350_000 },
+    seats: { min: 8, max: 10 },
+    tuition: 15_000_000,
+    standardTuition: 15_000_000,
+    // The standard rate carries an instalment premium: 2 x 8M totals 16M
+    // against 15M upfront, which is the incentive to settle in one go.
+    instalments: [{ count: 2, amount: 8_000_000 }],
     founding: false,
   },
 ]

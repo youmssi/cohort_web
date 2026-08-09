@@ -1,7 +1,8 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useTheme } from "next-themes"
 
 const PixelTrail = dynamic(() => import("@/components/animations/pixel-trail"), {
   ssr: false,
@@ -19,6 +20,18 @@ const PixelTrail = dynamic(() => import("@/components/animations/pixel-trail"), 
  */
 export function PixelTrailLayer() {
   const [enabled, setEnabled] = useState(false)
+  const probe = useRef<HTMLDivElement>(null)
+  const { resolvedTheme } = useTheme()
+  const [trailColor, setTrailColor] = useState<string | null>(null)
+
+  // three.js parses rgb() but not `currentColor` or the oklch() the theme
+  // tokens are authored in. Reading the resolved colour off the element keeps
+  // the trail tied to --foreground instead of duplicating the palette here,
+  // and re-reading on theme change follows the toggle.
+  useEffect(() => {
+    if (!enabled || !probe.current) return
+    setTrailColor(getComputedStyle(probe.current).color)
+  }, [enabled, resolvedTheme])
 
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)")
@@ -38,17 +51,25 @@ export function PixelTrailLayer() {
   if (!enabled) return null
 
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.18]">
-      <div className="pointer-events-auto size-full">
-        <PixelTrail
-          gridSize={60}
-          trailSize={0.08}
-          maxAge={220}
-          interpolate={4}
-          color="currentColor"
-          gooeyFilter={{ id: "cohort-goo", strength: 2 }}
-        />
-      </div>
+    // A dark trail on a light background reads fainter than the inverse at the
+    // same alpha, so light mode gets a little more of it.
+    <div
+      ref={probe}
+      aria-hidden
+      className="pointer-events-none absolute inset-0 text-foreground opacity-[0.26] dark:opacity-[0.18]"
+    >
+      {trailColor && (
+        <div className="pointer-events-auto size-full">
+          <PixelTrail
+            gridSize={60}
+            trailSize={0.08}
+            maxAge={220}
+            interpolate={4}
+            color={trailColor}
+            gooeyFilter={{ id: "cohort-goo", strength: 2 }}
+          />
+        </div>
+      )}
     </div>
   )
 }

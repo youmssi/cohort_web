@@ -59,13 +59,17 @@ export async function PricingSection({
                     <dt>{t("paymentFull")}</dt>
                     <dd className="tabular-nums">{money(session.tuition)} GNF</dd>
                   </div>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <dt>{t("paymentSplit")}</dt>
-                    <dd className="tabular-nums">
-                      {session.instalment.count} &times;{" "}
-                      {money(session.instalment.amount)} GNF
-                    </dd>
-                  </div>
+                  {session.instalments.map((plan) => (
+                    <div
+                      key={plan.count}
+                      className="flex items-baseline justify-between gap-4"
+                    >
+                      <dt>{t("paymentSplit", { count: plan.count })}</dt>
+                      <dd className="tabular-nums">
+                        {plan.count} &times; {money(plan.amount)} GNF
+                      </dd>
+                    </div>
+                  ))}
                 </dl>
                 <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
                   {t("paymentAfter")}

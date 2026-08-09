@@ -3,7 +3,7 @@ import { Building2, ExternalLink } from "lucide-react"
 
 import type { Locale } from "@/i18n/routing"
 import { RevealOnScroll } from "@/components/animations/reveal-on-scroll"
-import { intlLocale } from "@/lib/cohorts"
+import { currentCohort, intlLocale } from "@/lib/cohorts"
 import { corporateTiers, site } from "@/lib/constants"
 
 /**
@@ -29,16 +29,19 @@ export async function CorporateNote({ locale }: { locale: Locale }) {
             </p>
           </div>
 
-          <dl className="grid gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-4">
+          <dl className="grid gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-3">
             {corporateTiers.map((tier) => (
-              <div key={tier.seats} className="flex flex-col gap-1 bg-background p-4">
+              <div key={tier.key} className="flex flex-col gap-1 bg-background p-4">
                 <dt className="text-xs tracking-wide text-muted-foreground uppercase">
-                  {tier.price === null
-                    ? t("tiers.more", { seats: tier.seats })
-                    : t("tiers.seats", { count: tier.seats })}
+                  {t(`tiers.${tier.key}.label`)}
                 </dt>
                 <dd className="font-heading text-sm font-semibold tabular-nums">
-                  {tier.price === null ? t("tiers.custom") : money(tier.price)}
+                  {tier.from === null
+                    ? money(currentCohort().tuition)
+                    : t("tiers.from", { amount: money(tier.from) })}
+                </dd>
+                <dd className="text-xs leading-relaxed text-muted-foreground">
+                  {t(`tiers.${tier.key}.body`)}
                 </dd>
               </div>
             ))}

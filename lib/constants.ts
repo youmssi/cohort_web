@@ -69,19 +69,18 @@ export const cohort = {
 } as const
 
 /**
- * Employer-funded seats, in whole GNF.
+ * What an organisation can buy, in whole GNF.
  *
- * These are the figures from the commercial model: one seat at the standard
- * individual rate, then a discount for a group from the same organisation,
- * because a group is cheaper to admit and worth more to run. Anything above
- * five people is quoted, not listed. Treat these as hypotheses to test rather
- * than proven market prices.
+ * The commercial model runs one ladder: an individual seat on a public cohort,
+ * a personalised executive track above it, then a private cohort run for a
+ * single organisation. `from` null means the seat is simply the published
+ * tuition of the session, so it never drifts out of step with the registry.
+ * Everything above is quoted, not listed.
  */
 export const corporateTiers = [
-  { seats: 1, price: 4_500_000 },
-  { seats: 3, price: 12_000_000 },
-  { seats: 5, price: 18_000_000 },
-  { seats: 10, price: null },
+  { key: "seat", from: null },
+  { key: "executive", from: 25_000_000 },
+  { key: "private", from: 60_000_000 },
 ] as const
 
 export const contact = {
