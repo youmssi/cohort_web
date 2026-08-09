@@ -88,6 +88,11 @@ export async function buildMetadata({
       canonical: localizedPath(locale, path),
       languages,
     },
+    // Search Console's meta-tag method. Left out of the markup entirely when
+    // unset, rather than emitting an empty tag.
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+      : {}),
     openGraph: {
       title: resolvedTitle,
       description: resolvedDescription,

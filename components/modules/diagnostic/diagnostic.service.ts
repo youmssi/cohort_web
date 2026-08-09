@@ -48,6 +48,7 @@ export async function emailDiagnosticResult(
   await sendNotificationEmail({
     to: contact.applicationNotificationEmail,
     subject: `Diagnostic Digital Leadership · ${parsed.data.email}`,
+    replyTo: parsed.data.email,
     html: `<p>Score global : ${result.overall}/100</p><table>${rows}</table>`,
   })
 

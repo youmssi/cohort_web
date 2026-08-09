@@ -47,6 +47,7 @@ export async function submitApplication(
   await sendNotificationEmail({
     to: contact.applicationNotificationEmail,
     subject: `${cohortName(currentCohort())} · Nouvelle candidature : ${data.fullName}`,
+    replyTo: data.email,
     html: `
       <p><strong>${data.fullName}</strong> · ${data.role}, ${data.organization} (${data.industry})</p>
       <p>Email : ${data.email} · Téléphone : ${data.phone}</p>

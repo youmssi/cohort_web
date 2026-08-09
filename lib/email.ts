@@ -17,6 +17,12 @@ export async function sendNotificationEmail(options: {
   to: string
   subject: string
   html: string
+  /**
+   * Who a reply should reach. Without it, hitting reply on an application
+   * notification answers the sending domain, which has no inbox, so the reply
+   * is silently lost. Always pass the person who submitted the form.
+   */
+  replyTo?: string
 }) {
   const { contact } = await import("@/lib/constants")
   const resend = getClient()
@@ -32,5 +38,6 @@ export async function sendNotificationEmail(options: {
     to: options.to,
     subject: options.subject,
     html: options.html,
+    ...(options.replyTo ? { replyTo: options.replyTo } : {}),
   })
 }
