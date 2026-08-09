@@ -71,7 +71,7 @@
     "sessionsLabel": "sessions live par semaine",
     "selectiveAdmission": "Admission sélective",
     "allCompetencies": "Toutes les compétences",
-    "location": "Conakry · Guinée",
+    "location": "Berlin · Yaoundé · Conakry · en ligne",
     "contactCta": "Nous écrire",
     "bookCall": "Réserver un échange",
     "bookSlot": "Réserver un créneau"
@@ -227,7 +227,7 @@
     "foundingLabel": "Cohorte fondatrice",
     "paymentTitle": "Modalités de paiement",
     "paymentFull": "En une fois",
-    "paymentSplit": "En deux versements",
+    "paymentSplit": "{count, plural, one {# versement} other {# versements}}",
     "paymentAfter": "Le paiement n'est demandé qu'après acceptation de votre candidature."
   },
   "Curriculum": {
@@ -248,8 +248,9 @@
     "social": {
       "whatsapp": "WhatsApp",
       "discord": "Discord",
-      "facebook": "Facebook (MRVIN100)",
-      "email": "Nous écrire"
+      "facebook": "Facebook",
+      "email": "Nous écrire",
+      "linkedin": "LinkedIn"
     },
     "channelsNote": "Rejoignez nos canaux pour être informé de l'ouverture des prochaines coh0rtes."
   },
@@ -281,7 +282,7 @@
   "Apply": {
     "eyebrow": "{cohort} · Candidature",
     "title": "Postuler pour {cohort}",
-    "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement, pour 8 à 12 places seulement.",
+    "intro": "Ce n'est pas un formulaire d'inscription. C'est le début d'une conversation. Nous examinons chaque candidature individuellement, pour 8 à 10 places seulement.",
     "sections": {
       "identity": "Votre profil",
       "context": "Votre contexte",
@@ -456,7 +457,7 @@
       },
       "language": {
         "title": "La langue de travail",
-        "body": "Les sessions live sont animées en français, et le vocabulaire technique international (API, cloud, SaaS) y est explicité au fil des semaines. Vous êtes plus à l'aise en anglais ? Vous êtes le bienvenu : les ressources écrites existent dans les deux langues, et vous pouvez poser vos questions, rédiger vos livrables et présenter votre soutenance en anglais. Signalez-le lors de la conversation d'admission, nous préparons la cohorte en conséquence."
+        "body": "Les sessions live sont animées en français. Plus à l'aise en anglais ? Vous êtes le bienvenu : signalez-le lors de la conversation d'admission."
       },
       "posture": {
         "title": "L'ouverture au challenge",
@@ -473,7 +474,23 @@
   "Corporate": {
     "title": "Faire financer une place par votre entreprise",
     "body": "Une organisation peut inscrire un collaborateur, ou plusieurs. La candidature reste individuelle et la sélection inchangée : c'est la personne qui rejoint la cohorte, pas l'entreprise. Précisez-le dans votre candidature ou écrivez-nous, nous organisons l'échange avec les personnes concernées.",
-    "cta": "Discuter d'un parrainage"
+    "cta": "Discuter d'un parrainage",
+    "tiers": {
+      "from": "À partir de {amount}",
+      "seat": {
+        "label": "Place individuelle",
+        "body": "Un collaborateur rejoint la coh0rte publique. Candidature et sélection inchangées."
+      },
+      "executive": {
+        "label": "Executive personnalisé",
+        "body": "Accompagnement individuel pour un dirigeant, calibré sur son organisation."
+      },
+      "private": {
+        "label": "Coh0rte privée",
+        "body": "Une session dédiée à une seule organisation, sur devis."
+      }
+    },
+    "pricingNote": "Une place financée par l'employeur reste au tarif publié de la session. Les formats executive et coh0rte privée sont établis après un échange sur le périmètre, le nombre de participants et le calendrier."
   },
   "Cohorts": {
     "hint": "Faites défiler ou glissez pour changer de session.",

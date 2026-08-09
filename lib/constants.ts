@@ -29,11 +29,12 @@ export const site = {
  */
 export const channels = {
   whatsappCommunity: "",
-  discord: "",
-  facebook: "",
+  discord: "https://discord.gg/JeJV9M6n",
+  linkedin: "https://linkedin.com/in/mrvin100",
+  facebook: "https://facebook.com/mrvin100.de",
 } as const
 
-export type SocialKey = "whatsapp" | "discord" | "facebook" | "email"
+export type SocialKey = "whatsapp" | "discord" | "linkedin" | "facebook" | "email"
 
 /**
  * What the footer links out to, in display order. WhatsApp falls back to the
@@ -44,6 +45,7 @@ export function liveSocials() {
   const all: { key: SocialKey; url: string }[] = [
     { key: "whatsapp", url: channels.whatsappCommunity || site.whatsappUrl },
     { key: "discord", url: channels.discord },
+    { key: "linkedin", url: channels.linkedin },
     { key: "facebook", url: channels.facebook },
     { key: "email", url: `mailto:${site.contactEmail}` },
   ]
@@ -65,6 +67,21 @@ export const cohort = {
   competencies: 10,
   liveSessionsPerWeek: "1 à 2",
 } as const
+
+/**
+ * What an organisation can buy, in whole GNF.
+ *
+ * The commercial model runs one ladder: an individual seat on a public cohort,
+ * a personalised executive track above it, then a private cohort run for a
+ * single organisation. `from` null means the seat is simply the published
+ * tuition of the session, so it never drifts out of step with the registry.
+ * Everything above is quoted, not listed.
+ */
+export const corporateTiers = [
+  { key: "seat", from: null },
+  { key: "executive", from: 25_000_000 },
+  { key: "private", from: 60_000_000 },
+] as const
 
 export const contact = {
   applicationNotificationEmail:

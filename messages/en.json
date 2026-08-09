@@ -71,7 +71,7 @@
     "sessionsLabel": "live sessions per week",
     "selectiveAdmission": "Selective admission",
     "allCompetencies": "All capabilities",
-    "location": "Conakry · Guinea",
+    "location": "Berlin · Yaoundé · Conakry · online",
     "contactCta": "Contact us",
     "bookCall": "Book a call",
     "bookSlot": "Book a slot"
@@ -227,7 +227,7 @@
     "foundingLabel": "Founding cohort",
     "paymentTitle": "Payment options",
     "paymentFull": "In full",
-    "paymentSplit": "Two instalments",
+    "paymentSplit": "{count, plural, one {# instalment} other {# instalments}}",
     "paymentAfter": "Payment is only requested once your application has been accepted."
   },
   "Curriculum": {
@@ -248,8 +248,9 @@
     "social": {
       "whatsapp": "WhatsApp",
       "discord": "Discord",
-      "facebook": "Facebook (MRVIN100)",
-      "email": "Email us"
+      "facebook": "Facebook",
+      "email": "Email us",
+      "linkedin": "LinkedIn"
     },
     "channelsNote": "Join our channels to hear when the next coh0rts open."
   },
@@ -281,7 +282,7 @@
   "Apply": {
     "eyebrow": "{cohort} · Application",
     "title": "Apply for {cohort}",
-    "intro": "This is not an enrolment form. It is the start of a conversation. We review every application individually, for 8 to 12 seats only.",
+    "intro": "This is not an enrolment form. It is the start of a conversation. We review every application individually, for 8 to 10 seats only.",
     "sections": {
       "identity": "Your profile",
       "context": "Your context",
@@ -456,7 +457,7 @@
       },
       "language": {
         "title": "The working language",
-        "body": "Live sessions are facilitated in French, and international technical vocabulary (API, cloud, SaaS) is explained as it comes up. More comfortable in English? You are welcome: the written resources exist in both languages, and you can ask your questions, write your deliverables and give your final defence in English. Mention it during the admission conversation and we will prepare the cohort accordingly."
+        "body": "Live sessions are facilitated in French. More comfortable in English? You are welcome: mention it during the admission conversation."
       },
       "posture": {
         "title": "Openness to challenge",
@@ -473,7 +474,23 @@
   "Corporate": {
     "title": "Having a seat funded by your organisation",
     "body": "An organisation can enrol one employee, or several. The application stays individual and the selection unchanged: it is the person who joins the cohort, not the company. Mention it in your application or write to us, and we will arrange the conversation with the people involved.",
-    "cta": "Discuss sponsorship"
+    "cta": "Discuss sponsorship",
+    "tiers": {
+      "from": "From {amount}",
+      "seat": {
+        "label": "Individual seat",
+        "body": "One employee joins the public coh0rt. Application and selection unchanged."
+      },
+      "executive": {
+        "label": "Personalised executive",
+        "body": "One-to-one support for a leader, calibrated to their organisation."
+      },
+      "private": {
+        "label": "Private coh0rt",
+        "body": "A session dedicated to a single organisation, on request."
+      }
+    },
+    "pricingNote": "An employer-funded seat stays at the session's published tuition. Executive and private-coh0rt formats are set after a conversation about scope, numbers and timing."
   },
   "Cohorts": {
     "hint": "Scroll or drag to change session.",

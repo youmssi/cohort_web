@@ -84,12 +84,16 @@ export async function PaymentWorkflow({
               <dt className="text-muted-foreground">{tp("paymentFull")}</dt>
               <dd className="tabular-nums">{money(session.tuition)} GNF</dd>
             </div>
-            <div className="flex items-baseline justify-between gap-4">
-              <dt className="text-muted-foreground">{tp("paymentSplit")}</dt>
-              <dd className="tabular-nums">
-                {session.instalment.count} &times; {money(session.instalment.amount)} GNF
-              </dd>
-            </div>
+            {session.instalments.map((plan) => (
+              <div key={plan.count} className="flex items-baseline justify-between gap-4">
+                <dt className="text-muted-foreground">
+                  {tp("paymentSplit", { count: plan.count })}
+                </dt>
+                <dd className="tabular-nums">
+                  {plan.count} &times; {money(plan.amount)} GNF
+                </dd>
+              </div>
+            ))}
           </dl>
           <p className="mt-5 flex gap-2.5 border-t pt-4 text-xs leading-relaxed text-muted-foreground">
             <Info className="mt-px size-3.5 shrink-0" />
