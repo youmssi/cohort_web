@@ -27,15 +27,28 @@ function alternates(path: string) {
   }
 }
 
+/**
+ * No `lastModified`.
+ *
+ * It used to be `new Date()` evaluated at build time, which told Google that
+ * all seventy-eight pages had changed the moment of the last deploy — including
+ * the deploys that only touched a component. Google compares a declared lastmod
+ * against what it actually finds, and ignores the field across the whole
+ * sitemap once it proves unreliable, so an always-now timestamp does not buy a
+ * faster recrawl; it spends the credibility of the signal on nothing.
+ *
+ * Omitting it is what Google asks for when an accurate date is not available.
+ * The honest source would be the last edit to each page's MDX, which the Velite
+ * schemas do not currently carry; add an `updated` field there and this can
+ * come back per entry rather than as one timestamp for the whole site.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date()
   const entries: MetadataRoute.Sitemap = []
 
   for (const locale of routing.locales) {
     for (const { path, priority } of staticPaths) {
       entries.push({
         url: canonicalUrl(locale, path),
-        lastModified,
         changeFrequency: "weekly",
         priority,
         alternates: alternates(path),
@@ -46,7 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = `/cohorts/${session.id}`
       entries.push({
         url: canonicalUrl(locale, path),
-        lastModified,
         changeFrequency: "weekly",
         priority: 0.8,
         alternates: alternates(path),
@@ -57,7 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = `/curriculum/${week.week}`
       entries.push({
         url: canonicalUrl(locale, path),
-        lastModified,
         changeFrequency: "monthly",
         priority: 0.5,
         alternates: alternates(path),
@@ -68,7 +79,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = `/competencies/${competency.slug}`
       entries.push({
         url: canonicalUrl(locale, path),
-        lastModified,
         changeFrequency: "monthly",
         priority: 0.5,
         alternates: alternates(path),
