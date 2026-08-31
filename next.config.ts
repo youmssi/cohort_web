@@ -19,6 +19,40 @@ const nextConfig: NextConfig = {
       { source: "/:locale/cohort-01", destination: "/:locale/cohorts/26a", permanent: true },
     ]
   },
+  /**
+   * Baseline security headers, absent on every route until now.
+   *
+   * Deliberately no Content-Security-Policy. A useful one for this app has to
+   * allow the inline JSON-LD and theme scripts, the Google Fonts and Vercel
+   * Analytics origins, and Next's own inline runtime; writing that blind is how
+   * a site ships a policy that either blocks its own scripts or is loose enough
+   * to be decorative. It wants its own change, with the report-only header run
+   * against production first.
+   */
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          // Stops a browser second-guessing a declared Content-Type, which is
+          // what turns an uploaded file into a script.
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          // No page here is meant to be framed, so clickjacking has no surface.
+          { key: "X-Frame-Options", value: "DENY" },
+          // Send the full URL to ourselves, only the origin to third parties,
+          // and nothing at all when leaving HTTPS. Applicants reach /apply with
+          // paths that need not travel to anyone else's logs.
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          // Nothing on the site uses these, so refuse them site-wide rather
+          // than relying on nobody ever asking.
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+          },
+        ],
+      },
+    ]
+  },
   images: {
     formats: ["image/avif", "image/webp"],
   },
