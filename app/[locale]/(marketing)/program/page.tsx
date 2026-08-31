@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import type { Locale } from "@/i18n/routing"
 import { getPhases } from "@/lib/content"
-import { buildMetadata } from "@/lib/seo"
+import { buildMetadata, courseJsonLd } from "@/lib/seo"
 import { PageHeader } from "@/components/marketing/page-header"
 import { JourneyTimeline } from "@/components/marketing/journey-timeline"
 import { CompetencyLevels } from "@/components/marketing/competency-levels"
@@ -31,6 +31,14 @@ export default async function ProgramPage({
 
   return (
     <>
+      {/*
+        The page the Course entity points its `url` at, so the description sits
+        on the page it describes rather than only on the home page.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd(locale)) }}
+      />
       <PageHeader
         title={t("pages.program.title")}
         description={t("pages.program.description")}

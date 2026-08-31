@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
 import { routing, type Locale } from "@/i18n/routing"
-import { cohort, liveSocials, program, site } from "@/lib/constants"
-import { currentCohort } from "@/lib/cohorts"
+import { liveSocials, program, site } from "@/lib/constants"
+import { cohortName, currentCohort } from "@/lib/cohorts"
 
 export function localizedPath(locale: Locale, path: string) {
   const normalized = path === "/" ? "" : path
@@ -174,13 +174,33 @@ export function organizationJsonLd(locale: Locale) {
 /**
  * Course schema for the flagship programme. Carries the published tuition so the
  * price is eligible for rich results rather than being locked inside markup.
+ *
+ * Emitted from both `/` and `/program` under one `@id`, which is what schema.org
+ * expects: two pages describing the same entity, not two courses. `url` names
+ * `/program` as the entity's home so Google knows which page to surface.
  */
 export function courseJsonLd(locale: Locale) {
   const session = currentCohort()
+  // `courseWorkload` is effort *per week*, not the length of the programme —
+  // a distinction Google's validator does not check and so will not flag.
+  // "3 to 5 hours a week" is the published commitment; the schema states the
+  // top of that range, because overstating the effort is the safe direction to
+  // be wrong in for someone deciding whether they can afford the time.
+  // Google's rule is `courseWorkload` or `courseSchedule`, never both, so the
+  // calendar is carried by startDate/endDate instead.
+  const workload = "PT5H"
+  // 26B is announced without dates. Emitting `startDate: null` would be an
+  // invalid value where omitting the field is simply less information, so the
+  // dates are spread in only once they exist.
+  const schedule = {
+    ...(session.start ? { startDate: session.start } : {}),
+    ...(session.end ? { endDate: session.end } : {}),
+  }
   return {
     "@context": "https://schema.org",
     "@type": "Course",
     "@id": `${site.url}/#course`,
+    url: absoluteUrl(locale, "/program"),
     name: program.name,
     description:
       locale === "fr"
@@ -200,8 +220,11 @@ export function courseJsonLd(locale: Locale) {
     },
     hasCourseInstance: {
       "@type": "CourseInstance",
+      "@id": `${site.url}/#course-${session.id}`,
+      name: cohortName(session),
       courseMode: "online",
-      courseWorkload: `P${cohort.durationWeeks}W`,
+      courseWorkload: workload,
+      ...schedule,
       inLanguage: locale,
       maximumAttendeeCapacity: session.seats.max,
       location: { "@type": "VirtualLocation", url: site.url },
