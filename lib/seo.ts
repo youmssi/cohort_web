@@ -14,6 +14,18 @@ export function absoluteUrl(locale: Locale, path: string) {
   return `${site.url}${localizedPath(locale, path)}`
 }
 
+/**
+ * Absolute URL in the exact spelling Next emits for `alternates.canonical`.
+ * Next normalises metadata URLs against `trailingSlash: false`, so the home page
+ * renders as `https://host` while `absoluteUrl` returns `https://host/`. The
+ * sitemap builds its `<loc>` and hreflang values by hand and never goes through
+ * that normalisation, so without this the home page ships under two spellings
+ * and crawlers report a canonical/sitemap conflict.
+ */
+export function canonicalUrl(locale: Locale, path: string) {
+  return absoluteUrl(locale, path).replace(/\/$/, "")
+}
+
 const keywordsByLocale: Record<Locale, string[]> = {
   fr: [
     "leadership numérique",
