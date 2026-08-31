@@ -74,6 +74,7 @@ export default async function CohortsPage({
           founding: t("labels.founding"),
           view: t("labels.view"),
           hint: t("hint"),
+          allSessions: t("labels.allSessions"),
         }}
       />
     </>

@@ -505,7 +505,8 @@
       "seats": "Seats",
       "tuition": "Tuition",
       "founding": "Founding",
-      "view": "View session"
+      "view": "View session",
+      "allSessions": "All sessions"
     }
   }
 }
