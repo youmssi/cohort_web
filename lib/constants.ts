@@ -30,7 +30,7 @@ export const site = {
 export const channels = {
   whatsappCommunity: "",
   discord: "https://discord.gg/JeJV9M6n",
-  linkedin: "https://linkedin.com/in/mrvin100",
+  linkedin: "https://linkedin.com/company/mrvin100",
   facebook: "https://facebook.com/mrvin100.de",
 } as const
 
