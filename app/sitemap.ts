@@ -3,8 +3,7 @@ import type { MetadataRoute } from "next"
 import { routing } from "@/i18n/routing"
 import { getCompetencies, getWeeks } from "@/lib/content"
 import { cohorts } from "@/lib/cohorts"
-import { absoluteUrl, localizedPath } from "@/lib/seo"
-import { site } from "@/lib/constants"
+import { canonicalUrl } from "@/lib/seo"
 
 /** Relative priority, so crawlers spend their budget on the conversion pages. */
 const staticPaths: { path: string; priority: number }[] = [
@@ -24,9 +23,7 @@ const staticPaths: { path: string; priority: number }[] = [
 /** Every entry advertises its translations, which is what Google expects. */
 function alternates(path: string) {
   return {
-    languages: Object.fromEntries(
-      routing.locales.map((l) => [l, `${site.url}${localizedPath(l, path)}`])
-    ),
+    languages: Object.fromEntries(routing.locales.map((l) => [l, canonicalUrl(l, path)])),
   }
 }
 
@@ -37,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of routing.locales) {
     for (const { path, priority } of staticPaths) {
       entries.push({
-        url: absoluteUrl(locale, path),
+        url: canonicalUrl(locale, path),
         lastModified,
         changeFrequency: "weekly",
         priority,
@@ -48,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const session of cohorts) {
       const path = `/cohorts/${session.id}`
       entries.push({
-        url: absoluteUrl(locale, path),
+        url: canonicalUrl(locale, path),
         lastModified,
         changeFrequency: "weekly",
         priority: 0.8,
@@ -59,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const week of getWeeks(locale)) {
       const path = `/curriculum/${week.week}`
       entries.push({
-        url: absoluteUrl(locale, path),
+        url: canonicalUrl(locale, path),
         lastModified,
         changeFrequency: "monthly",
         priority: 0.5,
@@ -70,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const competency of getCompetencies(locale)) {
       const path = `/competencies/${competency.slug}`
       entries.push({
-        url: absoluteUrl(locale, path),
+        url: canonicalUrl(locale, path),
         lastModified,
         changeFrequency: "monthly",
         priority: 0.5,
