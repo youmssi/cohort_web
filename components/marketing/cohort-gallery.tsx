@@ -40,6 +40,7 @@ export function CohortGallery({
     founding: string
     view: string
     hint: string
+    allSessions: string
   }
 }) {
   const [index, setIndex] = useState(0)
@@ -111,6 +112,32 @@ export function CohortGallery({
           }
         />
       </div>
+
+      {/*
+        Every session, as real links.
+
+        The wheel above is client state, so the markup only ever carried the
+        session that happened to be selected first: a crawl following links
+        reached /cohorts/26a and never knew 26b existed, even though the page
+        documents itself as the index of every cohort announced. This is that
+        index. It also spares a reader the wheel when they know which session
+        they want.
+      */}
+      <nav aria-label={labels.allSessions} className="mx-auto mt-6 max-w-3xl">
+        <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+          {sessions.map((session) => (
+            <li key={session.id}>
+              <Link
+                href={`/cohorts/${session.id}`}
+                aria-current={session.id === selected.id ? "true" : undefined}
+                className="text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline aria-[current]:text-foreground"
+              >
+                {session.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </section>
   )
 }

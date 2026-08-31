@@ -505,7 +505,8 @@
       "seats": "Places",
       "tuition": "Tarif",
       "founding": "Fondatrice",
-      "view": "Voir la session"
+      "view": "Voir la session",
+      "allSessions": "Toutes les sessions"
     }
   }
 }
